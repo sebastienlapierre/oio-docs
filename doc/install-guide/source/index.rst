@@ -36,6 +36,8 @@ Contents
    :maxdepth: 2
 
    overview.rst
+   prerequisites.rst
+   installation.rst
 
 .. end of contents
 
