@@ -1,5 +1,7 @@
 #!/bin/bash -e
 
+set -x
+
 mkdir -p result-docs
 
 TAGS=${1:-ubuntu debian}
@@ -10,7 +12,7 @@ trap "mv -f ${INDEX}.save ${INDEX}" EXIT
 
 for tag in $TAGS; do
 
-    title=$(grep -m 1 -A 5 "^.. only:: ${tag}" ${INDEX} | \
+    title=$(grep -A 5 "^.. only:: ${tag}" ${INDEX} | head -6 | \
         sed -n 4p | sed -e 's/^*//g')
 
     sed -i -e "s/\.\. title::.*/.. title:: ${title}/" ${INDEX}
