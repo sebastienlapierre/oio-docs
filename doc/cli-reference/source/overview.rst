@@ -2,4 +2,5 @@
 Overview
 ========
 
-ADD CONTENT HERE
+.. how to install it
+   set env var using rc file
