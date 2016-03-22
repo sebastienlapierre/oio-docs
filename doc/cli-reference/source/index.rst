@@ -14,6 +14,8 @@ Contents
    :maxdepth: 1
 
    overview
+   installation
+   openio-cli
 
 .. end of contents
 
