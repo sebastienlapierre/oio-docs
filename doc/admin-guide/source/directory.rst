@@ -6,5 +6,5 @@ Service Directory
    :maxdepth: 2
 
    directory_intro
-   directory_concepts
+   directory_operations
    directory_repli

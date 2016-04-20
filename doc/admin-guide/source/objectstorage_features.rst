@@ -51,7 +51,7 @@ versioning, you can list and restore previous versions of an object.
 Compression
 ~~~~~~~~~~~
 
-Compression can be performed on chunks, this can greatly helps with you storage cost.
+Compression can be performed on chunks, this can greatly help with you storage cost.
 Note that due to compression algorithms used the storage savings you can expect really
-depends on the kind of objects that are stored.
+depend on the kind of objects that are stored.
 For example: it is usually good for emails, but not so much for videos.

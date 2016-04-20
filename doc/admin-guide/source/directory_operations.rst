@@ -1,20 +1,6 @@
-=============
-Core Concepts
-=============
-
-- **Prefixes** -
-- **References** -
-
-Prefixes
---------
-
-
-References
-----------
-
-Services registered into the Conscience are available.
-Retrieve a particular set of services for a given reference
-name.
+==========
+Operations
+==========
 
 Directory Lookup
 ~~~~~~~~~~~~~~~~

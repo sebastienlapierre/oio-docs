@@ -5,18 +5,18 @@ Release management
 Version numbers
 ---------------
 
-Each OpenIO subproject (oio-sds_, oiopy_...) will have its own version number.
-We will try to follow the rules defined in
-`openstack's fork of Semantic Versioning`_. Breaking changes will increment
-the major version number, regular changes will increment the minor version
-number, and bug fixes will increment the patch version number.
+Each OpenIO subproject (oio-sds_, oiopy_...) has its own version number.
+We will follow the rules defined in `openstack's fork of Semantic Versioning`_.
+Breaking changes will increment the major version number,
+regular changes will increment the minor version number,
+and bug fixes will increment the patch version number.
 
 A branch in the source code repository should be created for each long-term
 supported version, named like *release-X.Y*, with X an Y being the major
 and minor version numbers.
 
-Distributions
--------------
+OpenIO distributions (aka software suites)
+------------------------------------------
 
 From time to time, we will release a **distribution** in the form
 of a package repository (RPM and DEB) containing coherent versions of all

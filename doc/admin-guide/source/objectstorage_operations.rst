@@ -1,32 +1,6 @@
-========
-Concepts
-========
-
-- ** Accounts ** -
-- ** Containers ** -
-- ** Objects ** -
-
-Accounts
---------
-
-List of containers in that account.
-An account server uses redis cluster as a metadata storage backend.
-
-Containers
-----------
-
-Containers keep track of object data locations.
-Each container is an individual SQLite database that is distributed
-accross the cluster. Containers are replicated.
-
-Objects
--------
-
-Objects are made of chunks.
-
-Objects are chunked depending Chunk Size a value defined in the namespace configuration.
-
-
+==========
+Operations
+==========
 
 Container Lookup
 ~~~~~~~~~~~~~~~~
