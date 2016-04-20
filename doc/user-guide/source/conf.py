@@ -37,7 +37,7 @@ source_suffix = '.rst'
 master_doc = 'index'
 
 # General information about the project.
-project = u'OpenIO admin guide'
+project = u'OpenIO user guide'
 copyright = u'2016, OpenIO SAS'
 author = u'OpenIO'
 
@@ -191,7 +191,7 @@ html_show_sourcelink = False
 # html_search_scorer = 'scorer.js'
 
 # Output file base name for HTML help builder.
-htmlhelp_basename = 'admin_guide'
+htmlhelp_basename = 'user_guide'
 
 # If true, publish source files
 html_copy_source = False
@@ -216,7 +216,7 @@ latex_elements = {
 # (source start file, target name, title,
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
-    ('index', 'oio_admin_guide.tex', u'OpenIO admin guide',
+    ('index', 'oio_user_guide.tex', u'OpenIO user guide',
      u'OpenIO', 'manual'),
 ]
 
@@ -246,7 +246,7 @@ latex_documents = [
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
 man_pages = [
-    ('index', 'oio-admin-guide', u'OpenIO admin guide',
+    ('index', 'oio-user-guide', u'OpenIO user guide',
      [u'OpenIO'], 1)
 ]
 
@@ -260,9 +260,9 @@ man_pages = [
 # (source start file, target name, title, author,
 #  dir menu entry, description, category)
 texinfo_documents = [
-    ('index', 'oio-admin-guide', u'OpenIO admin guide',
-     u'OpenIO', 'oio-admin-guide',
-     'This guide shows administrators how to use and manage OpenIO.',
+    ('index', 'oio-user-guide', u'OpenIO user guide',
+     u'OpenIO', 'oio-user-guide',
+     'This guide shows users how to use and manage OpenIO.',
      'Miscellaneous'),
 ]
 
@@ -281,6 +281,6 @@ texinfo_documents = [
 locale_dirs = ['locale/']
 
 pdf_documents = [
-        ('index', u'oio-admin-guide', u'OpenIO admin guide',
+        ('index', u'oio-user-guide', u'OpenIO user guide',
          u'OpenIO')
 ]

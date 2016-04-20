@@ -1,11 +1,11 @@
-====================
-OpenIO admin guide
-====================
+=================
+OpenIO user guide
+=================
 
 Abstract
 ~~~~~~~~
 
-This guide shows administrators how to use and manage OpenIO.
+This guide shows users how to use and manage OpenIO.
 
 Contents
 ~~~~~~~~

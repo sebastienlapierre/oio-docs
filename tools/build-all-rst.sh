@@ -2,7 +2,7 @@
 
 mkdir -p result-docs
 
-for guide in admin-guide cli-reference project-guide; do
+for guide in user-guide cli-reference project-guide; do
     tools/build-rst.sh doc/$guide --build build \
         --target "draft/$guide"
 done
