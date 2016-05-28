@@ -8,19 +8,22 @@ In theory, EC techniques uses less storage capacity than standard replication,
 but keeping the same durability guarantees.
 Erasure coding is transparent from the application perspective.
 
-To use erasure coding, you must have a storage policy with an erasure coding Data Security configured.
+To use erasure coding, you must have a storage policy with an erasure coding data security configured.
 
 Example of storage policy using erasure coding:
 
    .. code-block:: text
 
       [STORAGE_POLICY]
-      EC=NONE:EC
+      EC=NONE:EC_ISA_6_3
 
       [DATA_SECURITY]
-      EC=ec/k=6,m=3,algo=isa_l_rs_vand,distance=1
+      EC_ISA_6_3=ec/k=6,m=3,algo=isa_l_rs_vand,distance=1
 
-This describes a storage policy named ``EC`` using the erasure coding backend ISA-L with the following parameters:
+This describes a storage policy named ``EC`` configured with a data security called ``EC_ISA_6_3`` that uses
+the erasure coding backend ISA-L with the following parameters:
+
+* ``algo``: code of the erasure coding backend.
 
 * ``k``: number of data chunks.
 
