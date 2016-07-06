@@ -56,6 +56,19 @@ Processes running in the namespace. They can be stateless or stateful,
 are load-balanced by the conscience, and can be linked to several references.
 
 
+Slots
+-----
+Groups of services sharing common characteristics like storage hardware type
+or physical location.
+More details in Slots_ section.
+
+
+Pools
+-----
+Rules to generate coherent sets of services.
+More details in Pools_ section.
+
+
 Scores
 ------
 An aggregation of metrics reflecting the health of each service, usually
@@ -66,5 +79,7 @@ load-balancers. See `Load Balancing`_.
 .. _`Service Directory`: ./directory.html
 .. _`Object Storage`:    ./objectstorage.html
 .. _Conscience:          ./conscience.html
+.. _Slots:               ./conscience.html#slots
+.. _Pools:               ./conscience.html#pools
 .. _`Load Balancing`:    ./conscience.html#load-balancing
 
