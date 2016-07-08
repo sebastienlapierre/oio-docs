@@ -92,7 +92,7 @@ here is a template that will help you configure the services:
 - Replace SERVER1, SERVER2 and SERVER3 with the corresponding IP addresses.
 - On each server, replace ``MYID`` by the number of server: 1, 2 or 3.
 - On the server 2 and 3, add ``slaveof => 'SERVER1 6011'`` in the redis block
-- The `conscience` service is not necessary on SERVER2 and SERVER 3, you `MUST` remove it.
+- The `conscience` service is not necessary on SERVER2 and SERVER3, you `MUST` remove it.
 
 In a file called ``/root/openio.pp``:
 
