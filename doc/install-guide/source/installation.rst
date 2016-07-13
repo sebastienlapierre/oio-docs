@@ -32,7 +32,7 @@ Initialize
  
       # systemctl stop firewalld.service ; systemctl disable firewalld.service
 
-#. To take this change into account, reboot:
+#. Reboot to implement change:
 
    .. code-block:: console
 
@@ -41,7 +41,7 @@ Initialize
 OpenIO Packages Configuration
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-On each servers:
+On each server:
 
 #. Install OpenIO repository package:
 
@@ -87,7 +87,7 @@ Puppet Manifest
 ~~~~~~~~~~~~~~~
 
 Now you can create a manifest file to configure each host,
-here is a template that will help you configure the services:
+here is a template to configure the services:
 
 - Replace SERVER1, SERVER2 and SERVER3 with the corresponding IP addresses.
 - On each server, replace ``MYID`` by the number of server: 1, 2 or 3.
@@ -183,15 +183,15 @@ On each server, apply the manifest:
 
       # puppet apply --no-stringify_facts /root/openio.pp
 
-This step will download and install all necessary packages, so it will take
-a few minutes depending on your Internet connection speed.
-At the end, services should be installed and running using OpenIO GridInit.
+This step may take a few minutes. Please be patient as it downloads and installs all necessary packages. 
+Once completed, all services should be installed and running using OpenIO GridInit.
+
 
 
 Initialize OpenIO Namespace
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-As you may have notice, our namespace is called ``OPENIO``, we need to initialize a few components, namely ZooKeeper and our meta0.
+As you may have noticed, our namespace is called ``OPENIO``, we need to initialize a few components, namely ZooKeeper and our meta0.
 
 #. Zookeeper Bootstrap:
 
@@ -317,7 +317,7 @@ As you may have notice, our namespace is called ``OPENIO``, we need to initializ
 
 #. `meta0` and `meta1` restart
 
-   To finish the install, restart the meta0 and the meta1 services on every servers:
+   To finish the install, restart the meta0 and the meta1 services on each server:
 
    .. code-block:: console
 
@@ -335,7 +335,7 @@ As you may have notice, our namespace is called ``OPENIO``, we need to initializ
 
    .. warning::
 
-      Must be perform on all servers
+      Must be performed on all servers
 
    **gridinit_cmd status output**
 
