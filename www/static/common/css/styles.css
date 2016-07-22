@@ -1,0 +1,47 @@
+footer {
+  background: #333333;
+}
+
+.footer-links h3 {
+  color: #fff;
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.footer-links ul {
+  margin-left: 0;
+  padding-start: 0;
+  padding: 0;
+}
+
+.footer-links ul li a {
+  color: #aaa;
+  font-size: 12px;
+  font-weight: 400;
+  list-style: none;
+  margin-left: 0;
+}
+
+.docs-toc {
+  padding-top: 80px;
+  padding-bottom: 20px;
+}
+
+.docs-toc a {
+  font-weight: 400;
+  display: block;
+  padding: 10px;
+}
+
+.docs-toc a:hover {
+  text-decoration: none;
+}
+
+.docs-section {
+  margin: 0 0 80px;
+}
+
+.docs-section p {
+  color: gray;
+  padding-left:20px
+}

@@ -20,4 +20,4 @@ Guides are in RST format. We use tox to prepare and build all guides::
 
 The generated HTML documentations can be found at::
 
-        result-docs/draft/
+        result-docs/
