@@ -26,7 +26,7 @@ Initialize
   
       # sed -i -e 's@^SELINUX=enforcing$@SELINUX=disabled@g' /etc/selinux/config
    
-#. Disable firewalld:
+#. Disable firewall:
    
    .. code-block:: console
  
@@ -191,7 +191,9 @@ Once completed, all services should be installed and running using OpenIO GridIn
 Initialize OpenIO Namespace
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-As you may have noticed, our namespace is called ``OPENIO``, we need to initialize a few components, namely ZooKeeper and our meta0.
+As you may have noticed the namespace is, by default, called ``OPENIO``.  The namespace must remain ``OPENIO`` for the following steps to work properly.  
+
+Next, we need to initialize a few components, namely ZooKeeper and meta0.
 
 #. Zookeeper Bootstrap:
 
