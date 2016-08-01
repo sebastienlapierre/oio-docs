@@ -2,3 +2,6 @@ pbr>=1.6
 sphinx
 sphinx_rtd_theme
 doc8
+beautifulsoup4
+Jinja2
+lxml

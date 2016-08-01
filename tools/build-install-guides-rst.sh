@@ -19,6 +19,6 @@ for tag in $TAGS; do
 
     tools/build-rst.sh doc/install-guide \
         --tag ${tag} \
-        --target "draft/install-guide-${tag}"
+        --target "install-guide-${tag}"
     cp -f ${INDEX}.save ${INDEX}
 done

@@ -1,0 +1,55 @@
+{% set cssdir = './common/css/' %}
+{% extends "templates/indexbase.tmpl" %}
+{% block pagetitle %}Current{% endblock %}
+{% block title %}{% endblock %}
+{% block content %}
+<div class="jumbotron">
+  <div class="container">
+    <h2>Welcome to OpenIO Documentation</h2>
+    <p>
+      <strong>What is OpenIO?</strong>
+      OpenIO is an open source cloud platform for all sizes of platforms, which aims to be easy to use, install and connect with your applications.
+    </p>
+  </div>
+</div>
+<div class="container">
+  <div class="row">
+    <div class="col-md-9">
+      <h2>Documentation for OpenIO</h2>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <div class="row docs-toc">
+    <div class="col-md-6">
+      <div class="docs-section">
+        <h3>Install Guides</h3>
+	<p>How to install an OpenIO platform</p>
+	<a href="/install-guide-centos/">Installation Guide for CentOS</a>
+	<p>CentOS 7</p>
+	<a href="/install-guide-debian">Installation Guide for Debian</a>
+	<p>Debian Jessie</p>
+	<a href="/install-guide-ubuntu">Installation Guide for Ubuntu</a>
+	<p>Ubuntu 16.04</p>
+      </div>
+      <div class="docs-section">
+        <h3>Contributor Guides</h3>
+	<a href="/project-guide/">OpenIO Project Guide</a>
+	<p>Guide to the OpenIO project and community</p>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="docs-section">
+        <h3>User Guides</h3>
+	<a href="/user-guide/">User Guide</a>
+	<p>Learn how to use OpenIO</p>
+	<a href="/cli-reference">Command-Line Interface Reference</a>
+	<p>Documentation for OpenIO command-line clients</p>
+      </div>
+    </div>
+  </div>
+
+  <hr>
+
+</div>
+{% endblock content %}
