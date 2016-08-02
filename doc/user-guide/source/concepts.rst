@@ -3,7 +3,7 @@ Concepts
 ========
 
 Namespace
-----------
+---------
 A coherent set of network services working together to run OpenIO's solutions.
 
 
@@ -15,7 +15,7 @@ references in the directory.
 
 
 Account
---------
+-------
 Usually represents a customer (the second 'B' in B2B2C). There is
 no limit to the number of accounts in a namespace. Accounts keep track of
 namespace usage of each customer (e.g. the list of containers and
@@ -23,7 +23,7 @@ the number of bytes occupied by all objects of a customer).
 
 
 Reference
-----------
+---------
 Some kind of service container. Usually represents a final user
 (the 'C' in B2B2C). Several services may be linked to a reference
 (e.g. an object storage service and a database service).
