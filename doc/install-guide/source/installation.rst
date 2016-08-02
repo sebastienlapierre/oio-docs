@@ -319,7 +319,7 @@ Next, we need to initialize a few components, namely ZooKeeper and meta0.
 
 #. `meta0` and `meta1` restart
 
-   To finish the install, restart the meta0 and the meta1 services on each server:
+   Restart the meta0 and the meta1 services on each server:
 
    .. code-block:: console
 
@@ -358,5 +358,15 @@ Next, we need to initialize a few components, namely ZooKeeper and meta0.
       OPENIO-redis-0            UP          684 OPENIO,redis,redis-0
       OPENIO-redissentinel-0    UP          614 OPENIO,redissentinel,redissentinel-0
       OPENIO-zookeeper-0        UP          612 OPENIO,zookeeper,zookeeper-0
+
+#. Unlock all services:
+
+   Finally, unlock all services in the namespace:
+
+   .. code-block:: console
+
+      # oio-cluster -r OPENIO | while read S ; do oio-cluster --unlock-score -S "$S" ; done
+
+   After unlocking, your OPENIO namespace should be running!
 
    .. TODO ADD test installation section
