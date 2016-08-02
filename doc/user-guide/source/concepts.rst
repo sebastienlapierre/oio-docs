@@ -4,7 +4,14 @@ Concepts
 
 Namespace
 ----------
-A coherent set of services working together to run OpenIO's solutions.
+A coherent set of network services working together to run OpenIO's solutions.
+
+
+Services
+--------
+Processes running in the namespace. They can be stateless or stateful, or
+registered in the conscience for further load-balancing, then linked to
+references in the directory.
 
 
 Account
@@ -48,12 +55,6 @@ A (set of) service(s) responsible for collecting,
 aggregating and distributing metrics about all other services of a namespace,
 in order to have a good load balancing and data placement.
 More details in Conscience_ section.
-
-
-Services
---------
-Processes running in the namespace. They can be stateless or stateful,
-are load-balanced by the conscience, and can be linked to several references.
 
 
 Slots

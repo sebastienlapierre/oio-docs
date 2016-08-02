@@ -7,8 +7,9 @@ Object Storage
 
    objectstorage_intro
    objectstorage_features
-   objectstorage_operations
    objectstorage_arch
+   objectstorage_proxy
+   objectstorage_operations
    objectstorage_storage_policies
    objectstorage_repli
    objectstorage_ec

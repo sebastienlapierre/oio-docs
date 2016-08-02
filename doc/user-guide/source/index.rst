@@ -18,6 +18,7 @@ Contents
    conscience
    directory
    objectstorage
+   team
 
 .. end of contents
 
