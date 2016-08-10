@@ -36,10 +36,6 @@ Abstract
    This guide will show you how to install OpenIO SDS on CentOS.
 
 
-.. warning::
-
-   This guide is a work-in-progress.
-
 Contents
 ~~~~~~~~
 
