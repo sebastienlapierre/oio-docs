@@ -365,7 +365,7 @@ Next, we need to initialize a few components, namely ZooKeeper and meta0.
 
    .. code-block:: console
 
-      # oio-cluster -r OPENIO | while read S ; do oio-cluster --unlock-score -S "$S" ; done
+      # oio-cluster -r OPENIO | xargs -n1 oio-cluster --unlock-score -S
 
    After unlocking, your OPENIO namespace should be running!
 
