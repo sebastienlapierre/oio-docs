@@ -32,7 +32,7 @@ Initialize
  
       # systemctl stop firewalld.service ; systemctl disable firewalld.service
 
-#. Reboot to implement change:
+#. Reboot to apply changes:
 
    .. code-block:: console
 
