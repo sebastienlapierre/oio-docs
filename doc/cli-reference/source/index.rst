@@ -16,6 +16,7 @@ Contents
    overview
    openio-intro
    openio-storage
+   openio-cluster
 
 .. end of contents
 
