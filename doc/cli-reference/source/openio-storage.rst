@@ -1,86 +1,3 @@
-=============================
-OpenIO Command-Line Interface
-=============================
-
-Using the command line
-~~~~~~~~~~~~~~~~~~~~~~
-
-To list available commands run `openio --help`:
-
-   .. code-block:: console
-
-    # openio --help
-
-    usage: openio [--version] [-v] [--log-file LOG_FILE] [-q] [-h] [--debug]
-          [--oio-ns <namespace>] [--oio-account <account>]
-          [--oio-proxyd-url <proxyd url>]
-
-    Command-line interface to the OpenIO APIs
-
-    optional arguments:
-    --version             show program's version number and exit
-    -v, --verbose         Increase verbosity of output. Can be repeated.
-    --log-file LOG_FILE   Specify a file to log output. Disabled by default.
-    -q, --quiet           suppress output except warnings and errors
-    -h, --help            show this help message and exit
-    --debug               show tracebacks on errors
-    --oio-ns <namespace>  Namespace name (Env: OIO_NS)
-    --oio-account <account>
-            Account name (Env: OIO_ACCOUNT)
-    --oio-proxyd-url <proxyd url>
-            Proxyd URL (Env: OIO_PROXYD_URL)
-
-    Commands:
-    [...]
-
-Help on specific command
-~~~~~~~~~~~~~~~~~~~~~~~~
-
-To get help on any command, just execute the command with the `--help` option.
-
-   .. code-block:: console
-
-    # openio container create --help
-
-    usage : openio container create [-h] [-f {csv,html,json,table,value,yaml}]
-                   [-c COLUMN] [--max-width <integer>]
-                   [--quote {all,minimal,none,nonnumeric}]
-                   <container-name> [<container-name> ...]
-
-    Create container
-
-    positional arguments:
-    <container-name>      New container name(s)
-    [...]
-
-
-Environment variables
-~~~~~~~~~~~~~~~~~~~~~
-
-The following list of environment variables are accepted by the `openio` command
-
-* `OIO_NS` The namespace name.
-* `OIO_ACCOUNT` The account name to use.
-* `OIO_PROXYD_URL` Proxyd URL to connect to.
-
-Configuration files
-~~~~~~~~~~~~~~~~~~~
-
-By default, the `openio` command line looks for its configuration in
-`/etc/oio/sds` and in the directory `.oio` within your `HOME`.
-
-Get started
-~~~~~~~~~~~
-
-You need to initialize the namespace and account environment variables before using the CLI. Adapt the OIO_NS value to yours:
-
-   .. code-block:: console
-
-    # export OIO_NS=OPENIO
-    # export OIO_ACCOUNT=my_account
-
-.. TODO see env var using file - link to section
-
 Container management
 ~~~~~~~~~~~~~~~~~~~~
 
@@ -114,17 +31,15 @@ Display information about this container.
     | ctime       | 1441105114                                                         |
     +-------------+--------------------------------------------------------------------+
 
-You can't display informations about a non-existent container
-
 - **Container properties**
 
-You can manually set a property <key=value> to a given container. If the property set that way is new, its key must begin with a `user.` prefix:
+To set a property <key=value> to a given container:
 
    .. code-block:: console
 
-    # openio container set my_container --property user.nbcontents=20
+    # openio container set mu_container --property color=blue
 
-The property key set this way is saved with the `meta.` prefix:
+Properties can be displayed with `container show`:
 
    .. code-block:: console
 
@@ -134,19 +49,19 @@ The property key set this way is saved with the `meta.` prefix:
     | Field           | Value                                                              |
     +-----------------+--------------------------------------------------------------------+
     ...
-    | meta.nbcontents | 20                                                                 |
+    | meta.color      | blue                                                               |
     +-----------------+--------------------------------------------------------------------+
 
-You can also delete a property by specifying its key and using the `user.` prefix again :
+To delete a property:
 
    .. code-block:: console
 
-    # openio container unset my_container --property user.nbcontents
+    # openio container unset my_container --property color
 
 Object management
 ~~~~~~~~~~~~~~~~~
 
-- **Store object**
+- **Create object**
 
    .. code-block:: console
 
@@ -156,7 +71,7 @@ Object management
     +----------+------+----------------------------------+
     | Name     | Size | Hash                             |
     +----------+------+----------------------------------+
-    | test.txt |   14 | 9eb03b6e836ceae565ba79f76c821dda |
+    | test.txt |   14 | 9EB03B6E836CEAE565BA79F76C821DDA |
     +----------+------+----------------------------------+
 
 - **List objects**
@@ -171,7 +86,7 @@ Object management
     | test.txt |   14 | 9EB03B6E836CEAE565BA79F76C821DDA |
     +----------+------+----------------------------------+
 
-Since containers can hold millions of objects, there are several methods to
+Containers can hold a large number of objects so there are several methods to
 filter the results.
 
 Here are the optional arguments which can be used:
@@ -187,11 +102,11 @@ To illustrate these features, create those files and store them in a container
 
    .. code-block:: console
 
-    # openio touch folder_1 folder_2 folder_3_0 file1 file2 config1 config2
+    # touch folder_1 folder_2 folder_3_0 file1 file2 config1 config2
     # openio object create my_container folder_1 folder_2 folder_3_0 file1 file2 config1 config2
     [...]
 
-You can list all the objects :
+To list all the objects :
 
    .. code-block:: console
 
@@ -210,7 +125,7 @@ You can list all the objects :
     | test.txt   |   14 | 9EB03B6E836CEAE565BA79F76C821DDA |
     +------------+------+----------------------------------+
 
-Let's use the paginating features:
+Let's use the filtering features:
 
 This only outputs a maximum of three objects whose names are lexically greater than `e`:
 
@@ -268,20 +183,19 @@ This collects all the objects whose names begin with `folder_`, and then exclude
     | folder_2 |    0 | D41D8CD98F00B204E9800998ECF8427E |
     +----------+------+----------------------------------+
 
+Note that this can be used to emulate a hierarchy with directories.
+
 - **Get object**
 
-Exports the data stored in the given object to the --file destination :
+Saves the data stored in the given object to the --file destination :
 
    .. code-block:: console
 
     # openio object save my_container test.txt --file /tmp/test.txt
-    # ls /tmp/test.txt
-
-    /tmp/test.txt
 
 If the destination file already exists, its content will be deleted and replaced with this new one.
 
-You can also export all the objects from a container to your working directory in a single command:
+You can also save all the objects from a container to your working directory in a single command:
 
    .. code-block:: console
 
@@ -295,7 +209,7 @@ You can also export all the objects from a container to your working directory i
 
 - **Information about object**
 
-Display the different services involved by this content, including policy, MD5, properties …
+Display the informations about an object:
 
    .. code-block:: console
 
@@ -307,20 +221,20 @@ Display the different services involved by this content, including policy, MD5, 
     | account   | my_account                       |
     | container | my_container                     |
     | ctime     | 1441057689                       |
-    | hash      | 9eb03b6e836ceae565ba79f76c821dda |
+    | hash      | 9EB03B6E836CEAE565BA79F76C821DDA |
     | mime-type | octet/stream                     |
     | object    | test.txt                         |
     | policy    | none                             |
     | size      | 14                               |
     +-----------+----------------------------------+
 
-You can manually set a property <key=value> to a given object:
+To set a property <key=value> to a given object:
 
    .. code-block:: console
 
     # openio object set my_container test.txt --property size=small
 
-The property key set this way is saved with the `meta.` prefix:
+Properties can be displayed with `object show`:
 
    .. code-block:: console
 
@@ -334,7 +248,7 @@ The property key set this way is saved with the `meta.` prefix:
     [...]
     +-----------+----------------------------------+
 
-You can also delete a property by specifying its key:
+To delete a property:
 
    .. code-block:: console
 
@@ -354,37 +268,19 @@ You can also delete a property by specifying its key:
 
 Note : It is not possible to delete a non empty container.
 
-Indeed, the previous command raised the following error :
-
    .. code-block:: console
 
-    M2 error: HOOK error: Request error: 1 elements still in container (HTTP 409) (STATUS 438)
+    Request error: Container not empty (HTTP 409) (STATUS 438)
 
-    # openio object list my_container
+There are still objects in the container.
 
-    +------------+------+----------------------------------+
-    | Name       | Size | Hash                             |
-    +------------+------+----------------------------------+
-    | config1    |    0 | D41D8CD98F00B204E9800998ECF8427E |
-    | config2    |    0 | D41D8CD98F00B204E9800998ECF8427E |
-    | file1      |    0 | D41D8CD98F00B204E9800998ECF8427E |
-    | file2      |    0 | D41D8CD98F00B204E9800998ECF8427E |
-    | folder_1   |    0 | D41D8CD98F00B204E9800998ECF8427E |
-    | folder_2   |    0 | D41D8CD98F00B204E9800998ECF8427E |
-    | folder_3_0 |    0 | D41D8CD98F00B204E9800998ECF8427E |
-    +------------+------+----------------------------------+
-
-There are still 7 objects in the container.
-
-To handle that situation, you need first to delete all objects stored in the container.
+First to delete all objects stored in the container.
 
    .. code-block:: console
 
     # openio object delete my_container folder_3_0 folder_2 folder_1 file2 file1 config2 config1
 
-    # openio object list my_container
-
-And finally destroy the container.
+And finally delete the container.
 
    .. code-block:: console
 
@@ -393,29 +289,43 @@ And finally destroy the container.
 Account management
 ~~~~~~~~~~~~~~~~~~
 
-Accounts are a convenient way to manage the storage containers. Containers always belong to a specific Account.
+Accounts track usage about storage, they are automatically created.
 
-- **Create an account**
+- **Information about account**
 
-   .. code-block:: console
-
-    # openio account create my_account_2
-
-You can now specify in which account to execute the actions by adding the `--oio-account <account_name>` parameter to your commands:
+  To show informations about an account: number of containers, number of objects and total storage usage.
 
    .. code-block:: console
 
-    # openio container create test_container --oio-account my_account_2
+    # openio account show my_account
+
+    +------------+------------------+
+    | Field      | Value            |
+    +------------+------------------+
+    | bytes      | 0                |
+    | containers | 1                |
+    | ctime      | 1441108158.46772 |
+    | id         | my_account       |
+    | metadata   | {}               |
+    | objects    | 0                |
+    +------------+------------------+
+
+
+- **Use multiple accounts**
+
+Specify in which account to execute the actions by adding the `--oio-account <account_name>` parameter to your commands:
+
+   .. code-block:: console
+
+    # openio container create my_container --oio-account my_account_2
 
     +----------------+---------+
     | Name           | Created |
     +----------------+---------+
-    | test_container | True    |
+    | my_container   | True    |
     +----------------+---------+
 
-    # openio container list --oio-account my_account
-
-There is no container named `test_container` in the account `my_account`
+The account `my_account_2` was automatically created.
 
    .. code-block:: console
 
@@ -427,129 +337,9 @@ There is no container named `test_container` in the account `my_account`
     | test_container |     0 |     0 |
     +----------------+-------+-------+
 
-- **Information about account**
+
+You can also create manually an account:
 
    .. code-block:: console
 
-    # openio account show my_account_2
-
-    +------------+------------------+
-    | Field      | Value            |
-    +------------+------------------+
-    | bytes      | 0                |
-    | containers | 1                |
-    | ctime      | 1441108158.46772 |
-    | id         | my_account_2     |
-    | metadata   | {}               |
-    | objects    | 0                |
-    +------------+------------------+
-
-References management
-~~~~~~~~~~~~~~~~~~~~~
-
-References are also a convenient way to manage the storage containers. Containers always belong to a specific reference.
-
-To manage containers, a reference must be linked to one of the following service type : meta0, meta1, meta2 and rawx.
-
-All along that tutorial, each time you created a container, a corresponding reference was also created and linked with a service.
-
-- **Create a reference**
-
-You can manually create a clean unlinked reference :
-
-   .. code-block:: console
-
-    # openio reference create my_reference
-
-- **Link a reference**
-
-   .. code-block:: console
-
-    # openio reference link my_reference meta2
-
-You can link a reference with any amount of services as long as a service type contains unlinked services.
-
-- **Information about reference**
-
-   .. code-block:: console
-
-    # openio reference show my_reference
-
-    +---------+--------------+
-    | Field   | Value        |
-    +---------+--------------+
-    | account | my_account   |
-    | name    | my_reference |
-    +---------+--------------+
-
-You can also list all the services linked with the reference
-
-   .. code-block:: console
-
-    # openio reference link my_reference meta1
-    # openio reference link my_reference rawx
-    # openio reference list my_reference
-
-    +-------+---------------------+------+-----+
-    | Type  | Host                | Args | Seq |
-    +-------+---------------------+------+-----+
-    | rawx  | 192.168.56.101:6011 |      |   1 |
-    | meta2 | 192.168.56.101:6008 |      |   1 |
-    | meta1 | 192.168.56.101:6007 |      |   1 |
-    +-------+---------------------+------+-----+
-
-- **Unlink a reference**
-
-   .. code-block:: console
-
-    # openio reference unlink my_reference meta2
-
-All the meta2 services are dissociated from the reference:
-
-   .. code-block:: console
-
-    # openio reference list my_reference
-
-    +-------+---------------------+------+-----+
-    | Type  | Host                | Args | Seq |
-    +-------+---------------------+------+-----+
-    | rawx  | 192.168.56.101:6011 |      |   1 |
-    | meta1 | 192.168.56.101:6007 |      |   1 |
-    +-------+---------------------+------+-----+
-
-- **Delete a reference**
-
-   .. code-block:: console
-
-    # openio reference delete my_reference
-
-It is not possible to delete a linked reference.
-Indeed, the previous instruction raised the following answer :
-
-   .. code-block:: console
-
-    META1 error: Request error: Query error: User still linked to services (HTTP 500) (STATUS 407)
-
-    # openio reference list my_reference
-
-    +-------+---------------------+------+-----+
-    | Type  | Host                | Args | Seq |
-    +-------+---------------------+------+-----+
-    | rawx  | 192.168.56.101:6011 |      |   1 |
-    | meta1 | 192.168.56.101:6007 |      |   1 |
-    +-------+---------------------+------+-----+
-
-There are still two services linked with the reference.
-First you need to unlink all of it.
-
-   .. code-block:: console
-
-    # openio reference unlink my_reference rawx
-    # openio reference unlink my_reference meta1
-
-And finally destroy the reference.
-
-   .. code-block:: console
-
-    # openio reference delete my_reference
-
+    # openio account create my_account_3
