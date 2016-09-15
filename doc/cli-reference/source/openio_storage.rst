@@ -1,7 +1,8 @@
 Container management
-~~~~~~~~~~~~~~~~~~~~
+====================
 
-- **Create a container**
+Create a container
+------------------
 
    .. code-block:: console
 
@@ -13,7 +14,8 @@ Container management
     | my_container | True    |
     +--------------+---------+
 
-- **Information about container**
+Information about container
+---------------------------
 
 Display information about this container.
 
@@ -31,7 +33,8 @@ Display information about this container.
     | ctime       | 1441105114                                                         |
     +-------------+--------------------------------------------------------------------+
 
-- **Container properties**
+Container properties
+--------------------
 
 To set a property <key=value> to a given container:
 
@@ -39,7 +42,7 @@ To set a property <key=value> to a given container:
 
     # openio container set mu_container --property color=blue
 
-Properties can be displayed with `container show`:
+Properties can be displayed with ``container show``:
 
    .. code-block:: console
 
@@ -59,9 +62,10 @@ To delete a property:
     # openio container unset my_container --property color
 
 Object management
-~~~~~~~~~~~~~~~~~
+=================
 
-- **Create object**
+Create object
+-------------
 
    .. code-block:: console
 
@@ -74,7 +78,8 @@ Object management
     | test.txt |   14 | 9EB03B6E836CEAE565BA79F76C821DDA |
     +----------+------+----------------------------------+
 
-- **List objects**
+List objects
+------------
 
    .. code-block:: console
 
@@ -90,13 +95,13 @@ Containers can hold a large number of objects so there are several methods to
 filter the results.
 
 Here are the optional arguments which can be used:
-*   `--marker` : Indicates where to start the listing from.
-*   `--end_marker` : Indicates where to stop the listing.
-*   `--prefix` : If set, the listing only includes objects whose name begin with
-its value.
-*   `--delimiter` : If set, excludes the objects whose name contains its value.
-`delimiter` only takes a single character. It can also be combined with the `prefix` argument for more precise listings.
-*   `--limit` : Indicates the maximum number of objects to return in the listing.
+
+- ``--marker`` : Indicates where to start the listing from.
+- ``--end_marker`` : Indicates where to stop the listing.
+- ``--prefix`` : If set, the listing only includes objects whose name begin with its value.
+- ``--delimiter`` : If set, excludes the objects whose name contains its value.
+  Only takes a single character. It can also be combined with the ``--prefix`` for advanced listings.
+- ``--limit`` : Indicates the maximum number of objects to return in the listing.
 
 To illustrate these features, create those files and store them in a container
 
@@ -127,7 +132,7 @@ To list all the objects :
 
 Let's use the filtering features:
 
-This only outputs a maximum of three objects whose names are lexically greater than `e`:
+This only outputs a maximum of three objects whose names are lexically greater than ``e``:
 
    .. code-block:: console
 
@@ -141,7 +146,7 @@ This only outputs a maximum of three objects whose names are lexically greater t
     | folder_1 |    0 | D41D8CD98F00B204E9800998ECF8427E |
     +----------+------+----------------------------------+
 
-This only outputs the objects whose names begin with `file`:
+This only outputs the objects whose names begin with ``file``:
 
    .. code-block:: console
 
@@ -154,7 +159,7 @@ This only outputs the objects whose names begin with `file`:
     | file2 |    0 | D41D8CD98F00B204E9800998ECF8427E |
     +-------+------+----------------------------------+
 
-This excludes all the objects whose names contain a `_` character:
+This excludes all the objects whose names contain a ``_`` character:
 
    .. code-block:: console
 
@@ -170,7 +175,8 @@ This excludes all the objects whose names contain a `_` character:
     | test.txt |   14 | 9EB03B6E836CEAE565BA79F76C821DDA |
     +----------+------+----------------------------------+
 
-This collects all the objects whose names begin with `folder_`, and then excludes all those whose names contain a `_` character after the prefix:
+This collects all the objects whose names begin with ``folder_``
+and then excludes all those whose names contain a ``_`` character after the prefix:
 
    .. code-block:: console
 
@@ -185,9 +191,10 @@ This collects all the objects whose names begin with `folder_`, and then exclude
 
 Note that this can be used to emulate a hierarchy with directories.
 
-- **Get object**
+Save object
+-----------
 
-Saves the data stored in the given object to the --file destination :
+Saves the data stored in the given object to the ``--file`` destination :
 
    .. code-block:: console
 
@@ -207,7 +214,8 @@ You can also save all the objects from a container to your working directory in 
 
     # cd .. && rm -rf test_folder
 
-- **Information about object**
+Information about object
+------------------------
 
 Display the informations about an object:
 
@@ -228,13 +236,16 @@ Display the informations about an object:
     | size      | 14                               |
     +-----------+----------------------------------+
 
+Object properties
+-----------------
+
 To set a property <key=value> to a given object:
 
    .. code-block:: console
 
     # openio object set my_container test.txt --property size=small
 
-Properties can be displayed with `object show`:
+Properties can be displayed with ``object show``:
 
    .. code-block:: console
 
@@ -254,13 +265,15 @@ To delete a property:
 
     # openio object unset my_container test.txt --property size
 
-- **Delete object**
+Delete object
+-------------
 
    .. code-block:: console
 
     # openio object delete my_container test.txt
 
-- **Destroy container**
+Delete container
+----------------
 
    .. code-block:: console
 
@@ -287,11 +300,12 @@ And finally delete the container.
     # openio container delete my_container
 
 Account management
-~~~~~~~~~~~~~~~~~~
+==================
 
 Accounts track usage about storage, they are automatically created.
 
-- **Information about account**
+Information about account
+-------------------------
 
   To show informations about an account: number of containers, number of objects and total storage usage.
 
@@ -311,9 +325,11 @@ Accounts track usage about storage, they are automatically created.
     +------------+------------------+
 
 
-- **Use multiple accounts**
+Use multiple accounts
+---------------------
 
-Specify in which account to execute the actions by adding the `--oio-account <account_name>` parameter to your commands:
+Specify in which account to execute the actions by adding the
+``--oio-account <account_name>`` parameter to your commands:
 
    .. code-block:: console
 
@@ -325,7 +341,7 @@ Specify in which account to execute the actions by adding the `--oio-account <ac
     | my_container   | True    |
     +----------------+---------+
 
-The account `my_account_2` was automatically created.
+The account ``my_account_2`` was automatically created.
 
    .. code-block:: console
 

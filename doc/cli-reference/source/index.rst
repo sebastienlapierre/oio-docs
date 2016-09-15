@@ -14,9 +14,7 @@ Contents
    :maxdepth: 1
 
    overview
-   openio-intro
-   openio-storage
-   openio-cluster
+   openio
 
 .. end of contents
 
