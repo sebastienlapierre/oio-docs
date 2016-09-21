@@ -1,11 +1,7 @@
-=============================
-OpenIO Command-Line Interface
-=============================
-
 Using the command line
-~~~~~~~~~~~~~~~~~~~~~~
+======================
 
-To list available commands run `openio help`:
+To list available commands run ``openio help``:
 
    .. code-block:: console
 
@@ -35,9 +31,9 @@ To list available commands run `openio help`:
     [...]
 
 Help on specific command
-~~~~~~~~~~~~~~~~~~~~~~~~
+------------------------
 
-To get help on any command, use the `help` command.
+To get help on any command, use the ``help`` command.
 
    .. code-block:: console
 
@@ -56,7 +52,7 @@ To get help on any command, use the `help` command.
 
 
 Get started
-~~~~~~~~~~~
+-----------
 
 To use the CLI we need to indicate the namespace name:
 
@@ -71,20 +67,20 @@ Most storage operations also need an account name:
     # export OIO_ACCOUNT=my_account
 
 Note here that we use environment variables but we could also use the
-command-line arguments `--oio-ns` and `--oio-account`.
+command-line arguments ``--oio-ns`` and ``--oio-account``.
 
 
 Environment variables
-~~~~~~~~~~~~~~~~~~~~~
+---------------------
 
 The following environment variables are accepted by the `openio` command
 
-* `OIO_NS` The namespace name.
-* `OIO_ACCOUNT` The account name to use.
-* `OIO_PROXYD_URL` Proxyd URL to connect to.
+* ``OIO_NS`` The namespace name.
+* ``OIO_ACCOUNT`` The account name to use.
+* ``OIO_PROXYD_URL`` Proxyd URL to connect to.
 
 Configuration files
-~~~~~~~~~~~~~~~~~~~
+-------------------
 
-By default, the `openio` command line looks for its configuration in
-`/etc/oio/sds` and in the directory `.oio` within your `HOME`.
+By default, the ``openio`` command line looks for its configuration in
+``/etc/oio/sds`` and in the directory ``.oio`` within your ``$HOME``.
