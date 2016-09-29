@@ -43,10 +43,26 @@ means
 Locations
 ---------
 The administrator can declare the location of each service as a
-dot-separated string like ``room1.rack1.server2.volume4``. This allows
+dot-separated string like ``room1.rack1.server2.volume4`` (up to 8 words).
+This allows
 finding services that are far from each other when doing erasure coding
 or data replication. If no location is set, the IP address and port of
 the services are used.
+
+The dotted string is internally converted to a 64-bit integer (by hashing
+each word using djb2) and a configurable mask is applied to check the distance
+between two randomly selected services.
+
+======================== ========================= ========================= =========
+Location                 room1.rack1.srv12.vol4    room1.rack1.srv33.vol5
+------------------------ ------------------------- ------------------------- ---------
+Internal representation  0xAE13 CD77 81C3 AA8A     0xAE13 CD77 8206 AA8B
+------------------------ ------------------------- ------------------------- ---------
+mask=0xFFFFFFFF00000000  0xAE13 CD77 0000 0000     0xAE13 CD77 0000 0000     Close
+------------------------ ------------------------- ------------------------- ---------
+mask=0xFFFFFFFFFFFF0000  0xAE13 CD77 **81C3** 0000 0xAE13 CD77 **8206** 0000 Distant
+======================== ========================= ========================= =========
+
 
 
 Load Balancing
