@@ -51,7 +51,7 @@ On each server:
    
          # yum -y install http://mirror.openio.io/pub/repo/openio/sds/16.04/el/openio-sds-release-16.04-1.el.noarch.rpm
    
-   .. only:: ubuntu
+   .. only:: ubuntu or debian
       
       We provide a shell script (relying on Puppet) that allows you to install easily a namespace named *OPENIO*
       
@@ -75,7 +75,7 @@ On each server:
    
          # yum -y install puppet-openio-sds
 
-   .. only:: ubuntu
+   .. only:: ubuntu or debian
    
       .. code-block:: console
    
