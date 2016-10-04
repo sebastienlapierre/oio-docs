@@ -216,7 +216,7 @@ latex_elements = {
 # (source start file, target name, title,
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
-    ('index', 'CLIRef.tex', u'Command-Line Interface Reference',
+    ('index', 'Vagrant', u'Vagrant Box Documentation',
      u'OpenIO', 'manual'),
 ]
 
