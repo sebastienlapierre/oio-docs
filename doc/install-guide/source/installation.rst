@@ -310,7 +310,7 @@ Next, we need to initialize a few components, namely ZooKeeper and meta0.
 
    .. code-block:: console
 
-      # oio-meta0-init -O NbReplicas=3 OPENIO
+      # openio directory bootstrap
 
    .. note::
 
