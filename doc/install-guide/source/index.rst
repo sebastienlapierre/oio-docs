@@ -42,7 +42,6 @@ Contents
 .. toctree::
    :maxdepth: 2
 
-   overview.rst
    prerequisites.rst
    installation.rst
 

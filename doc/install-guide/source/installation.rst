@@ -49,7 +49,7 @@ On each server:
    
       .. code-block:: console
    
-         # yum -y install http://mirror.openio.io/pub/repo/openio/sds/16.04/el/openio-sds-release-16.04-1.el.noarch.rpm
+         # yum -y install http://mirror.openio.io/pub/repo/openio/sds/16.10/el/openio-sds-release-16.10-1.el.noarch.rpm
    
    .. only:: ubuntu or debian
       
@@ -102,7 +102,7 @@ In a file called ``/root/openio.pp``:
       openiosds::conscience {'conscience-0':
         ns                    => 'OPENIO',
         ipaddress             => $ipaddress,
-        service_update_policy => 'meta2=KEEP|3|1|;rdir=KEEP|1|1|user_is_a_service=1',
+        service_update_policy => {'meta2'=>'KEEP|3|1|','sqlx'=>'KEEP|1|1|','rdir'=>'KEEP|1|1|user_is_a_service=rawx'},
         storage_policy        => 'THREECOPIES',
         meta2_max_versions    => '1',
       }
@@ -365,8 +365,15 @@ Next, we need to initialize a few components, namely ZooKeeper and meta0.
 
    .. code-block:: console
 
-      # oio-cluster -r OPENIO | xargs -n1 oio-cluster --unlock-score -S
+      # export OIO_NS=OPENIO
+      # openio cluster unlockall
 
    After unlocking, your OPENIO namespace should be running!
+
+   Be sure that every score is greater that 0 using `oio-cluster`:
+
+   .. code-block:: console
+
+      # oio-cluster OPENIO
 
    .. TODO ADD test installation section
