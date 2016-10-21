@@ -37,6 +37,12 @@ Source the keystonerc file:
 
     # . keystonerc_demo
 
+Create the account:
+
+   .. code-block:: console
+
+    # swift post
+
 Swift client is enabled:
 
    .. code-block:: console
