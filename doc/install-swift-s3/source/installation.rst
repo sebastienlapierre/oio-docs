@@ -49,7 +49,7 @@ On each server:
    
       .. code-block:: console
    
-         # yum -y install http://mirror.openio.io/pub/repo/openio/sds/16.04/el/openio-sds-release-16.04-1.el.noarch.rpm
+         # yum -y install http://mirror.openio.io/pub/repo/openio/sds/16.10/el/openio-sds-release-16.10-1.el.noarch.rpm
    
    .. only:: ubuntu or debian
       
@@ -133,13 +133,13 @@ Install the module:
 
       .. code-block:: console
 
-         # puppet module install stackforge-keystone
+         # puppet module install openstack-keystone
 
    .. only:: centos
 
       .. code-block:: console
 
-         # puppet module install stackforge-keystone
+         # puppet module install openstack-keystone
 
 Install OpenIO Puppet module:
 
