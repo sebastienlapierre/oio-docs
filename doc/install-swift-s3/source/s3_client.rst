@@ -28,7 +28,7 @@ You need to export these variables to use the S3 CLI. Create a file `keystonerc_
     export OS_PASSWORD=DEMO_PASS
     export OS_AUTH_URL=http://localhost:5000/v2.0
 
-Create your credentials:Create your credentiCreate your credentials:
+Create your credentials:
 
    .. code-block:: console
 
