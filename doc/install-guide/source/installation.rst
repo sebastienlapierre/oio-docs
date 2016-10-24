@@ -365,8 +365,7 @@ Next, we need to initialize a few components, namely ZooKeeper and meta0.
 
    .. code-block:: console
 
-      # export OIO_NS=OPENIO
-      # openio cluster unlockall
+      # openio --oio-ns=OPENIO cluster unlockall
 
    After unlocking, your OPENIO namespace should be running!
 
