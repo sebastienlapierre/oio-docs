@@ -208,101 +208,38 @@ Next, we need to initialize a few components, namely ZooKeeper and meta0.
 
    .. code-block:: console
 
-      # oio-cluster OPENIO
+      # openio --oio-ns OPENIO cluster list
 
    .. note::
 
       This command can be performed on any one of the servers.
 
-   **oio-cluster output**
+   **openio cluster list output**
 
    .. code-block:: console 
 
-      NAMESPACE INFORMATION
-      
-                    Name : OPENIO
-                    Chunk size : 10485760 bytes
-                    Option : automatic_open = true
-                    Option : events-max-pending = 1000
-                    Option : lb.rawx = WRAND
-                    Option : lb.rdir = WRAND?shorten_ratio=1.0&standard_deviation=no
-                    Option : meta1.events-max-pending = 1000
-                    Option : meta2.events-max-pending = 1000
-                    Option : meta2_check.put.DISTANCE = false
-                    Option : meta2_check.put.GAPS = false
-                    Option : meta2_check.put.SRVINFO = false
-                    Option : meta2_check.put.STGCLASS = false
-                    Option : meta2_max_versions = 1
-                    Option : ns_status = STANDALONE
-                    Option : service_update_policy = meta2=KEEP|3|1|;rdir=KEEP|1|1|user_is_a_service=1
-                    Option : storage_policy = THREECOPIES
-                    Option : WORM = false
-            Storage Policy : FIVECOPIES = NONE:DUPONEFIVE:NONE
-            Storage Policy : RAIN = NONE:RAIN:NONE
-            Storage Policy : SINGLE = NONE:NONE:NONE
-            Storage Policy : THREECOPIES = NONE:DUPONETHREE:NONE
-            Storage Policy : TWOCOPIES = NONE:DUPONETWO:NONE
-            Storage Policy : UNSAFETHREECOPIES = NONE:DUPZEROTHREE:NONE
-             Storage Class : PRETTYGOOD = REASONABLYSLOW,NONE
-             Storage Class : REASONABLYSLOW = NONE
-             Storage Class : SUPERFAST = PRETTYGOOD,REASONABLYSLOW,NONE
-             Data Security : DUPONEFIVE = DUP:distance=1|nb_copy=5
-             Data Security : DUPONETHREE = DUP:distance=1|nb_copy=3
-             Data Security : DUPONETWO = DUP:distance=1|nb_copy=2
-             Data Security : DUPZEROTHREE = DUP:distance=0|nb_copy=3
-             Data Security : RAIN = RAIN:k=6|m=2|algo=liber8tion
-                   LB(srv) : meta2=KEEP|3|1;rdir=KEEP|1|1|user_is_a_service=1
-                           : sqlx -> KEEP|1|1
-                           : oiofs -> KEEP|1|1
-                           : meta0 -> KEEP|1|1
-                           : meta1 -> KEEP|1|1
-                           : meta2 -> KEEP|3|1
-                           : redis -> KEEP|1|1
-                           : rainx -> KEEP|1|1
-                           : rawx -> KEEP|1|1
-                           : account -> KEEP|1|1
-                           : rdir -> KEEP|1|1
-                 LB(meta2) : sqlx=WRR?shorten_ratio=1.001000&standard_deviation=no&reset_delay=60
-                           : oiofs=WRR?shorten_ratio=1.001000&standard_deviation=no&reset_delay=60
-                           : meta0=WRR?shorten_ratio=1.001000&standard_deviation=no&reset_delay=60
-                           : meta1=WRR?shorten_ratio=1.001000&standard_deviation=no&reset_delay=60
-                           : meta2=WRR?shorten_ratio=1.001000&standard_deviation=no&reset_delay=60
-                           : redis=WRR?shorten_ratio=1.001000&standard_deviation=no&reset_delay=60
-                           : rainx=WRR?shorten_ratio=1.001000&standard_deviation=no&reset_delay=60
-                           : rawx=WRAND?shorten_ratio=1.001000&standard_deviation=no&reset_delay=60
-                           : account=WRR?shorten_ratio=1.001000&standard_deviation=no&reset_delay=60
-                           : rdir=WRAND?shorten_ratio=1.000000&standard_deviation=no&reset_delay=60
-      
-      
-      -- meta0 --
-         192.168.1.34:6001                       0
-         192.168.1.31:6001                       0
-         192.168.1.33:6001                       0
-      
-      -- meta1 --
-         192.168.1.34:6002                       0
-         192.168.1.31:6002                       0
-         192.168.1.33:6002                       0
-      
-      -- meta2 --
-         192.168.1.34:6003                       0
-         192.168.1.31:6003                       0
-         192.168.1.33:6003                       0
-      
-      -- rawx --
-         192.168.1.34:6004                       0
-         192.168.1.31:6004                       0
-         192.168.1.33:6004                       0
-      
-      -- account --
-         192.168.1.31:6009                       0
-         192.168.1.34:6009                       0
-         192.168.1.33:6009                       0
-      
-      -- rdir --
-         192.168.1.34:6010                       0
-         192.168.1.31:6010                       0
-         192.168.1.33:6010                       0
+      +---------+-----------------+---------------------------------+----------+-------+------+-------+
+      | Type    | Id              | Volume                          | Location | Slots | Up   | Score |
+      +---------+-----------------+---------------------------------+----------+-------+------+-------+
+      | rdir    | 10.0.0.171:6010 | /var/lib/oio/sds/OPENIO/rdir-0  | node-1   | n/a   | True |    96 |
+      | rdir    | 10.0.0.172:6010 | /var/lib/oio/sds/OPENIO/rdir-0  | node-2   | n/a   | True |    98 |
+      | rdir    | 10.0.0.173:6010 | /var/lib/oio/sds/OPENIO/rdir-0  | node-3   | n/a   | True |    97 |
+      | account | 10.0.0.171:6009 | n/a                             | node-1   | n/a   | True |    96 |
+      | account | 10.0.0.172:6009 | n/a                             | node-2   | n/a   | True |    99 |
+      | account | 10.0.0.173:6009 | n/a                             | node-3   | n/a   | True |    97 |
+      | rawx    | 10.0.0.171:6004 | /var/lib/oio/sds/OPENIO/rawx-0  | node-1   | n/a   | True |    85 |
+      | rawx    | 10.0.0.173:6004 | /var/lib/oio/sds/OPENIO/rawx-0  | node-3   | n/a   | True |    95 |
+      | rawx    | 10.0.0.172:6004 | /var/lib/oio/sds/OPENIO/rawx-0  | node-2   | n/a   | True |    94 |
+      | meta2   | 10.0.0.171:6003 | /var/lib/oio/sds/OPENIO/meta2-0 | node-1   | n/a   | True |    94 |
+      | meta2   | 10.0.0.172:6003 | /var/lib/oio/sds/OPENIO/meta2-0 | node-2   | n/a   | True |    94 |
+      | meta2   | 10.0.0.173:6003 | /var/lib/oio/sds/OPENIO/meta2-0 | node-3   | n/a   | True |    94 |
+      | meta1   | 10.0.0.171:6002 | /var/lib/oio/sds/OPENIO/meta1-0 | node-1   | n/a   | True |    94 |
+      | meta1   | 10.0.0.172:6002 | /var/lib/oio/sds/OPENIO/meta1-0 | node-2   | n/a   | True |    94 |
+      | meta1   | 10.0.0.173:6002 | /var/lib/oio/sds/OPENIO/meta1-0 | node-3   | n/a   | True |    94 |
+      | meta0   | 10.0.0.171:6001 | /var/lib/oio/sds/OPENIO/meta0-0 | node-1   | n/a   | True |   100 |
+      | meta0   | 10.0.0.172:6001 | /var/lib/oio/sds/OPENIO/meta0-0 | node-2   | n/a   | True |    99 |
+      | meta0   | 10.0.0.173:6001 | /var/lib/oio/sds/OPENIO/meta0-0 | node-3   | n/a   | True |    98 |
+      +---------+-----------------+---------------------------------+----------+-------+------+-------+
       
 
 #. `meta0` service initialization:
@@ -376,10 +313,10 @@ Next, we need to initialize a few components, namely ZooKeeper and meta0.
 
    After unlocking, your OPENIO namespace should be running!
 
-   Be sure that every score is greater that 0 using `oio-cluster`:
+   Be sure that every score is greater that 0 using `openio cluster list`:
 
    .. code-block:: console
 
-      # oio-cluster OPENIO
+      # openio --oio-ns OPENIO cluster list
 
    .. TODO ADD test installation section
