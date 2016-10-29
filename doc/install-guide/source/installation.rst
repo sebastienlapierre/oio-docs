@@ -11,8 +11,8 @@ Initialize
    
       .. code-block:: console
            
-         # apt-get update 
-         # apt-get upgrade
+         # apt-get update
+         # apt-get upgrade -y
    
    .. only:: centos
    
@@ -59,7 +59,7 @@ On each server:
    
       .. code-block:: console
    
-         # echo "deb http://mirror.openio.io/pub/repo/openio/sds/16.04/$(lsb_release -i -s)/ $(lsb_release -c -s)/" | sudo tee /etc/apt/sources.list.d/openio-sds.list
+         # echo "deb http://mirror.openio.io/pub/repo/openio/sds/16.10/$(lsb_release -i -s)/ $(lsb_release -c -s)/" | sudo tee /etc/apt/sources.list.d/openio-sds.list
    
       Add the OpenIO archive key
 
@@ -79,8 +79,7 @@ On each server:
    
       .. code-block:: console
    
-         # apt install puppet-common
-         # puppet module install openio-openiosds
+         # apt-get install puppet-module-openio-openiosds -y
    
 
 Puppet Manifest
@@ -91,7 +90,7 @@ here is a template to configure the services:
 
 - Replace SERVER1, SERVER2 and SERVER3 with the corresponding IP addresses.
 - On each server, replace ``MYID`` by the number of server: 1, 2 or 3.
-- On the server 2 and 3, add ``slaveof => 'SERVER1 6011'`` in the redis block
+- On the server 2 and 3, add ``slaveof => 'SERVER1 6011',`` in the redis block
 - The `conscience` service is not necessary on SERVER2 and SERVER3, you `MUST` remove it.
 
 In a file called ``/root/openio.pp``:
@@ -308,9 +307,17 @@ Next, we need to initialize a few components, namely ZooKeeper and meta0.
 
 #. `meta0` service initialization:
 
+   First, unlock all services in the namespace:
+
    .. code-block:: console
 
-      # openio directory bootstrap
+      # openio --oio-ns=OPENIO cluster unlockall
+
+   Then, bootstrap the directory:
+
+   .. code-block:: console
+
+      # openio --oio-ns=OPENIO directory bootstrap --replicas 3
 
    .. note::
 
