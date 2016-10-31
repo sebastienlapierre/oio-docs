@@ -8,28 +8,28 @@ Initialize
 #. Keep your system updated:
 
    .. only:: ubuntu or debian
-   
+
       .. code-block:: console
-           
-         # apt-get update 
+
+         # apt-get update
          # apt-get upgrade
-   
+
    .. only:: centos
-   
-      .. code-block:: console 
-   
+
+      .. code-block:: console
+
          # yum update -y
 
 #. Disable SELinux:
-   
+
    .. code-block:: console
-  
+
       # sed -i -e 's@^SELINUX=enforcing$@SELINUX=disabled@g' /etc/selinux/config
-   
+
 #. Disable firewall:
-   
+
    .. code-block:: console
- 
+
       # systemctl stop firewalld.service ; systemctl disable firewalld.service
 
 #. Reboot to apply changes:
@@ -46,25 +46,25 @@ On each server:
 #. Install OpenIO repository package:
 
    .. only:: centos
-   
+
       .. code-block:: console
-   
+
          # yum -y install http://mirror.openio.io/pub/repo/openio/sds/16.10/el/openio-sds-release-16.10-1.el.noarch.rpm
-   
+
    .. only:: ubuntu or debian
-      
+
       We provide a shell script (relying on Puppet) that allows you to install easily a namespace named *OPENIO*
-      
+
       Add the repository configuration
-   
+
       .. code-block:: console
-   
+
          # echo "deb http://mirror.openio.io/pub/repo/openio/sds/16.04/$(lsb_release -i -s)/ $(lsb_release -c -s)/" | sudo tee /etc/apt/sources.list.d/openio-sds.list
-   
+
       Add the OpenIO archive key
 
       .. code-block:: console
-   
+
          # curl http://mirror.openio.io/pub/repo/openio/APT-GPG-KEY-OPENIO-0 | apt-key add -
 
 #. Install the OpenStack repository
@@ -81,15 +81,15 @@ On each server:
 
          # echo "deb http://mitaka-$(lsb_release -c -s).pkgs.mirantis.com/$(lsb_release -i -s) $(lsb_release -c -s)-mitaka-backports main" | sudo tee /etc/apt/sources.list.d/mitaka.list
 
-Prerequires
-~~~~~~~~~~~
+Prerequisites
+~~~~~~~~~~~~~
 
 The OpenStack Swift proxy requires memcached and Redis to run. We use the CentOS default install:
 
    .. only:: centos
-   
+
       .. code-block:: console
-   
+
          # yum -y install memcached redis
 
          # systemctl enable memcached.service
@@ -102,9 +102,9 @@ The OpenStack Swift proxy requires memcached and Redis to run. We use the CentOS
 
 
    .. only:: ubuntu or debian
-   
+
       .. code-block:: console
-   
+
          # apt-get update
 
          # apt-get install memcached redis
@@ -236,8 +236,8 @@ In a file called ``/root/openio.pp``:
       ns            => 'OPENIO',
       ipaddress     => '0.0.0.0',
       sds_proxy_url => 'http://OIO_SERVER:6006',
-    }    
-   
+    }
+
 
 Package Installation and Service Configuration
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -249,5 +249,5 @@ Apply the manifest:
 
       # puppet apply --no-stringify_facts /root/openio.pp
 
-This step may take a few minutes. Please be patient as it downloads and installs all necessary packages. 
+This step may take a few minutes. Please be patient as it downloads and installs all necessary packages.
 Once completed, all services should be installed and running using OpenIO GridInit.
