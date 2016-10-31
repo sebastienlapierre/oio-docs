@@ -39,7 +39,7 @@ Initialize
       # reboot
 
 Repositories Configuration
-~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 On each server:
 
