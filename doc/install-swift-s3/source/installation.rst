@@ -38,7 +38,7 @@ Initialize
 
       # reboot
 
-Repositorie Configuration
+Repositories Configuration
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
 On each server:
