@@ -2,27 +2,47 @@
 OpenIO Command-Line Interface Reference
 =======================================
 
+========
 Abstract
-~~~~~~~~
+========
 
 This image provides an easy way to run an OPENIO namespace.
 It deploys and configure a simple non-replicated namespace in a single container.
 
 OpenIO SDS depends on IPs, meaning that you can't change service IPs after they have been registered to the cluster. By default, Docker networking change you IP when you container restarts which is not compatible with OpenIO SDS at the moment.
 
-Contents
-~~~~~~~~
+======
+Deploy
+======
 
-.. toctree::
-   :maxdepth: 1
+First, pull the OpenIO docker image from the Docker Hub:
 
-   deploy
-   network_interface
+   .. code-block:: console
+
+    # docker pull openio/sds
+
+By default, start a simple namespace listening on 127.0.0.1 inside the container using docker run:
+
+   .. code-block:: console
+
+    # docker run -ti --tty openio/sds
+
+============================
+Using host network interface
+============================
+
+You can start an instance using Docker host mode networking, it allows you to access the services outside your container. You cant specify the interface or the IP you want to use.
 
 
-.. end of contents
+Setting the interface:
 
-Search in this guide
-~~~~~~~~~~~~~~~~~~~~
+   .. code-block:: console
 
-* :ref:`search`
+    # docker run -ti --tty -e OPENIO_IFDEV=enp0s8 --net=host openio/sds
+
+Specifying the IP:
+
+   .. code-block:: console
+
+    # docker run -ti --tty -e OPENIO_IPADDR=192.168.56.101 --net=host openio/sds
+
