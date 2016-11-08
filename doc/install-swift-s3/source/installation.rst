@@ -53,13 +53,11 @@ On each server:
 
    .. only:: ubuntu or debian
 
-      We provide a shell script (relying on Puppet) that allows you to install easily a namespace named *OPENIO*
-
       Add the repository configuration
 
       .. code-block:: console
 
-         # echo "deb http://mirror.openio.io/pub/repo/openio/sds/16.04/$(lsb_release -i -s)/ $(lsb_release -c -s)/" | sudo tee /etc/apt/sources.list.d/openio-sds.list
+         # echo "deb http://mirror.openio.io/pub/repo/openio/sds/16.10/$(lsb_release -i -s)/ $(lsb_release -c -s)/" | sudo tee /etc/apt/sources.list.d/openio-sds.list
 
       Add the OpenIO archive key
 
@@ -75,7 +73,7 @@ On each server:
 
          # yum -y install centos-release-openstack-mitaka
 
-   .. only:: ubuntu or debian
+   .. only:: debian
 
       .. code-block:: console
 
@@ -90,7 +88,7 @@ The OpenStack Swift proxy requires memcached and Redis to run. We use the CentOS
 
       .. code-block:: console
 
-         # yum -y install memcached redis
+         # yum -y install memcached redis-server
 
          # systemctl enable memcached.service
 
@@ -107,7 +105,7 @@ The OpenStack Swift proxy requires memcached and Redis to run. We use the CentOS
 
          # apt-get update
 
-         # apt-get install memcached redis
+         # apt-get install memcached redis-server
 
 
 Installation
@@ -135,6 +133,12 @@ Install the module:
 
          # puppet module install openstack-keystone
 
+   .. only:: ubuntu
+
+      .. code-block:: console
+
+         # sed -i "s@'upstart'@undef@" /etc/puppet/modules/keystone/manifests/params.pp
+
    .. only:: centos
 
       .. code-block:: console
@@ -153,7 +157,7 @@ Install OpenIO Puppet module:
 
       .. code-block:: console
 
-         # apt-get install puppet-openio-sds
+         # apt-get install puppet-module-openio-openiosds
 
 Puppet Manifest
 ~~~~~~~~~~~~~~~
@@ -179,6 +183,10 @@ In a file called ``/root/openio.pp``:
     class { 'keystone::roles::admin':
       email    => 'test@openio.io',
       password => 'ADMIN_PASS',
+      admin               => 'admin',
+      admin_tenant        => 'admin',
+      admin_user_domain   => 'admin',
+      admin_project_domain => 'admin',
     }
 
     # Installs the service user endpoint.
@@ -205,10 +213,11 @@ In a file called ``/root/openio.pp``:
       description => 'OpenIO SDS swift proxy',
     }
     keystone_endpoint { 'localhost-1/openio-swift':
-       ensure       => present,
-       public_url   => "http://${ipaddress}:6007/v1.0/AUTH_%(tenant_id)s",
-       admin_url    => "http://${ipaddress}:6007/v1.0/AUTH_%(tenant_id)s",
-       internal_url => "http://${ipaddress}:6007/v1.0/AUTH_%(tenant_id)s",
+      ensure       => present,
+      type         => 'object-store',
+      public_url   => "http://${ipaddress}:6007/v1.0/AUTH_%(tenant_id)s",
+      admin_url    => "http://${ipaddress}:6007/v1.0/AUTH_%(tenant_id)s",
+      internal_url => "http://${ipaddress}:6007/v1.0/AUTH_%(tenant_id)s",
     }
 
     # Demo account
