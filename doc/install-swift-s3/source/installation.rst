@@ -88,7 +88,7 @@ The OpenStack Swift proxy requires memcached and Redis to run. We use the CentOS
 
       .. code-block:: console
 
-         # yum -y install memcached redis-server
+         # yum -y install memcached redis
 
          # systemctl enable memcached.service
 
