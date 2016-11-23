@@ -79,7 +79,7 @@ On each server:
    
       .. code-block:: console
    
-         # apt-get install puppet-module-openio-openiosds -y
+         # apt-get update; apt-get install puppet-module-openio-openiosds -y
    
 
 Puppet Manifest
