@@ -5,83 +5,25 @@ Installation
 Initialize
 ~~~~~~~~~~
 
-#. Keep your system updated:
+.. only:: ubuntu or debian
 
-   .. only:: ubuntu or debian
-   
-      .. code-block:: console
-           
-         # apt-get update
-         # apt-get upgrade -y
-   
-   .. only:: centos
-   
-      .. code-block:: console 
-   
-         # yum update -y
-
-#. Disable SELinux:
-   
-   .. code-block:: console
-  
-      # sed -i -e 's@^SELINUX=enforcing$@SELINUX=disabled@g' /etc/selinux/config
-   
-#. Disable firewall:
-   
-   .. code-block:: console
+  .. include:: ../../install-common/source/initialize_debian.rst
  
-      # systemctl stop firewalld.service ; systemctl disable firewalld.service
+.. only:: centos
 
-#. Reboot to apply changes:
-
-   .. code-block:: console
-
-      # reboot
-
+  .. include:: ../../install-common/source/initialize_centos.rst
+ 
 OpenIO Packages Configuration
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-On each server:
-
-#. Install OpenIO repository package:
-
-   .. only:: centos
-   
-      .. code-block:: console
-   
-         # yum -y install http://mirror.openio.io/pub/repo/openio/sds/16.10/el/openio-sds-release-16.10-1.el.noarch.rpm
-   
-   .. only:: ubuntu or debian
-      
-      We provide a shell script (relying on Puppet) that allows you to install easily a namespace named *OPENIO*
-      
-      Add the repository configuration
-   
-      .. code-block:: console
-   
-         # echo "deb http://mirror.openio.io/pub/repo/openio/sds/16.10/$(lsb_release -i -s)/ $(lsb_release -c -s)/" | sudo tee /etc/apt/sources.list.d/openio-sds.list
-   
-      Add the OpenIO archive key
-
-      .. code-block:: console
-   
-         # curl http://mirror.openio.io/pub/repo/openio/APT-GPG-KEY-OPENIO-0 | apt-key add -
-
-#. Install OpenIO puppet module:
-
-   .. only:: centos
-   
-      .. code-block:: console
-   
-         # yum -y install puppet-openio-sds
-
-   .. only:: ubuntu or debian
-   
-      .. code-block:: console
-   
-         # apt-get update; apt-get install puppet-module-openio-openiosds -y
-   
-
+.. only:: centos
+  
+  .. include:: ../../install-common/source/packages_configuration_centos.rst
+  
+.. only:: ubuntu or debian
+  
+  .. include:: ../../install-common/source/packages_configuration_debian.rst
+  
 Puppet Manifest
 ~~~~~~~~~~~~~~~
 
