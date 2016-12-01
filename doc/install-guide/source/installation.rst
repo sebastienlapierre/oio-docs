@@ -43,9 +43,8 @@ In a file called ``/root/openio.pp``:
       openiosds::conscience {'conscience-0':
         ns                    => 'OPENIO',
         ipaddress             => $ipaddress,
-        service_update_policy => {'meta2'=>'KEEP|3|1|','sqlx'=>'KEEP|1|1|','rdir'=>'KEEP|1|1|user_is_a_service=rawx'},
+        service_update_policy => {'meta2'=>'KEEP|3|1|','sqlx'=>'KEEP|3|1|','rdir'=>'KEEP|1|1|user_is_a_service=rawx'},
         storage_policy        => 'THREECOPIES',
-        meta2_max_versions    => '1',
       }
       openiosds::namespace {'OPENIO':
         ns             => 'OPENIO',
