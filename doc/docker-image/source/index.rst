@@ -31,7 +31,7 @@ By default, start a simple namespace listening on 127.0.0.1 inside the container
 Using host network interface
 ============================
 
-You can start an instance using Docker host mode networking, it allows you to access the services outside your container. You cant specify the interface or the IP you want to use.
+You can start an instance using Docker host mode networking, it allows you to access the services outside your container. You can specify the interface or the IP you want to use.
 
 
 Setting the interface:
