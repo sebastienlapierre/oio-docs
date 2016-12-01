@@ -5,19 +5,19 @@ S3 Client
 Installation
 ~~~~~~~~~~~~
 
-Install the OpenStack Swift Command Line Interface:
+Install the OpenStack Command Line Interface:
 
    .. only:: ubuntu or debian
    
       .. code-block:: console
            
-         # apt-get install python-swiftclient
+         # apt-get -y install python-openstackclient
    
    .. only:: centos
    
       .. code-block:: console 
    
-         # yum install python-swiftclient
+         # yum -y install python-openstackclient
 
 You need to export these variables to use the S3 CLI. Create a file `keystonerc_demo` containing:
    
@@ -32,7 +32,7 @@ Create your credentials:
 
    .. code-block:: console
 
-    # keystone ec2-credentials-create
+    # . keystonerc_demo ; openstack ec2 credentials create
 
 You can configure an AWS config file to avoid typing them (replace ACCESS_KEY and SECRET_KEY with the previous output):
 
@@ -88,8 +88,8 @@ You can now use the AWS CLI, using the ipaddress of your box:
 
    .. code-block:: console
 
-    # aws --endpoint-url http://localhost:6007 --no-verify-ssl s3 cp /etc/magic s3://TEST_BUCKET
+    # aws --endpoint-url http://localhost:6007 --no-verify-ssl s3 cp /etc/magic s3://bucket
 
    .. code-block:: console
 
-    # aws --endpoint-url http://localhost:6007 --no-verify-ssl s3 ls s3://TEST_BUCKET
+    # aws --endpoint-url http://localhost:6007 --no-verify-ssl s3 ls s3://bucket
