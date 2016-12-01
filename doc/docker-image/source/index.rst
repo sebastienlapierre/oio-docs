@@ -6,7 +6,7 @@ OpenIO Official Docker Image
 Abstract
 ========
 
-This image provides an easy way to run an OPENIO namespace.
+This `Docker <http://www.docker.com>`_ image provides an easy way to run an OPENIO namespace.
 It deploys and configure a simple non-replicated namespace in a single container.
 
 OpenIO SDS service discovering and resolution relies on IPs, meaning that you can't change service IPs after they have been registered to the cluster. By default, Docker networking may change you IP when you container restarts which is not compatible with OpenIO SDS at the moment.
@@ -15,7 +15,7 @@ OpenIO SDS service discovering and resolution relies on IPs, meaning that you ca
 Deploy
 ======
 
-First, pull the OpenIO docker image from the Docker Hub:
+First, pull the `OpenIO Docker image <https://hub.docker.com/r/openio/sds/>`_ from the `Docker Hub <https://hub.docker.com>`_:
 
    .. code-block:: console
 
@@ -31,7 +31,7 @@ By default, start a simple namespace listening on 127.0.0.1 inside the container
 Using host network interface
 ============================
 
-You can start an instance using Docker host mode networking, it allows you to access the services outside your container. You can specify the interface or the IP you want to use.
+You can start an instance using `Docker host mode networking <https://docs.docker.com/engine/reference/run/#network-host>`_, it allows you to access the services outside your container. You can specify the interface or the IP you want to use.
 
 
 Setting the interface:
