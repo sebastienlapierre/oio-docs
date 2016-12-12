@@ -125,7 +125,7 @@ On each server, apply the manifest:
 
 This step may take a few minutes. Please be patient as it downloads and installs all necessary packages. 
 Once completed, all services should be installed and running using OpenIO GridInit.
-A simple ``gridinit_cmd status`` on a node will confrm you that everything went well.
+You can verify that everything went well by performing ``gridinit_cmd status`` on every node.
 
     .. code-block:: console
 
