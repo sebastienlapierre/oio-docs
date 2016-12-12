@@ -31,7 +31,7 @@ Now you can create a manifest file to configure each host,
 here is a template to configure the services:
 
 - Replace SERVER1, SERVER2 and SERVER3 with the corresponding IP addresses.
-- On each server, replace ``MYID`` by the number of server: 1, 2 or 3.
+- On each server, replace ``MYID`` by the index of server: 1, 2 or 3.
 - On the server 2 and 3, add ``slaveof => 'SERVER1 6011',`` in the redis block
 - The `conscience` service is not necessary on SERVER2 and SERVER3, you `MUST` remove it.
 
@@ -125,8 +125,13 @@ On each server, apply the manifest:
 
 This step may take a few minutes. Please be patient as it downloads and installs all necessary packages. 
 Once completed, all services should be installed and running using OpenIO GridInit.
+A simple ``gridinit_cmd status`` on a node will confrm you that everything went well.
 
+    .. code-block:: console
 
+       KEY                           STATUS      PID GROUP
+       NAMESPACE-servicetype-idx     UP          pid NAMESPACE,service,servicetype-idx
+       ...
 
 Initialize OpenIO Namespace
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -191,6 +196,11 @@ Next, we need to initialize a few components, namely ZooKeeper and meta0.
 
       # openio --oio-ns=OPENIO cluster unlockall
 
+    .. note::
+
+       This command can be performed on any one of the servers.
+
+
    Then, bootstrap the directory:
 
    .. code-block:: console
@@ -251,6 +261,11 @@ Next, we need to initialize a few components, namely ZooKeeper and meta0.
    .. code-block:: console
 
       # openio --oio-ns=OPENIO cluster unlockall
+
+    .. note::
+
+       This command can be performed on any one of the servers.
+
 
    After unlocking, your OPENIO namespace should be running!
 
