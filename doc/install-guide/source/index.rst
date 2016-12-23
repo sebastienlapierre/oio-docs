@@ -1,4 +1,4 @@
-.. title:: OpenIO SDS Installation Guide
+.. title::    OpenIO SDS Installation Guide for Ubuntu
 
 .. Don't touch title
 
@@ -25,15 +25,15 @@ Abstract
 
 .. only:: ubuntu
 
-   This guide will show you how to install OpenIO SDS on Ubuntu.
+   This guide will show you how to install OpenIO SDS on Ubuntu 16.04 (Xenial).
 
 .. only:: debian
 
-   This guide will show you how to install OpenIO SDS on Debian.
+   This guide will show you how to install OpenIO SDS on Debian 8 (Jessie).
 
 .. only:: centos
 
-   This guide will show you how to install OpenIO SDS on CentOS.
+   This guide will show you how to install OpenIO SDS on CentOS 7.
 
 
 Contents
