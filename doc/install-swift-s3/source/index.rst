@@ -28,15 +28,15 @@ We provide an OpenIO Swift backend relying on the OpenStack Swift proxy that pro
 
 .. only:: ubuntu
 
-   This guide will show you how to install the OpenIO Swift/S3 gateway on Ubuntu.
+   This guide will show you how to install the OpenIO Swift/S3 gateway on Ubuntu 16.04 (Xenial).
 
 .. only:: debian
 
-   This guide will show you how to install the OpenIO Swift/S3 gateway on Debian.
+   This guide will show you how to install the OpenIO Swift/S3 gateway on Debian 8 (Jessie).
 
 .. only:: centos
 
-   This guide will show you how to install the OpenIO Swift/S3 gateway on CentOS.
+   This guide will show you how to install the OpenIO Swift/S3 gateway on CentOS 7.
 
 
 Contents

@@ -2,8 +2,31 @@
 Prerequisites
 =============
 
-   Servers are supposed to be on the same LAN without any firewall.
-   You should have root access to them.
-   You should have 1.5GB memory at least
+Hardware
+^^^^^^^^
+- Minimal: 1.5GB RAM
+
+Operating system
+^^^^^^^^^^^^^^^^
+.. only:: centos
+
+   - CentOS 7
+
+.. only:: debian
+
+   - Debian 8 (Jessie)
+
+.. only:: ubuntu
+
+   - Ubuntu 16.04 (Xenial)
+
+Network
+^^^^^^^
+- All machines are on the same LAN
+- Firewall software is disabled
+
+System
+^^^^^^
+- root privileges are required
 
 .. TODO a bit short??
