@@ -324,6 +324,22 @@ Information about account
     | objects    | 0                |
     +------------+------------------+
 
+List containers
+---------------
+
+  To show the list of all the containers that belong to an account:
+
+  .. code-block:: console
+
+    # openio container list
+
+    +---------------+---------+-------+
+    | Name          | Bytes   | Count |
+    +---------------+---------+-------+
+    | my_container1 |     317 |     3 |
+    | my_container2 |     524 |     7 |
+    | my_container3 |     171 |     1 |
+    +---------------+---------+-------+
 
 Use multiple accounts
 ---------------------
