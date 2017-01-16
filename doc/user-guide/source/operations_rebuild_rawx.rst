@@ -11,7 +11,7 @@ By running ``openio cluster list rawx`` you will get the list of all rawx servic
 Verify that the service was automatically scored to zero by running ``openio cluster list rawx``.
 
 If not, Lock the score of the targeted rawx service to zero by running ``openio cluster lock rawx <RAWX_ID>``. Where RAWX_ID is the network address of the service (ip:port).
-This will prevent the service from getting upload and download requests.
+This will prevent the service from getting upload requests, and will reduce the number of download requests.
 
 Set the incident date
 ~~~~~~~~~~~~~~~~~~~~~
