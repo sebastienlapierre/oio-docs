@@ -97,7 +97,7 @@ Unlock all the new services in the namespace:
 
 After unlocking, your new services should take some load!
 
-Be sure that every score is greater that 0 using `openio cluster list`:
+Be sure that every score is greater than 0 using `openio cluster list`:
 
    .. code-block:: console
 
