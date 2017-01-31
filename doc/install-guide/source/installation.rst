@@ -196,7 +196,7 @@ Next, we need to initialize a few components, namely ZooKeeper and meta0.
 
       # openio --oio-ns=OPENIO cluster unlockall
 
-    .. note::
+   .. note::
 
        This command can be performed on any one of the servers.
 
