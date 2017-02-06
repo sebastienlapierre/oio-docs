@@ -222,7 +222,7 @@ Next, we need to initialize a few components, namely ZooKeeper and meta0.
 
    .. warning::
 
-      Must be perform on all servers
+      Must be performed on all servers
 
 #. Start all services:
 
