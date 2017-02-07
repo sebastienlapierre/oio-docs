@@ -220,7 +220,7 @@ You can also save all the objects from a container to your working directory in 
 Information about object
 ------------------------
 
-Display the informations about an object:
+Display the information about an object:
 
    .. code-block:: console
 
@@ -238,6 +238,33 @@ Display the informations about an object:
     | policy    | none                             |
     | size      | 14                               |
     +-----------+----------------------------------+
+
+Locate object
+-------------
+
+To find the actual location of a given object:
+
+   .. code-block:: console
+
+    # openio object locate my_container test.txt
+
+    +-----+------------------------------------------+------+----------------------------------+
+    | Pos | Id                                       | Size | Hash                             |
+    +-----+------------------------------------------+------+----------------------------------+
+    | 0   | http://172.32.0.1:6001/4FCAEEF90B[...]   |  14  | 1463508F28EDB4D6D5AE349B20E00409 |
+    | 0   | http://172.32.0.2:6001/7EBAD5FCB8[...]   |  14  | 1463508F28EDB4D6D5AE349B20E00409 |
+    | 0   | http://172.32.0.3:6001/D425787855[...]   |  14  | 1463508F28EDB4D6D5AE349B20E00409 |
+    +-----+------------------------------------------+------+----------------------------------+
+
+``Pos`` integer represents the position of the given chunk in the object.
+In case of replication, you can have multiple chunks at the same position (3 times replication mode in this example).
+
+``Id`` is the url to access to the given chunk.
+
+``Size`` is the actual size of the given chunk.
+
+``Hash`` is the hash of the give chunk.
+
 
 Object properties
 -----------------
