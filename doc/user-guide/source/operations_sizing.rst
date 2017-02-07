@@ -2,25 +2,6 @@
 Sizing considerations
 =====================
 
-sqliterepo: how many services
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-`sqliterepo` is the piece of software managing a repository of SQLite databases,
-a cache of open databases and a lock around each database usage. While the total
-number of databases currently held by the repository is not limited, the number
-of active bases should be low enough to be kept by the current cache size.
-
-As a default, that maximum number of bases kept in cache is deduced to **1/3**
-from the maximum number of open files allowed to the server, a.k.a. the
-**RLIMIT_NOFILE** fields of the `getrlimit()`, a.k.a. the value `ulimit -n` will
-tell you.
-
-.. note::
-  For a given type of service based on `sqliterepo`, you should deploy enough
-  services to have the active part of you population [of data] kept open and
-  cached.
-
-
 meta0/meta1: size the top-level index
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -30,7 +11,7 @@ to an end-user of the platform.
 
 Our directory of services uses separate chaining to manage the collisions: each
 slot of the top-level index point to a SQLite database managing all the services
-with the same hash. The top-llevel hash is managed by the `meta0` service, while
+with the same hash. The top-level hash is managed by the `meta0` service, while
 each slot is a base managed by `meta1` services.
 
 So, how properly to dimension the top-level index in `meta0`? In other words,
@@ -63,13 +44,35 @@ linked to an end-user.
      - minimal hash, only for demonstration purposes and sandboxing.
    * - 0
      - 1
-     - no-op hash, only for for demonstration purposes.
+     - no-op hash, only for demonstration purposes.
+
+
+sqliterepo: how many services
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+`sqliterepo` is the piece of software managing a repository of SQLite databases,
+a cache of open databases and a lock around each database usage. This piece of
+software is used is the `meta0`, `meta1`, `meta2` and `sqlx` services.
+
+While the total number of databases currently held by the repository is not
+limited, the number of active bases should be low enough to be kept by the
+current cache size.
+
+As a default, that maximum number of bases kept in cache is deduced to **1/3**
+from the maximum number of open files allowed to the server, a.k.a. the
+**RLIMIT_NOFILE** fields of the `getrlimit()`, a.k.a. the value `ulimit -n` will
+tell you.
+
+.. note::
+  For a given type of service based on `sqliterepo`, you should deploy enough
+  services to have the active part of you population [of data] kept open and
+  cached.
 
 
 Zookeeper configuration (cluster)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-With small demonstration or sandbox deployements, you won't need to precisely
+With small demonstration or sandbox deployments, you won't need to precisely
 dimension your Zookeeper instance.
 
 https://zookeeper.apache.org/doc/trunk/zookeeperAdmin.html
