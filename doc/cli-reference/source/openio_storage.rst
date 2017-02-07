@@ -23,15 +23,18 @@ Display information about this container.
 
     # openio container show my_container
 
-    +-------------+--------------------------------------------------------------------+
-    | Field       | Value                                                              |
-    +-------------+--------------------------------------------------------------------+
-    | account     | my_account                                                         |
-    | base_name   | CB2D04216603B8274AB831F889EAA4B2656D1EBA45B658712D59C77DAC86E08A.1 |
-    | bytes_usage | 0                                                                  |
-    | container   | my_container                                                       |
-    | ctime       | 1441105114                                                         |
-    +-------------+--------------------------------------------------------------------+
+    +----------------+--------------------------------------------------------------------+
+    | Field          | Value                                                              |
+    +----------------+--------------------------------------------------------------------+
+    | account        | my_account                                                         |
+    | base_name      | CB2D04216603B8274AB831F889EAA4B2656D1EBA45B658712D59C77DAC86E08A.1 |
+    | bytes_usage    | 14                                                                 |
+    | container      | my_container                                                       |
+    | ctime          | 1441105114                                                         |
+    | objects        | 1                                                                  |
+    | quota          | Namespace default                                                  |
+    | storage_policy | Namespace default                                                  |
+    +----------------+--------------------------------------------------------------------+
 
 Container properties
 --------------------
