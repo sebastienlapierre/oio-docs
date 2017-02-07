@@ -36,6 +36,27 @@ Display information about this container.
     | storage_policy | Namespace default                                                  |
     +----------------+--------------------------------------------------------------------+
 
+
+Locate container
+----------------
+
+To find the services involved for a given container:
+
+   .. code-block:: console
+
+    # openio container locate my_container
+
+    +-----------+--------------------------------------------------------------------+
+    | Field     | Value                                                              |
+    +-----------+--------------------------------------------------------------------+
+    | account   | my_account                                                         |
+    | base_name | 23D6D41A55BDE4380C748B5BCDFB93085F9053F9786D4582EF0FA646286854F3.1 |
+    | meta0     | 172.32.0.1:6001, 172.32.0.2:6001, 172.32.0.3:6001                  |
+    | meta1     | 172.32.0.1:6002, 172.32.0.2:6002, 172.32.0.3:6002                  |
+    | meta2     | 172.32.0.1:6003, 172.32.0.2:6003, 172.32.0.3:6003                  |
+    | name      | my_container                                                       |
+    +-----------+--------------------------------------------------------------------+
+
 Container properties
 --------------------
 
