@@ -36,6 +36,12 @@ Display information about this container.
     | storage_policy | Namespace default                                                  |
     +----------------+--------------------------------------------------------------------+
 
+You can override the storage policy for a given container on the fly:
+
+.. code-block:: console
+
+    # openio container create my_container2 --storage-policy=TWOCOPIES
+
 
 Locate container
 ----------------
@@ -101,6 +107,13 @@ Create object
     +----------+------+----------------------------------+
     | test.txt |   14 | 9EB03B6E836CEAE565BA79F76C821DDA |
     +----------+------+----------------------------------+
+
+You can override the storage policy for a given object on the fly:
+
+.. code-block:: console
+
+    # openio object create my_container test2.txt --policy=TWOCOPIES
+
 
 List objects
 ------------
