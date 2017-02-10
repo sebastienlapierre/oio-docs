@@ -32,8 +32,8 @@ Display information about this container.
     | container      | my_container                                                       |
     | ctime          | 1441105114                                                         |
     | objects        | 1                                                                  |
-    | quota          | Namespace default                                                  |
-    | storage_policy | Namespace default                                                  |
+    | quota          | 102400                                                             |
+    | storage_policy | ERASURECODe                                                        |
     +----------------+--------------------------------------------------------------------+
 
 You can override the storage policy for a given container on the fly:
