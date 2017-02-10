@@ -33,7 +33,7 @@ Display information about this container.
     | ctime          | 1441105114                                                         |
     | objects        | 1                                                                  |
     | quota          | 102400                                                             |
-    | storage_policy | ERASURECODe                                                        |
+    | storage_policy | ERASURECODE                                                        |
     +----------------+--------------------------------------------------------------------+
 
 You can override the storage policy for a given container on the fly:
@@ -297,7 +297,7 @@ In case of replication, you can have multiple chunks at the same position (3 tim
 
 ``Size`` is the actual size of the given chunk.
 
-``Hash`` is the hash of the give chunk.
+``Hash`` is the hash of the given chunk.
 
 
 Object properties
