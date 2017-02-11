@@ -34,8 +34,8 @@ Puppet Manifest
 Now you can create a manifest file to configure each host,
 here is a template to configure the services:
 
-- Replace SERVER1, SERVER2 and SERVER3 with the corresponding IP addresses.
 - On the server 2 and 3, add ``slaveof => 'SERVER1 6011',`` in the redis block
+- Replace SERVER1, SERVER2 and SERVER3 with the corresponding IP addresses.
 
 In a file called ``/root/openio.pp``:
 
