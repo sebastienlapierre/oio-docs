@@ -20,10 +20,14 @@ OpenIO Packages Configuration
   
   .. include:: ../../install-common/source/packages_configuration_centos.rst
   
-.. only:: ubuntu or debian
+.. only:: ubuntu
+  
+  .. include:: ../../install-common/source/packages_configuration_ubuntu.rst
+  
+.. only:: debian
   
   .. include:: ../../install-common/source/packages_configuration_debian.rst
-  
+
 Puppet Manifest
 ~~~~~~~~~~~~~~~
 
@@ -31,9 +35,7 @@ Now you can create a manifest file to configure each host,
 here is a template to configure the services:
 
 - Replace SERVER1, SERVER2 and SERVER3 with the corresponding IP addresses.
-- On each server, replace ``MYID`` by the index of server: 1, 2 or 3.
 - On the server 2 and 3, add ``slaveof => 'SERVER1 6011',`` in the redis block
-- The `conscience` service is not necessary on SERVER2 and SERVER3, you `MUST` remove it.
 
 In a file called ``/root/openio.pp``:
 
@@ -87,7 +89,6 @@ In a file called ``/root/openio.pp``:
         ns        => 'OPENIO',
         ipaddress => $ipaddress,
         servers   => ['SERVER1:2888:3888','SERVER2:2888:3888','SERVER3:2888:3888'],
-        myid      => MYID,
       }
       openiosds::redissentinel {'redissentinel-0':
         ns        => 'OPENIO',

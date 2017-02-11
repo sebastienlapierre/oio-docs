@@ -20,7 +20,11 @@ Repositories Configuration
 
   .. include:: ../../install-common/source/packages_configuration_centos.rst
 
-.. only:: ubuntu or debian
+.. only:: ubuntu
+
+  .. include:: ../../install-common/source/packages_configuration_ubuntu.rst
+
+.. only:: debian
 
   .. include:: ../../install-common/source/packages_configuration_debian.rst
 
