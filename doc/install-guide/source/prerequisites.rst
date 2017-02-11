@@ -4,7 +4,7 @@ Prerequisites
 
 Hardware
 ^^^^^^^^
-- Minimal: 1.5GB RAM
+- RAM: 2GB recommended
 
 Operating system
 ^^^^^^^^^^^^^^^^
@@ -22,11 +22,15 @@ Operating system
 
 Network
 ^^^^^^^
-- All machines are on the same LAN
-- Firewall software is disabled
+- All nodes connected to the same LAN through their primary interface
+- Firewall disabled
+- SELinux or AppArmor disabled
 
 System
 ^^^^^^
-- root privileges are required
+- root privileges are required (using sudo)
+- All nodes must have different hostnames
+- /var/lib partition must support `Extended Attributes`_: XFS is recommended
 
-.. TODO a bit short??
+.. _Extended Attributes https://en.wikipedia.org/wiki/Extended_file_attributes#Linux
+
