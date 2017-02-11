@@ -122,7 +122,7 @@ On each server, apply the manifest:
 
    .. code-block:: console
 
-      # puppet apply --no-stringify_facts /root/openio.pp
+      # sudo puppet apply --no-stringify_facts /root/openio.pp
 
 This step may take a few minutes. Please be patient as it downloads and installs all necessary packages. 
 Once completed, all services should be installed and running using OpenIO GridInit.
@@ -219,7 +219,7 @@ Next, we need to initialize a few components, namely ZooKeeper and meta0.
 
    .. code-block:: console
 
-      # gridinit_cmd restart @meta0 ; gridinit_cmd restart @meta1
+      # sudo gridinit_cmd restart @meta0 @meta1
 
    .. warning::
 
