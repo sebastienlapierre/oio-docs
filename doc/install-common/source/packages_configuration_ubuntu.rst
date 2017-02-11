@@ -1,6 +1,6 @@
 On each server:
 
-1. Install OpenIO SDS repository package
+1. Configure OpenIO SDS repository
 
   Add the repository configuration:
 
@@ -9,6 +9,8 @@ On each server:
     # echo "deb http://mirror.openio.io/pub/repo/openio/sds/16.10/$(lsb_release -i -s)/ $(lsb_release -c -s)/" | sudo tee /etc/apt/sources.list.d/openio-sds.list
 
   Install cURL if necessary:
+
+  .. code-block:: console
 
     # sudo apt-get install curl -y
 

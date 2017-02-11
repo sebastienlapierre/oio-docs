@@ -20,6 +20,10 @@ Operating system
 
    - Ubuntu 16.04 (Xenial)
 
+.. only:: raspbian
+
+   - Raspbian 8 (Jessie)
+
 Network
 ^^^^^^^
 - All nodes connected to the same LAN through their primary interface

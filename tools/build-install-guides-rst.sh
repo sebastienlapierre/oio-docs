@@ -4,7 +4,7 @@ set -x
 
 mkdir -p result-docs
 
-TAGS=${1:-ubuntu debian centos}
+TAGS=${1:-ubuntu debian centos raspbian}
 INDEX=doc/install-guide/source/index.rst
 
 cp -f ${INDEX} ${INDEX}.save

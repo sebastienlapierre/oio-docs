@@ -5,7 +5,7 @@ Installation
 Initialize
 ~~~~~~~~~~
 
-.. only:: ubuntu or debian
+.. only:: ubuntu or debian or raspbian
 
   .. include:: ../../install-common/source/initialize_debian.rst
  
@@ -27,6 +27,10 @@ OpenIO Packages Configuration
 .. only:: debian
   
   .. include:: ../../install-common/source/packages_configuration_debian.rst
+
+.. only:: raspbian
+  
+  .. include:: ../../install-common/source/packages_configuration_raspbian.rst
 
 Puppet Manifest
 ~~~~~~~~~~~~~~~
