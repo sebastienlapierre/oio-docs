@@ -32,5 +32,5 @@ System
 - All nodes must have different hostnames
 - /var/lib partition must support `Extended Attributes`_: XFS is recommended
 
-.. _Extended Attributes https://en.wikipedia.org/wiki/Extended_file_attributes#Linux
+.. _Extended Attributes: https://en.wikipedia.org/wiki/Extended_file_attributes#Linux
 
