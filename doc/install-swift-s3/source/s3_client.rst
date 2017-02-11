@@ -11,7 +11,7 @@ Install the OpenStack Command Line Interface:
    
       .. code-block:: console
            
-         # apt-get -y install python-openstackclient
+         # sudo apt-get -y install python-openstackclient
    
    .. only:: centos
    
@@ -68,7 +68,7 @@ Install the awscli:
 
       .. code-block:: console
 
-         # apt-get install python-pip
+         # sudo apt-get install python-pip
 
    .. only:: centos
 

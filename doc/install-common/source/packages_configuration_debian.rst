@@ -14,11 +14,11 @@ On each server:
 
   .. code-block:: console
  
-    # curl http://mirror.openio.io/pub/repo/openio/APT-GPG-KEY-OPENIO-0 | apt-key add -
+    # curl http://mirror.openio.io/pub/repo/openio/APT-GPG-KEY-OPENIO-0 | sudo apt-key add -
 
 2. Install OpenIO puppet module:
 
   .. code-block:: console
 
-    # apt-get update; apt-get install puppet-module-openio-openiosds -y
+    # sudo apt-get update; sudo apt-get install puppet-module-openio-openiosds -y
 

@@ -62,9 +62,9 @@ The OpenStack Swift proxy requires memcached and Redis to run. We use the CentOS
 
       .. code-block:: console
 
-         # apt-get update
+         # sudo apt-get update
 
-         # apt-get install memcached redis-server
+         # sudo apt-get install memcached redis-server
 
 
 Installation
@@ -82,7 +82,7 @@ We will use the OpenStack modules to install and configure OpenStack KeyStone. F
 
       .. code-block:: console
 
-         # apt-get install puppet
+         # sudo apt-get install puppet
 
 Install the module:
 
@@ -116,7 +116,7 @@ Install OpenIO Puppet module:
 
       .. code-block:: console
 
-         # apt-get install puppet-module-openio-openiosds
+         # sudo apt-get install puppet-module-openio-openiosds
 
 Puppet Manifest
 ~~~~~~~~~~~~~~~

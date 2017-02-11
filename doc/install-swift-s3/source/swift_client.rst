@@ -11,7 +11,7 @@ Install the OpenStack Swift Command Line Interface:
 
       .. code-block:: console
      
-         # apt-get install python-swiftclient
+         # sudo apt-get install python-swiftclient
 
    .. only:: centos
 
