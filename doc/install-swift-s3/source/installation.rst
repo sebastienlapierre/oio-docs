@@ -45,21 +45,17 @@ Repositories Configuration
 Prerequisites
 ~~~~~~~~~~~~~
 
-The OpenStack Swift proxy requires memcached and Redis to run. We use the CentOS default install:
+The OpenStack Swift proxy requires memcached. We use the CentOS default install:
 
    .. only:: centos
 
       .. code-block:: console
 
-         # yum -y install memcached redis
+         # yum -y install memcached
 
          # systemctl enable memcached.service
 
          # systemctl start memcached.service
-
-         # systemctl enable redis.service
-
-         # systemctl start redis.service
 
 
    .. only:: ubuntu or debian
@@ -68,7 +64,7 @@ The OpenStack Swift proxy requires memcached and Redis to run. We use the CentOS
 
          # sudo apt-get update
 
-         # sudo apt-get install memcached redis-server
+         # sudo apt-get install memcached
 
 
 Installation
