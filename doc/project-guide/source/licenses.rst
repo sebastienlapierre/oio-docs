@@ -5,17 +5,19 @@ Licenses
 OpenIO releases its Open Source code under the term of variant of the GNU
 Public License, a variant depending on the code.
 
-* OpenIO sds:
-  * The LGPLv3 (GNU Lesser Public License, version 3) is used for all the code
-	destined to be included in third-party applications.
-  * The AGPLv3 (GNU Affero Public License, version 3) is used for
-	daemon-related code.
-* OpenIO Swift: Apache License, Version 2
-* OpenIO Java client: LGPLv3 (GNU Lesser Public License, version 3)
-* OpenIO SDS, the puppet templates: Apache License, Version 2
+* OpenIO sds_:
+
+  * The LGPLv3 (GNU Lesser Public License, version 3) is used for all the code destined to be included in third-party applications. This is gathered under the core/ and metautils/ directories.
+  * The AGPLv3 (GNU Affero Public License, version 3) is used elsewhere, and is always related to daemons or CLI tools.
+
+* OpenIO Swift_: Apache License, Version 2
+* OpenIO Java_ client: LGPLv3 (GNU Lesser Public License, version 3)
+* OpenIO SDS, the puppet templates_: Apache License, Version 2
 
 Compile-time dependencies
 ~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Build our C codebase relies on:
 
 * cmake_: 3-clause BSD
 * GNU make_: GPL
@@ -25,8 +27,14 @@ Compile-time dependencies
 * glib2_: LGPLv2
 * libcurl_: MIT/X derivative License
 * json-c_: 2-clauses BSD License
-* asn1c_ : 2-clauses BSD License
+* asn1c_: 2-clauses BSD License
 
+Building and testing our Java codebase depends on:
+
+* gradle_: Apache License, Version 2
+* junit_: Eclipse Public License, Version 1
+* mockito_: MIT License
+* jetty_: Apache License, Version 2
 
 Delivery Dependencies
 ~~~~~~~~~~~~~~~~~~~~~
@@ -39,6 +47,8 @@ Delivery Dependencies
 Runtime Dependencies
 ~~~~~~~~~~~~~~~~~~~~
 
+The codebase written in C depends on:
+
 * python_: BeOpen license
 * httpd_ (and its shipped modules): Apache License, Version 2.0
 * apr_: Apache License, Version 2.0
@@ -48,6 +58,11 @@ Runtime Dependencies
 * zeromq3_: LGPLv2
 * zookeeper_ (client): Apache License, Version 2.0
 * liberasurecode_: BSD-style
+
+The Java codebase depends on:
+
+* log4j_: Apache License, Version 2
+* gson_: Apache License, Version 2
 
 OpenIO SDS also requires some side services to support it, all published under
 the terms of a public license:
@@ -73,6 +88,16 @@ Our runtime also requires the following python dependencies:
 * python-futures
 * PyYAML
 
+.. _sds: https://github.com/open-io/oio-sds
+.. _Java: https://github.com/open-io/oio-api-java
+.. _Swift: https://github.com/open-io/oio-swift
+.. _templates: https://github.com/open-io/puppet-openiosds
+.. _jetty: http://www.eclipse.org/jetty/
+.. _mockito: https://github.com/mockito/mockito
+.. _junit: http://junit.org/junit4/
+.. _gradle: https://gradle.org/
+.. _gson: https://github.com/google/gson
+.. _log4j: https://logging.apache.org/log4j/2.x/
 .. _puppet: https://puppet.com/
 .. _virtualbox: https://www.virtualbox.org/
 .. _vagrant: https://github.com/mitchellh/vagrant
