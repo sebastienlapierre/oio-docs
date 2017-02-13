@@ -12,6 +12,9 @@ Variables spread in via the conscience.
 chunk_size
 ----------
 
+Tells the services how to split the data of each content before spreaing the
+chunks on RAWX services.
+
 .. code-block:: ini
 
     param_chunk_size=${UINT64}
@@ -19,6 +22,9 @@ chunk_size
 
 option.state
 ------------
+
+Set to `standalone` by default, the state tells which commands are accepted by
+oio-sds. A namespace in `standalone` mode
 
 .. code-block:: ini
 
@@ -143,8 +149,22 @@ Variables present in namespace sections of the local configuration, read by all
 the services of that namespace.
 
 
+proxy
+-----
+
+Tells the client SDK where is the `oio-proxy` to be used, as the primary
+endpoint to the namespace.
+
+.. code-block:: ini
+
+    proxy=IP:PORT
+
+
 conscience
 ----------
+
+Tells the `oio-proxy` (and only the proxy) where is the `conscience` central
+service to be used.
 
 .. code-block:: ini
 
@@ -154,6 +174,9 @@ conscience
 zookeeper
 ---------
 
+Tells all the sqlitrepo-based service to connection string to be used to connect
+the Zookeeper cluster. Are concerned the meta0, meta1, meta2 and sqlx services.
+
 .. code-block:: ini
 
     zookeeper=IP:PORT[,IP:PORT]*
@@ -161,6 +184,11 @@ zookeeper
 
 zookeeper.$SRVTYPE
 ------------------
+
+Under certain circumstances, it is necessary to insulte the elections of a
+particuler service type into its own Zookeeper. E.g. because it is too critical
+or space consuming. The `zookeeper.$SRVTYPE` is dedicated to override the global
+`zookeeper` configuration.
 
 .. code-block:: ini
 
@@ -171,19 +199,20 @@ zookeeper.$SRVTYPE
 
 proxy-local
 -----------
+
+When it is necessary to make the C SDK use local sockets to the local proxy,
+this is the parameter to be configured.
+
 .. code-block:: ini
 
     proxy-local=/path/to/proxy.sock
 
-proxy
------
-
-.. code-block:: ini
-
-    proxy=IP:PORT
 
 ecd
 ---
+
+Tells the client SDK where is the `erasure code daemon` that will manage the
+complex task of computing the erasure code on the data.
 
 .. code-block:: ini
 
@@ -192,6 +221,12 @@ ecd
 
 event-agent
 -----------
+
+That directove tells the services the protocol and the endpoint to deposit
+notifications. Two implementations are currently available: the default solution
+is `beanstalkd` (and is identified by `beanstalkd://` endpoints), and the other
+is a ZeroMQ Request/Reply service (identified by `ipc://` and `tcp://`
+endpoints).
 
 .. code-block:: ini
 
@@ -204,6 +239,10 @@ event-agent
 
 log_outgoing
 ------------
+
+Set to `false` by default. When it is actived the services generated an outgoing
+access log, for both UDP and TCP messages. Be careful, The generated log can
+grow rapidly!
 
 .. code-block:: ini
 
