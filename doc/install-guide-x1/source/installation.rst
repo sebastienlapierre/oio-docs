@@ -75,7 +75,7 @@ To do so, just apply the manifest created earlier:
 
    .. code-block:: console
 
-      # sudo puppet apply --no-stringify_facts openio.pp
+      $ sudo puppet apply --no-stringify_facts openio.pp
 
 This step may take a few minutes. Please be patient as it downloads and installs all necessary packages.
 
@@ -91,14 +91,14 @@ As you may have noticed the namespace is, by default, called ``OPENIO``.  The na
 
    .. code-block:: console
 
-      # openio --oio-ns=OPENIO cluster unlockall
+      $ openio --oio-ns=OPENIO cluster unlockall
 
 
    Then, bootstrap the directory:
 
    .. code-block:: console
 
-      # openio --oio-ns=OPENIO directory bootstrap
+      $ openio --oio-ns=OPENIO directory bootstrap
 
 
 #. `meta0` and `meta1` restart
@@ -107,7 +107,7 @@ As you may have noticed the namespace is, by default, called ``OPENIO``.  The na
 
    .. code-block:: console
 
-      # gridinit_cmd restart @meta0 @meta1
+      $ gridinit_cmd restart @meta0 @meta1
 
 #. Unlock all services:
 
@@ -115,7 +115,7 @@ As you may have noticed the namespace is, by default, called ``OPENIO``.  The na
 
    .. code-block:: console
 
-      # openio --oio-ns=OPENIO cluster unlockall
+      $ openio --oio-ns=OPENIO cluster unlockall
 
 
    After unlocking, your OPENIO namespace should be running!
@@ -124,6 +124,6 @@ As you may have noticed the namespace is, by default, called ``OPENIO``.  The na
 
    .. code-block:: console
 
-      # openio --oio-ns OPENIO cluster list
+      $ openio --oio-ns OPENIO cluster list
 
    .. TODO ADD test installation section

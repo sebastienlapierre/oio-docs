@@ -4,7 +4,7 @@ Prerequisites
 
 Hardware
 ^^^^^^^^
-- Raspberry Pi (Model A, Model B, Zero)
+- Raspberry Pi (Model A, Model B, Zero), all generations supported
 
 Operating system
 ^^^^^^^^^^^^^^^^
