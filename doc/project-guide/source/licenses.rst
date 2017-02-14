@@ -68,26 +68,40 @@ OpenIO SDS also requires some side services to support it, all published under
 the terms of a public license:
 
 * gridinit_: AGPLv3
-* beanstalkd_: you need it to have the event-agent working
+* beanstalkd_: MIT License
 * zookeeper_ (server): Apache License, Version 2.0
 
 Our runtime also requires the following python dependencies:
 
-* python-setuptools
-* python-pbr
-* python-eventlet
-* python-werkzeug
-* python-gunicorn
-* python-plyvel
-* python-redis
-* python-requests
-* python-simplejson
-* pyxattr (python-xattr on Debian/Ubuntu)
-* python-cliff
-* python-pyeclib
-* python-futures
-* PyYAML
+* python-setuptools_: MIT License
+* python-pbr_: Apache License, Version 2
+* python-eventlet_: MIT License
+* python-werkzeug_: BSD License
+* python-gunicorn_: MIT License
+* python-plyvel_: BSD License
+* python-redis_: MIT License
+* python-requests_: Apache License, Version 2
+* python-simplejson_: MIT License
+* pyxattr_: MIT License
+* python-cliff_: Apache License, Version 2
+* python-pyeclib_: BSD License
+* python-futures_: BSD License
+* PyYAML_: MIT License
 
+.. _pyyaml: https://pypi.python.org/pypi/PyYAML
+.. _python-futures: https://pypi.python.org/pypi/futures
+.. _pyxattr: https://pypi.python.org/pypi/xattr
+.. _python-pyeclib: https://pypi.python.org/pypi/PyECLib
+.. _python-cliff: https://pypi.python.org/pypi/simplejson
+.. _python-simplejson: https://pypi.python.org/pypi/simplejson
+.. _python-requests: https://pypi.python.org/pypi/requests
+.. _python-redis: https://pypi.python.org/pypi/redis
+.. _python-plyvel: https://pypi.python.org/pypi/plyvel
+.. _python-gunicorn: https://pypi.python.org/pypi/gunicorn
+.. _python-eventlet: https://pypi.python.org/pypi/eventlet
+.. _python-werkzeug: https://pypi.python.org/pypi/Werkzeug
+.. _python-setuptools: https://pypi.python.org/pypi/setuptools
+.. _python-pbr: https://pypi.python.org/pypi/pbr
 .. _sds: https://github.com/open-io/oio-sds
 .. _Java: https://github.com/open-io/oio-api-java
 .. _Swift: https://github.com/open-io/oio-swift
