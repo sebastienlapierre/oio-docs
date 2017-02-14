@@ -23,15 +23,45 @@ Display information about this container.
 
     # openio container show my_container
 
-    +-------------+--------------------------------------------------------------------+
-    | Field       | Value                                                              |
-    +-------------+--------------------------------------------------------------------+
-    | account     | my_account                                                         |
-    | base_name   | CB2D04216603B8274AB831F889EAA4B2656D1EBA45B658712D59C77DAC86E08A.1 |
-    | bytes_usage | 0                                                                  |
-    | container   | my_container                                                       |
-    | ctime       | 1441105114                                                         |
-    +-------------+--------------------------------------------------------------------+
+    +----------------+--------------------------------------------------------------------+
+    | Field          | Value                                                              |
+    +----------------+--------------------------------------------------------------------+
+    | account        | my_account                                                         |
+    | base_name      | CB2D04216603B8274AB831F889EAA4B2656D1EBA45B658712D59C77DAC86E08A.1 |
+    | bytes_usage    | 14                                                                 |
+    | container      | my_container                                                       |
+    | ctime          | 1441105114                                                         |
+    | objects        | 1                                                                  |
+    | quota          | 102400                                                             |
+    | storage_policy | ERASURECODE                                                        |
+    +----------------+--------------------------------------------------------------------+
+
+You can override the storage policy for a given container on the fly:
+
+.. code-block:: console
+
+    # openio container create my_container2 --storage-policy=TWOCOPIES
+
+
+Locate container
+----------------
+
+To find the services involved for a given container:
+
+   .. code-block:: console
+
+    # openio container locate my_container
+
+    +-----------+--------------------------------------------------------------------+
+    | Field     | Value                                                              |
+    +-----------+--------------------------------------------------------------------+
+    | account   | my_account                                                         |
+    | base_name | 23D6D41A55BDE4380C748B5BCDFB93085F9053F9786D4582EF0FA646286854F3.1 |
+    | meta0     | 172.32.0.1:6001, 172.32.0.2:6001, 172.32.0.3:6001                  |
+    | meta1     | 172.32.0.1:6002, 172.32.0.2:6002, 172.32.0.3:6002                  |
+    | meta2     | 172.32.0.1:6003, 172.32.0.2:6003, 172.32.0.3:6003                  |
+    | name      | my_container                                                       |
+    +-----------+--------------------------------------------------------------------+
 
 Container properties
 --------------------
@@ -77,6 +107,13 @@ Create object
     +----------+------+----------------------------------+
     | test.txt |   14 | 9EB03B6E836CEAE565BA79F76C821DDA |
     +----------+------+----------------------------------+
+
+You can override the storage policy for a given object on the fly:
+
+.. code-block:: console
+
+    # openio object create my_container test2.txt --policy=TWOCOPIES
+
 
 List objects
 ------------
@@ -217,7 +254,7 @@ You can also save all the objects from a container to your working directory in 
 Information about object
 ------------------------
 
-Display the informations about an object:
+Display the information about an object:
 
    .. code-block:: console
 
@@ -235,6 +272,33 @@ Display the informations about an object:
     | policy    | none                             |
     | size      | 14                               |
     +-----------+----------------------------------+
+
+Locate object
+-------------
+
+To find the actual location of a given object:
+
+   .. code-block:: console
+
+    # openio object locate my_container test.txt
+
+    +-----+------------------------------------------+------+----------------------------------+
+    | Pos | Id                                       | Size | Hash                             |
+    +-----+------------------------------------------+------+----------------------------------+
+    | 0   | http://172.32.0.1:6001/4FCAEEF90B[...]   |  14  | 1463508F28EDB4D6D5AE349B20E00409 |
+    | 0   | http://172.32.0.2:6001/7EBAD5FCB8[...]   |  14  | 1463508F28EDB4D6D5AE349B20E00409 |
+    | 0   | http://172.32.0.3:6001/D425787855[...]   |  14  | 1463508F28EDB4D6D5AE349B20E00409 |
+    +-----+------------------------------------------+------+----------------------------------+
+
+``Pos`` integer represents the position of the given chunk in the object.
+In case of replication, you can have multiple chunks at the same position (3 times replication mode in this example).
+
+``Id`` is the url to access to the given chunk.
+
+``Size`` is the actual size of the given chunk.
+
+``Hash`` is the hash of the given chunk.
+
 
 Object properties
 -----------------

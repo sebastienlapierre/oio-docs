@@ -20,7 +20,11 @@ Repositories Configuration
 
   .. include:: ../../install-common/source/packages_configuration_centos.rst
 
-.. only:: ubuntu or debian
+.. only:: ubuntu
+
+  .. include:: ../../install-common/source/packages_configuration_ubuntu.rst
+
+.. only:: debian
 
   .. include:: ../../install-common/source/packages_configuration_debian.rst
 
@@ -41,30 +45,26 @@ Repositories Configuration
 Prerequisites
 ~~~~~~~~~~~~~
 
-The OpenStack Swift proxy requires memcached and Redis to run. We use the CentOS default install:
+The OpenStack Swift proxy requires memcached. We use the CentOS default install:
 
    .. only:: centos
 
       .. code-block:: console
 
-         # yum -y install memcached redis
+         # yum -y install memcached
 
          # systemctl enable memcached.service
 
          # systemctl start memcached.service
-
-         # systemctl enable redis.service
-
-         # systemctl start redis.service
 
 
    .. only:: ubuntu or debian
 
       .. code-block:: console
 
-         # apt-get update
+         # sudo apt-get update
 
-         # apt-get install memcached redis-server
+         # sudo apt-get install memcached
 
 
 Installation
@@ -82,7 +82,7 @@ We will use the OpenStack modules to install and configure OpenStack KeyStone. F
 
       .. code-block:: console
 
-         # apt-get install puppet
+         # sudo apt-get install puppet
 
 Install the module:
 
@@ -116,7 +116,7 @@ Install OpenIO Puppet module:
 
       .. code-block:: console
 
-         # apt-get install puppet-module-openio-openiosds
+         # sudo apt-get install puppet-module-openio-openiosds
 
 Puppet Manifest
 ~~~~~~~~~~~~~~~

@@ -5,7 +5,7 @@ Installation
 Initialize
 ~~~~~~~~~~
 
-.. only:: ubuntu or debian
+.. only:: ubuntu or debian or raspbian
 
   .. include:: ../../install-common/source/initialize_debian.rst
  
@@ -20,20 +20,26 @@ OpenIO Packages Configuration
   
   .. include:: ../../install-common/source/packages_configuration_centos.rst
   
-.. only:: ubuntu or debian
+.. only:: ubuntu
+  
+  .. include:: ../../install-common/source/packages_configuration_ubuntu.rst
+  
+.. only:: debian
   
   .. include:: ../../install-common/source/packages_configuration_debian.rst
+
+.. only:: raspbian
   
+  .. include:: ../../install-common/source/packages_configuration_raspbian.rst
+
 Puppet Manifest
 ~~~~~~~~~~~~~~~
 
 Now you can create a manifest file to configure each host,
 here is a template to configure the services:
 
-- Replace SERVER1, SERVER2 and SERVER3 with the corresponding IP addresses.
-- On each server, replace ``MYID`` by the index of server: 1, 2 or 3.
 - On the server 2 and 3, add ``slaveof => 'SERVER1 6011',`` in the redis block
-- The `conscience` service is not necessary on SERVER2 and SERVER3, you `MUST` remove it.
+- Replace SERVER1, SERVER2 and SERVER3 with the corresponding IP addresses.
 
 In a file called ``/root/openio.pp``:
 
@@ -87,7 +93,6 @@ In a file called ``/root/openio.pp``:
         ns        => 'OPENIO',
         ipaddress => $ipaddress,
         servers   => ['SERVER1:2888:3888','SERVER2:2888:3888','SERVER3:2888:3888'],
-        myid      => MYID,
       }
       openiosds::redissentinel {'redissentinel-0':
         ns        => 'OPENIO',
@@ -121,7 +126,7 @@ On each server, apply the manifest:
 
    .. code-block:: console
 
-      # puppet apply --no-stringify_facts /root/openio.pp
+      # sudo puppet apply --no-stringify_facts /root/openio.pp
 
 This step may take a few minutes. Please be patient as it downloads and installs all necessary packages. 
 Once completed, all services should be installed and running using OpenIO GridInit.
@@ -218,11 +223,11 @@ Next, we need to initialize a few components, namely ZooKeeper and meta0.
 
    .. code-block:: console
 
-      # gridinit_cmd restart @meta0 ; gridinit_cmd restart @meta1
+      # sudo gridinit_cmd restart @meta0 @meta1
 
    .. warning::
 
-      Must be perform on all servers
+      Must be performed on all servers
 
 #. Start all services:
 
