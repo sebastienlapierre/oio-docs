@@ -5,14 +5,14 @@ Licenses
 OpenIO releases its Open Source code under the term of variant of the GNU
 Public License, a variant depending on the code.
 
-* OpenIO sds_:
+* `OpenIO SDS`_:
 
   * The LGPLv3 (GNU Lesser Public License, version 3) is used for all the code destined to be included in third-party applications. This is gathered under the core/ and metautils/ directories.
   * The AGPLv3 (GNU Affero Public License, version 3) is used elsewhere, and is always related to daemons or CLI tools.
 
-* OpenIO Swift_: Apache License, Version 2
-* OpenIO Java_ client: LGPLv3 (GNU Lesser Public License, version 3)
-* OpenIO SDS, the puppet templates_: Apache License, Version 2
+* `OpenIO Swift`_: Apache License, Version 2
+* `OpenIO Java`_ client: LGPLv3 (GNU Lesser Public License, version 3)
+* `OpenIO SDS, the puppet templates`_: Apache License, Version 2
 
 Compile-time dependencies
 ~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -20,7 +20,7 @@ Compile-time dependencies
 Build our C codebase relies on:
 
 * cmake_: 3-clause BSD
-* GNU make_: GPL
+* `GNU make`_: GPL
 * bison_: GPL (with a grant for generated code)
 * gcc_: GPL
 * flex_: BSD
@@ -102,10 +102,10 @@ Our runtime also requires the following python dependencies:
 .. _python-werkzeug: https://pypi.python.org/pypi/Werkzeug
 .. _python-setuptools: https://pypi.python.org/pypi/setuptools
 .. _python-pbr: https://pypi.python.org/pypi/pbr
-.. _sds: https://github.com/open-io/oio-sds
-.. _Java: https://github.com/open-io/oio-api-java
-.. _Swift: https://github.com/open-io/oio-swift
-.. _templates: https://github.com/open-io/puppet-openiosds
+.. _OpenIO SDS: https://github.com/open-io/oio-sds
+.. _OpenIO Java: https://github.com/open-io/oio-api-java
+.. _OpenIO Swift: https://github.com/open-io/oio-swift
+.. _OpenIO SDS, the puppet templates: https://github.com/open-io/puppet-openiosds
 .. _jetty: http://www.eclipse.org/jetty/
 .. _mockito: https://github.com/mockito/mockito
 .. _junit: http://junit.org/junit4/
@@ -124,7 +124,7 @@ Our runtime also requires the following python dependencies:
 .. _gridinit: https://github.com/open-io/gridinit
 .. _lzo: http://www.oberhumer.com/opensource/lzo/
 .. _sqlite: http://sqlite.org/
-.. _make: https://www.gnu.org/software/make/
+.. _GNU make: https://www.gnu.org/software/make/
 .. _cmake: https://cmake.org/
 .. _bison: https://www.gnu.org/software/bison/
 .. _flex: https://github.com/westes/flex
