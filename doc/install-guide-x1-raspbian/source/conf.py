@@ -191,7 +191,7 @@ html_show_sourcelink = False
 # html_search_scorer = 'scorer.js'
 
 # Output file base name for HTML help builder.
-htmlhelp_basename = 'install-guide-raspbian'
+htmlhelp_basename = 'install-guide-x1-raspbian'
 
 # If true, publish source files
 html_copy_source = False
