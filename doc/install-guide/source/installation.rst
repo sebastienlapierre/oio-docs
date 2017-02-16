@@ -96,6 +96,7 @@ In a file called ``/root/openio.pp``:
       }
       openiosds::redissentinel {'redissentinel-0':
         ns        => 'OPENIO',
+        ipaddress => $ipaddress,
         master_name => 'OPENIO-master-1',
         redis_host => "SERVER1",
       }
