@@ -45,7 +45,7 @@ Repositories Configuration
 Prerequisites
 ~~~~~~~~~~~~~
 
-The OpenStack Swift proxy requires memcached. We use the CentOS default install:
+The OpenStack Swift proxy requires memcached. We use the system default install:
 
    .. only:: centos
 
