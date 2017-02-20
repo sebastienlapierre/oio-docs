@@ -201,9 +201,10 @@ In a file called ``/root/openio.pp``:
         ns => 'OPENIO',
     }
     openiosds::oioswift {'oioswift-0':
-      ns            => 'OPENIO',
-      ipaddress     => '0.0.0.0',
-      sds_proxy_url => 'http://OIO_SERVER:6006',
+      ns             => 'OPENIO',
+      ipaddress      => '0.0.0.0',
+      sds_proxy_url  => 'http://OIO_SERVER:6006',
+      admin_password => 'SWIFT_PASS',
     }
 
 
