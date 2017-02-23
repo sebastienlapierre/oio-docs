@@ -38,11 +38,8 @@ Puppet Manifest
 Now you can create a manifest file to configure each host,
 here is a template to configure the services:
 
-- In this case, its assumed that service will be deployed on the first network device,
-you can check the ipaddress used on the server with the command ``facter ipaddress``.
-You can change the device used by either replace ``$ipaddress`` on top of the manifest
-by an IP address or using a facter fact (example: ``$ipaddress_enp0s8`` or ``$ipaddress_eth1``).  
-- On the server 2 and 3, add ``slaveof => 'SERVER1 6011',`` in the redis block
+- In this case, its assumed that service will be deployed on the first network device, you can check the ipaddress used on the server with the command ``facter ipaddress``. You can change the device used by either replace ``$ipaddress`` on top of the manifest by the IP address of your choice or using a facter fact (example: ``$ipaddress_enp0s8`` or ``$ipaddress_eth1``).  
+- On the server 2 and 3, add ``slaveof => 'SERVER1 6011',`` in the redis block.
 - Replace SERVER1, SERVER2 and SERVER3 with the corresponding IP addresses.
 
 In a file called ``/root/openio.pp``:
