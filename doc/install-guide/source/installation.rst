@@ -38,6 +38,10 @@ Puppet Manifest
 Now you can create a manifest file to configure each host,
 here is a template to configure the services:
 
+- In this case, its assumed that service will be deployed on the first network device,
+you can check the ipaddress used on the server with the command ``facter ipaddress``.
+You can change the device used by either replace ``$ipaddress`` on top of the manifest
+by an IP address or using a facter fact (example: ``$ipaddress_enp0s8`` or ``$ipaddress_eth1``).  
 - On the server 2 and 3, add ``slaveof => 'SERVER1 6011',`` in the redis block
 - Replace SERVER1, SERVER2 and SERVER3 with the corresponding IP addresses.
 
@@ -45,10 +49,11 @@ In a file called ``/root/openio.pp``:
 
    .. code-block:: puppet
    
+      $ipaddr = $ipaddress
       class {'openiosds':}
       openiosds::conscience {'conscience-0':
         ns                    => 'OPENIO',
-        ipaddress             => $ipaddress,
+        ipaddress             => $ipaddr,
         service_update_policy => {'meta2'=>'KEEP|3|1|','sqlx'=>'KEEP|3|1|','rdir'=>'KEEP|1|1|user_is_a_service=rawx'},
         storage_policy        => 'THREECOPIES',
       }
@@ -57,66 +62,67 @@ In a file called ``/root/openio.pp``:
         conscience_url => "SERVER1:6000",
         zookeeper_url  => "SERVER1:6005,SERVER2:6005,SERVER3:6005",
         oioproxy_url   => "${ipaddress}:6006",
-        eventagent_url => "beanstalk://${ipaddress}:6014",
+        eventagent_url => "beanstalk://${ipaddr}:6014",
       }
       openiosds::account {'account-0':
         ns                    => 'OPENIO',
-        ipaddress             => $ipaddress,
+        ipaddress             => $ipaddr,
         sentinel_hosts        => 'SERVER1:6012,SERVER2:6012,SERVER3:6012',
         sentinel_master_name  => 'OPENIO-master-1',
       }
       openiosds::meta0 {'meta0-0':
         ns        => 'OPENIO',
-        ipaddress => $ipaddress,
+        ipaddress => $ipaddr,
       }
       openiosds::meta1 {'meta1-0':
         ns        => 'OPENIO',
-        ipaddress => $ipaddress,
+        ipaddress => $ipaddr,
       }
       openiosds::meta2 {'meta2-0':
         ns        => 'OPENIO',
-        ipaddress => $ipaddress,
+        ipaddress => $ipaddr,
       }
       openiosds::rawx {'rawx-0':
         ns        => 'OPENIO',
-        ipaddress => $ipaddress,
+        ipaddress => $ipaddr,
       }
       openiosds::oioeventagent {'oio-event-agent-0':
         ns          => 'OPENIO',
-        ipaddress   => $ipaddress,
+        ipaddress   => $ipaddr,
       }
       openiosds::oioproxy {'oioproxy-0':
         ns        => 'OPENIO',
-        ipaddress => $ipaddress,
+        ipaddress => $ipaddr,
       }
       openiosds::zookeeper {'zookeeper-0':
         ns        => 'OPENIO',
-        ipaddress => $ipaddress,
+        ipaddress => $ipaddr,
         servers   => ['SERVER1:2888:3888','SERVER2:2888:3888','SERVER3:2888:3888'],
       }
       openiosds::redissentinel {'redissentinel-0':
-        ns        => 'OPENIO',
-        ipaddress => $ipaddress,
+        ns          => 'OPENIO',
+        ipaddress   => $ipaddr,
         master_name => 'OPENIO-master-1',
-        redis_host => "SERVER1",
+        redis_host  => "SERVER1",
       }
       openiosds::redis {'redis-0':
-        ns        => 'OPENIO',
-        ipaddress => $ipaddress,
+        ns         => 'OPENIO',
+        ipaddress  => $ipaddr,
+        redis_host => $ipaddr,
       }
       openiosds::conscienceagent {'conscienceagent-0':
         ns  => 'OPENIO',
       }
       openiosds::beanstalkd {'beanstalkd-0':
         ns        => 'OPENIO',
-        ipaddress => $ipaddress,
+        ipaddress => $ipaddr,
       }
       openiosds::rdir {'rdir-0':
         ns        => 'OPENIO',
-        ipaddress => $ipaddress,
+        ipaddress => $ipaddr,
       }
       openiosds::oioblobindexer {'oio-blob-indexer-rawx-0':
-        ns  => 'OPENIO',
+        ns => 'OPENIO',
       }
 
 Package Installation and Service Configuration

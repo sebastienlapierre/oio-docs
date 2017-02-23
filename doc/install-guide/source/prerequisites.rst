@@ -26,9 +26,9 @@ Operating system
 
 Network
 ^^^^^^^
-- All nodes connected to the same LAN through their primary interface
-- Firewall disabled
-- SELinux or AppArmor disabled
+- All nodes connected to the same LAN through the specified interface (first one by default)
+- Firewall is disabled
+- SELinux or AppArmor are disabled
 
 System
 ^^^^^^
