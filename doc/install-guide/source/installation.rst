@@ -105,7 +105,6 @@ In a file called ``/root/openio.pp``:
       openiosds::redis {'redis-0':
         ns         => 'OPENIO',
         ipaddress  => $ipaddr,
-        redis_host => $ipaddr,
       }
       openiosds::conscienceagent {'conscienceagent-0':
         ns  => 'OPENIO',
