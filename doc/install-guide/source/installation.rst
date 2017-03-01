@@ -58,7 +58,7 @@ In a file called ``/root/openio.pp``:
         ns             => 'OPENIO',
         conscience_url => "SERVER1:6000",
         zookeeper_url  => "SERVER1:6005,SERVER2:6005,SERVER3:6005",
-        oioproxy_url   => "${ipaddress}:6006",
+        oioproxy_url   => "${ipaddr}:6006",
         eventagent_url => "beanstalk://${ipaddr}:6014",
       }
       openiosds::account {'account-0':
