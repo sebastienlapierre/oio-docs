@@ -13,7 +13,6 @@ Contents
 .. toctree::
    :maxdepth: 1
 
-   overview
    openio
 
 .. end of contents
