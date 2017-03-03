@@ -10,7 +10,7 @@ Initialize
 OpenIO Packages Configuration
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-  .. include:: ../../install-common/source/packages_configuration_debian.rst
+  .. include:: ../../install-common/source/packages_configuration_raspbian.rst
 
 Puppet Manifest
 ~~~~~~~~~~~~~~~
