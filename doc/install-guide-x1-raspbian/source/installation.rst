@@ -21,51 +21,85 @@ In a file called ``~/openio.pp``:
 
    .. code-block:: puppet
 
-    class {'openiosds': }
+    # Default ipaddress to use
+    $ipaddr = $ipaddress
+    # Comma separated list of tenant:user:passwd:privileges
+    $default_tempauth_users = 'demo:demo:DEMO_PASS:.admin'
+    
+    # Deploy a single node
+    class{'openiosds':}
     openiosds::namespace {'OPENIO':
-       ns => 'OPENIO',
-       conscience_url => "${ipaddress}:6000",
-       oioproxy_url => "${ipaddress}:6006",
-       eventagent_url => "beanstalk://${ipaddress}:6014",
-       meta1_digits => 3,
-    }
-    openiosds::conscience {'conscience-0':
-      ns => 'OPENIO',
-    }
-    openiosds::meta0 {'meta0-0':
-      ns => 'OPENIO',
-    }
-    openiosds::meta1 {'meta1-0':
-      ns => 'OPENIO',
-    }
-    openiosds::meta2 {'meta2-0':
-      ns => 'OPENIO',
-    }
-    openiosds::rawx {'rawx-0':
-      ns => 'OPENIO',
+      ns             => 'OPENIO',
+      conscience_url => "${ipaddr}:6000",
+      oioproxy_url   => "${ipaddr}:6006",
+      eventagent_url => "beanstalk://${ipaddr}:6014",
+      meta1_digits   => 0,
     }
     openiosds::account {'account-0':
-      ns => 'OPENIO',
+      ns         => 'OPENIO',
+      ipaddress  => $ipaddr,
+      redis_host => $ipaddr,
     }
-    openiosds::oioeventagent {'oio-event-agent-0':
-      ns => 'OPENIO',
+    openiosds::conscience {'conscience-0':
+      ns        => 'OPENIO',
+      ipaddress => $ipaddr,
     }
-    openiosds::oioproxy {'oioproxy-0':
-      ns => 'OPENIO',
+    openiosds::meta0 {'meta0-0':
+      ns        => 'OPENIO',
+      ipaddress => $ipaddr,
     }
-    openiosds::conscienceagent {'conscienceagent-0':
-      ns => 'OPENIO',
+    openiosds::meta1 {'meta1-0':
+      ns        => 'OPENIO',
+      ipaddress => $ipaddr,
+    }
+    openiosds::meta2 {'meta2-0':
+      ns        => 'OPENIO',
+      ipaddress => $ipaddr,
+    }
+    openiosds::rawx {'rawx-0':
+      ns        => 'OPENIO',
+      ipaddress => $ipaddr,
     }
     openiosds::rdir {'rdir-0':
-      ns => 'OPENIO',
-      location => "${hostname}-other",
+      ns        => 'OPENIO',
+      ipaddress => $ipaddr,
+      location  => "${hostname}-other",
+    }
+    openiosds::oioblobindexer {'oio-blob-indexer-rawx-0':
+      ns        => 'OPENIO',
+    }
+    openiosds::oioeventagent {'oio-event-agent-0':
+      ns        => 'OPENIO',
+      ipaddress => $ipaddr,
+    }
+    openiosds::oioproxy {'oioproxy-0':
+      ns        => 'OPENIO',
+      ipaddress => $ipaddr,
     }
     openiosds::redis {'redis-0':
-      ns => 'OPENIO',
+      ns        => 'OPENIO',
+      ipaddress => $ipaddr,
+    }
+    openiosds::conscienceagent {'conscienceagent-0':
+      ns        => 'OPENIO',
     }
     openiosds::beanstalkd {'beanstalkd-0':
-      ns => 'OPENIO',
+      ns        => 'OPENIO',
+      ipaddress => $ipaddr,
     }
+    openiosds::oioswift {'oioswift-0':
+      ns               => 'OPENIO',
+      ipaddress        => '0.0.0.0',
+      sds_proxy_url    => "http://${ipaddr}:6006",
+      auth_system      => 'tempauth',
+      tempauth_users   => [$default_tempauth_users],
+      memcache_servers => "${ipaddr}:6019",
+    }
+    openiosds::memcached {'memcached-0':
+      ns        => 'OPENIO',
+      ipaddress => $ipaddr,
+    }
+
 
 Package Installation and Service Configuration
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -78,6 +112,13 @@ To do so, just apply the manifest created earlier:
       $ sudo puppet apply --no-stringify_facts openio.pp
 
 This step may take a few minutes. Please be patient as it downloads and installs all necessary packages.
+When it's done, you can stop and disable the default services that are unecessary:
+
+
+   .. code-block:: console
+
+      $ sudo systemctl stop apache2 memcached redis beanstalkd puppet
+      $ sudo systemctl disable apache2 memcached redis beanstalkd puppet
 
 
 Initialize OpenIO Namespace
@@ -94,11 +135,18 @@ As you may have noticed the namespace is, by default, called ``OPENIO``.  The na
       $ openio --oio-ns=OPENIO cluster unlockall
 
 
-   Then, bootstrap the directory:
+   Bootstrap the directory:
 
    .. code-block:: console
 
-      $ openio --oio-ns=OPENIO directory bootstrap
+      $ openio --oio-ns=OPENIO directory bootstrap --no-rdir
+
+
+   And assign the rdir:
+
+   .. code-block:: console
+
+      $ openio --oio-ns=OPENIO volume admin bootstrap
 
 
 #. `meta0` and `meta1` restart
@@ -118,7 +166,7 @@ As you may have noticed the namespace is, by default, called ``OPENIO``.  The na
       $ openio --oio-ns=OPENIO cluster unlockall
 
 
-   After unlocking, your OPENIO namespace should be running!
+   After unlocking, your OPENIO namespace is running!
 
    Be sure that every score is greater that 0 using `openio cluster list`:
 
