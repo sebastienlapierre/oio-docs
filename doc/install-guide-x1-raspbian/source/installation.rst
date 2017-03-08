@@ -23,8 +23,8 @@ In a file called ``~/openio.pp``:
 
     # Default ipaddress to use
     $ipaddr = $ipaddress
-    # Comma separated list of tenant:user:passwd:privileges
-    $default_tempauth_users = 'demo:demo:DEMO_PASS:.admin'
+    # Comma separated list of 'project:user:passwd:privileges'
+    $default_tempauth_users = ['demo:demo:DEMO_PASS:.admin']
     
     # Deploy a single node
     class{'openiosds':}
@@ -92,13 +92,17 @@ In a file called ``~/openio.pp``:
       ipaddress        => '0.0.0.0',
       sds_proxy_url    => "http://${ipaddr}:6006",
       auth_system      => 'tempauth',
-      tempauth_users   => [$default_tempauth_users],
+      tempauth_users   => $default_tempauth_users,
       memcache_servers => "${ipaddr}:6019",
     }
     openiosds::memcached {'memcached-0':
       ns        => 'OPENIO',
       ipaddress => $ipaddr,
     }
+
+   .. note::
+      - You can change the interface to be used to install OpenIO SDS by replacing ``$ipaddress`` by another IP of another interface on your Raspberry Pi. Defaults to the IP of the first interface. Note that name are not supported.
+      - You can change the default credentials by modifying ``demo:demo:DEMO_PASS:.admin`` according to your needs. It is a comma separated list of *'project:user:password:role'[,..]*
 
 
 Package Installation and Service Configuration
@@ -109,7 +113,7 @@ To do so, just apply the manifest created earlier:
 
    .. code-block:: console
 
-      $ sudo puppet apply --no-stringify_facts openio.pp
+      $ sudo puppet apply --no-stringify_facts ~/openio.pp
 
 This step may take a few minutes. Please be patient as it downloads and installs all necessary packages.
 When it's done, you can stop and disable the default services that are unecessary:
@@ -141,21 +145,13 @@ As you may have noticed the namespace is, by default, called ``OPENIO``.  The na
 
       $ openio --oio-ns=OPENIO directory bootstrap --no-rdir
 
-
-   And assign the rdir:
-
-   .. code-block:: console
-
-      $ openio --oio-ns=OPENIO volume admin bootstrap
-
-
 #. `meta0` and `meta1` restart
 
    Restart the meta0 and the meta1 services on each server:
 
    .. code-block:: console
 
-      $ gridinit_cmd restart @meta0 @meta1
+      $ sudo gridinit_cmd restart @meta0 @meta1
 
 #. Unlock all services:
 
@@ -165,13 +161,19 @@ As you may have noticed the namespace is, by default, called ``OPENIO``.  The na
 
       $ openio --oio-ns=OPENIO cluster unlockall
 
+#. Assign the rawx to a rdir
 
-   After unlocking, your OPENIO namespace is running!
+   .. code-block:: console
 
-   Be sure that every score is greater that 0 using `openio cluster list`:
+      $ openio --oio-ns=OPENIO volume admin bootstrap
+
+
+Be sure that every score is greater that 0 using `openio cluster list`:
 
    .. code-block:: console
 
       $ openio --oio-ns OPENIO cluster list
+
+Your namespace is now up and running!
 
    .. TODO ADD test installation section
