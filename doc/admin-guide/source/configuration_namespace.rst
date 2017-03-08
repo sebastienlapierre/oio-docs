@@ -1,8 +1,6 @@
-========================
-OpenIO SDS configuration
-========================
-
-Options
+=======================
+Namespace configuration
+=======================
 
 Namespace-wide global configuration
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -293,4 +291,3 @@ Don't use this option, it will be removed soon. It is turned down by default.
 .. code-block:: text
 
     zk_shuffled=yes|true|on|no|false|off
-

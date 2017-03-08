@@ -1,6 +1,6 @@
-==========
-Operations
-==========
+=======================
+Object Storage Commands
+=======================
 
 Container Lookup
 ~~~~~~~~~~~~~~~~

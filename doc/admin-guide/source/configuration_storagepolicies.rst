@@ -33,7 +33,7 @@ As shown in the example above, a custom storage policy has been created for mult
 
 See also: `Conscience`_.
 
-.. _`Conscience`: ./conscience.html
+.. _`Conscience`: ../arch-design/conscience.html
 
 Data Security
 -------------
@@ -82,7 +82,7 @@ the corresponding Storage Policy, as it may result in data loss.
 
 See also: `Erasure Coding`_ section.
 
-.. _`Erasure Coding`: ./objectstorage_ec.html
+.. _`Erasure Coding`: ./configuration_ec.html
 
 Usage
 -----
@@ -95,4 +95,4 @@ When an object is pushed, the storage policy is chosen in the following order:
 
 See also: `OpenIO SDS Configuration`_.
 
-.. _`OpenIO SDS Configuration`: ./operations_configuration.html
+.. _`OpenIO SDS Configuration`: ./configuration_namespace.html

@@ -1,6 +1,6 @@
-==========
-Operations
-==========
+==================
+Directory commands
+==================
 
 Directory Lookup
 ~~~~~~~~~~~~~~~~

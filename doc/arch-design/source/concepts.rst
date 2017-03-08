@@ -76,11 +76,11 @@ An aggregation of metrics reflecting the health of each service, usually
 between 0 and 100. Scores are computed by Conscience, and used by
 load-balancers. See `Load Balancing`_.
 
-
+See also
+--------
 .. _`Service Directory`: ./directory.html
 .. _`Object Storage`:    ./objectstorage.html
 .. _Conscience:          ./conscience.html
 .. _Slots:               ./conscience.html#slots
 .. _Pools:               ./conscience.html#pools
 .. _`Load Balancing`:    ./conscience.html#load-balancing
-
