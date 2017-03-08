@@ -2,7 +2,7 @@ On each server:
 
 1. Configure OpenIO SDS repository
 
-  Install some tools to make installation easier:
+  Install some tools to make the installation easier:
 
   .. code-block:: console
 
@@ -20,7 +20,7 @@ On each server:
  
     # curl http://mirror.openio.io/pub/repo/openio/APT-GPG-KEY-OPENIO-0 | sudo apt-key add -
 
-2. Install OpenIO puppet module:
+2. Install the OpenIO puppet module:
 
   .. code-block:: console
 
