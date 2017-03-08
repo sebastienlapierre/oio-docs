@@ -21,7 +21,7 @@ Suppose we have configured the following pool in /etc/oio/sds/[NS]/conscience-X/
     [pool:rawx21]
     targets=2,rawx-site1,rawx;1,rawx-site2,rawx
 
-We can then define a storage policy that uses this pool to replicate chunks 3 times on 2 different site following the 2+1 model.
+We can then define a storage policy that uses this pool to replicate chunks 3 times on 2 different sites following the 2+1 model.
 
 .. code-block:: text
 
@@ -58,7 +58,7 @@ By default, you have 3 data security policies available:
 The policies defined above can be interpreted as the following:
 
 - 2 replication policies (THREECOPIES/TWOCOPIES for 2x/3x replication),
-- a 6+3 Erasure Coding policy (6 data chunks + 3 parity chunks using Reed Soloman with liberasurecode).
+- a 6+3 Erasure Coding policy (6 data chunks + 3 parity chunks using Reed Solomon with liberasurecode).
 
 You can add more data security policies on top of the existing ones, or even alter the ones provided by default.
 Please note that it is not recommended to alter a data security entry after objects have already been created using
