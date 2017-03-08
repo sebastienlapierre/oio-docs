@@ -4,81 +4,65 @@ Storage Policies
 
 Storage Policies are the way to describe different storage tiers in your storage platform.
 
-A Storage Policy is defined by a Storage Class and a Data Security.
+Each storage policy must at least contain a Data Security policy, and can be used to target only certain pools.
 
-They are defined at the Namespace level and you configure a default Storage Policy.
-
-
-Example of a full Storage Policy configuration:
-
-   .. code-block:: text
-
-      [STORAGE_POLICY]
-      VIDEO=GOLD:EC_6_3
-      MAIL=SILVER:REPLI_3
-      DEFAULT=NONE:REPLI_2
-
-      [STORAGE_CLASS]
-      GOLD=SILVER,NONE
-      SILVER=NONE
-
-      [DATA_SECURITY]
-      REPLI_3=plain/nb_copy=3,distance=1
-      REPLI_2=plain/nb_copy=2,distance=1
-      EC_6_3=ec/algo=isa_l_rs_vand,k=6,m=3,distance=1
+Storage policies are defined for the Conscience service, and are thus available at the Namespace level.
 
 .. note::
-   You can name your storage policy as you like.
+   By default, the configuration file can be found at /etc/oio/sds/[NS]/conscience-X/conscience-X-policies.conf
 
-Storage Class
+Configuration
 -------------
 
-The Storage Class is a convenient way to mix different kind of storage hardware and manage them depending of their performance, cost, etc.
+Suppose we have configured the following pool in /etc/oio/sds/[NS]/conscience-X/conscience-X-services.conf
 
-Example of a Storage Class configuration:
+.. code-block:: text
 
-   .. code-block:: text
+    [pool:rawx21]
+    targets=2,rawx-site1,rawx;1,rawx-site2,rawx
 
-      [STORAGE_CLASS]
-      GOLD=SILVER,NONE
-      SILVER=NONE
+We can then define a storage policy that uses this pool to replicate chunks 3 times on 2 different site following the 2+1 model.
 
-.. note::
+.. code-block:: text
 
-   Note that when you define a Storage Class you can select fallback classes. Example: ``GOLD=SILVER,NONE`` defines a fallback on the ``SILVER`` for the ``GOLD`` Storage Class.
+    [STORAGE_POLICIES]
+    DUPONETHREE=NONE:THREECOPIES
+    DUPONETHREE_MULTISITE=rawx21:THREECOPIES
 
+As shown in the example above, a custom storage policy has been created for multi-site replication.
 
-.. note::
-   You can name your storage class as you like.
+See also: `Conscience`_.
 
+.. _`Conscience`: ./conscience.html
 
 Data Security
 -------------
 
 The Data Security describes the way an object is stored on the storage pool.
 
-You can choose between two security types:
+Each data security policy is derived from one of the supported security types. For the moment being, these are:
 
-* ``plain`` replication security
+* ``plain`` replication security (replicated data chunks)
 
-* ``ec`` erasure coding security
+* ``ec`` erasure coding security (data chunks + parity chunks)
 
-In the replication security, chunks are replicated at a configurable level.
+By default, you have 3 data security policies available:
 
-In the erasure coding security, chunks are split into data chunks and parity chunks.
+.. code-block:: text
 
-Example of a Data Security configuration:
+    [DATA_SECURITY]
+    THREECOPIES=plain/distance=1,nb_copy=3
+    TWOCOPIES=plain/distance=1,nb_copy=2
+    ERASURECODE=ec/k=6,m=3,algo=liberasurecode_rs_vand,distance=1
 
-   .. code-block:: text
+The policies defined above can be interpreted as the following:
 
-      [DATA_SECURITY]
-      REPLI_3=plain/nb_copy=3,distance=1
-      REPLI_2=plain/nb_copy=2,distance=1
-      EC_6_3=ec/algo=isa_l_rs_vand,k=6,m=3,distance=1
+- 2 replication policies (THREECOPIES/TWOCOPIES for 2x/3x replication),
+- a 6+3 Erasure Coding policy (6 data chunks + 3 parity chunks using Reed Soloman with liberasurecode).
 
-.. note::
-   You can name your data security as you like.
-
+You can add more data security policies on top of the existing ones, or even alter the ones provided by default.
+Please note that it is not recommended to alter a data security entry after objects have already been created using
+the corresponding Storage Policy, as it may result in data loss.
 
 .. list-table:: Options
    :header-rows: 1
@@ -96,7 +80,19 @@ Example of a Data Security configuration:
    * - ``m``
      - erasure coding only: defines the number of parity chunks
 
-
-Find more details in the `Erasure Coding`_ section.
+See also: `Erasure Coding`_ section.
 
 .. _`Erasure Coding`: ./objectstorage_ec.html
+
+Usage
+-----
+
+When an object is pushed, the storage policy is chosen in the following order:
+
+- Object-level: when the Storage Policy is explicitely specified when pushing
+- Container-level: when the container where the object is created specifies a Storage Policy to use
+- Namespace-level: default behavior, will use the policy defined in /etc/oio/sds/[NS]/conscience-X/conscience-X.conf
+
+See also: `OpenIO SDS Configuration`_.
+
+.. _`OpenIO SDS Configuration`: ./operations_configuration.html
