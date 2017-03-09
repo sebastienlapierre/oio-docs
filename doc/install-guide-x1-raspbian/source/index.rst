@@ -14,6 +14,7 @@ Contents
 
    prerequisites.rst
    installation.rst
+   userguide.rst
 
 .. end of contents
 
