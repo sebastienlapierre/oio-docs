@@ -17,5 +17,5 @@ Here are simple examples for each API:
 - Using the `AWS Command Line Interface`_.
 
 .. _OpenIO SDS Command Line Interface: http://docs.openio.io/user-guide/openiocli.html
-.. _Openstack Swift Command Line Interface: http://docs.openio.io/user-guide/swiftcli.html#keystone
+.. _Openstack Swift Command Line Interface: http://docs.openio.io/user-guide/swiftcli.html#keystone-v2
 .. _AWS Command Line Interface: http://docs.openio.io/user-guide/awscli.html
