@@ -3,7 +3,7 @@ Installation
 ============
 
 Initialize
-~~~~~~~~~~
+==========
 
 .. only:: ubuntu or debian
 
@@ -14,7 +14,7 @@ Initialize
   .. include:: ../../install-common/source/initialize_centos.rst
 
 Repositories Configuration
-~~~~~~~~~~~~~~~~~~~~~~~~~~
+==========================
 
 .. only:: centos
 
@@ -34,57 +34,21 @@ Repositories Configuration
 
       .. code-block:: console
 
-         # yum -y install centos-release-openstack-mitaka
+         # sudo yum -y install centos-release-openstack-mitaka
 
    .. only:: debian
 
       .. code-block:: console
-         
+
          # curl http://mitaka-$(lsb_release -c -s).pkgs.mirantis.com/debian/dists/pubkey.gpg | sudo apt-key add -
 
          # echo "deb http://mitaka-$(lsb_release -c -s).pkgs.mirantis.com/$(lsb_release -i -s) $(lsb_release -c -s)-mitaka-backports main" | sudo tee /etc/apt/sources.list.d/mitaka.list
 
-Prerequisites
-~~~~~~~~~~~~~
-
-The OpenStack Swift proxy requires memcached. We use the system default install:
-
-   .. only:: centos
-
-      .. code-block:: console
-
-         # yum -y install memcached
-
-         # systemctl enable memcached.service
-
-         # systemctl start memcached.service
-
-
-   .. only:: ubuntu or debian
-
-      .. code-block:: console
-
-         # sudo apt-get update
-
-         # sudo apt-get install memcached
-
 
 Installation
-~~~~~~~~~~~~
+============
 
-We will use the OpenStack modules to install and configure OpenStack KeyStone. First, install Puppet:
-
-     .. only:: centos
-
-      .. code-block:: console
-
-         # yum -y install puppet
-
-   .. only:: ubuntu or debian
-
-      .. code-block:: console
-
-         # sudo apt-get install puppet
+We will use the OpenStack modules to install and configure OpenStack KeyStone.
 
 Install the module:
 
@@ -92,45 +56,31 @@ Install the module:
 
       .. code-block:: console
 
-         # puppet module install openstack-keystone
+         # sudo puppet module install openstack-keystone
 
    .. only:: ubuntu
 
       .. code-block:: console
 
-         # sed -i "s@'upstart'@undef@" /etc/puppet/modules/keystone/manifests/params.pp
+         # sudo sed -i "s@'upstart'@undef@" /etc/puppet/modules/keystone/manifests/params.pp
 
    .. only:: centos
 
       .. code-block:: console
 
-         # puppet module install openstack-keystone
+         # sudo puppet module install openstack-keystone
 
-Install OpenIO Puppet module:
-
-     .. only:: centos
-
-      .. code-block:: console
-
-         # yum -y install puppet-openio-sds
-
-   .. only:: ubuntu or debian
-
-      .. code-block:: console
-
-         # sudo apt-get install puppet-module-openio-openiosds
 
 Puppet Manifest
-~~~~~~~~~~~~~~~
+===============
 
 Here is an example manifest you can tune to your own settings:
 
 - `sds_proxy_url` should point to an oioproxy service. `6006` is the default port, so you can just change the `OIO_SERVER` to another server where OpenIO is installed.
-- `admin_token` is used for KeyStone administrative purpose only.
-- Change the password fields.
-- The `demo` user will be created for testing purpose, following the example of the OpenStack KeyStone documentation.
+- `admin_token` is used for KeyStone administrative purpose only, to secure your installation, modify it.
+- To secure your installation, modify the password fields `SWIFT_PASS` and `DEMO_PASS`.
 
-In a file called ``/root/openio.pp``:
+In a file called ``~/openio.pp``:
 
    .. code-block:: puppet
 
@@ -209,16 +159,19 @@ In a file called ``/root/openio.pp``:
       admin_password => 'SWIFT_PASS',
     }
 
+  .. note::
+    The `demo` user will be created for testing purpose, following the example of the OpenStack KeyStone documentation.
+
 
 Package Installation and Service Configuration
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+==============================================
 
-Using puppet, we will install the packages and configure the services.
+Now let's run Puppet, it install the packages and configure the services.
 Apply the manifest:
 
    .. code-block:: console
 
-      # puppet apply --no-stringify_facts /root/openio.pp
+      # sudo puppet apply --no-stringify_facts ~/openio.pp
 
 This step may take a few minutes. Please be patient as it downloads and installs all necessary packages.
-Once completed, all services should be installed and running using OpenIO GridInit.
+Once completed, all services will be installed and running using OpenIO GridInit init system.

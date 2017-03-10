@@ -46,12 +46,11 @@ Contents
    :maxdepth: 2
 
    installation.rst
-   swift_client.rst
-   s3_client.rst
+   userguide.rst
 
 .. end of contents
 
-Search in this guide
-~~~~~~~~~~~~~~~~~~~~
+Search this guide
+~~~~~~~~~~~~~~~~~
 
 * :ref:`search`
