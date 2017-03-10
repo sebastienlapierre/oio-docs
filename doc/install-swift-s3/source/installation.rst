@@ -76,7 +76,7 @@ Puppet Manifest
 
 Here is an example manifest you can tune to your own settings:
 
-- `sds_proxy_url` should point to an oioproxy service. `6006` is the default port, so you can just change the `OIO_SERVER` to another server where OpenIO is installed.
+- `OPENIO_PROXY_URL` should point to an oioproxy service. `6006` is the default port, so you can just change the `OIO_SERVER` to another server where OpenIO is installed.
 - `admin_token` is used for KeyStone administrative purpose only, to secure your installation, modify it.
 - To secure your installation, modify the password fields `SWIFT_PASS` and `DEMO_PASS`.
 
@@ -84,16 +84,22 @@ In a file called ``~/openio.pp``:
 
    .. code-block:: puppet
 
+    $openio_proxy_url = "http://OPENIO_PROXY_URL:6006"
+    $admin_token = 'KEYSTONE_ADMIN_UUID'
+    $swift_passwd = 'SWIFT_PASS'
+    $admin_passwd = 'ADMIN_PASS'
+    $demo_passwd = 'DEMO_PASS'
+
     class { 'keystone':
       verbose             => True,
-      admin_token         => 'KEYSTONE_ADMIN_UUID',
+      admin_token         => $admin_token,
       database_connection => 'sqlite:////var/lib/keystone/keystone.db',
     }
 
     # Adds the admin credential to keystone.
     class { 'keystone::roles::admin':
       email    => 'test@openio.io',
-      password => 'ADMIN_PASS',
+      password => $admin_passwd,
       admin               => 'admin',
       admin_tenant        => 'admin',
       admin_user_domain   => 'admin',
@@ -112,7 +118,7 @@ In a file called ``~/openio.pp``:
     keystone_user { 'swift':
       ensure   => present,
       enabled  => True,
-      password => 'SWIFT_PASS',
+      password => $swift_passwd,
     }
     keystone_user_role { 'swift@services':
       roles  => ['admin'],
@@ -139,7 +145,7 @@ In a file called ``~/openio.pp``:
     keystone_user { 'demo':
       ensure  => present,
       enabled => True,
-      password => "DEMO_PASS",
+      password => $demo_passwd,
     }
     keystone_role { '_member_':
       ensure => present,
@@ -153,10 +159,14 @@ In a file called ``~/openio.pp``:
         ns => 'OPENIO',
     }
     openiosds::oioswift {'oioswift-0':
-      ns             => 'OPENIO',
-      ipaddress      => '0.0.0.0',
-      sds_proxy_url  => 'http://OIO_SERVER:6006',
-      admin_password => 'SWIFT_PASS',
+      ns               => 'OPENIO',
+      ipaddress        => '0.0.0.0',
+      sds_proxy_url    => $openio_proxy_url,
+      admin_password   => $swift_passwd,
+      memcache_servers => "${ipaddress}:6019",
+    }
+    openiosds::memcached {'memcached-0':
+      ns => 'OPENIO',
     }
 
   .. note::
