@@ -1,11 +1,11 @@
-============================
-Configure your rawx services
-============================
+========================
+Configure a rawx service
+========================
 
 Preparation
 ~~~~~~~~~~~
 
-If you have several disks on the same node, or you want add a new disk on an existing node, you will need to deploy one rawx service per mount point, and specify the targeted directory for each.
+If you have several disks on the same node, or you want to add a new disk on an existing node, you will need to deploy one rawx service per mount point, and specify the targeted directory for each.
 
 We are assuming that your disks are already formatted (xfs) and mounted.
 
@@ -15,7 +15,7 @@ Configuration
 For each mount point, you will have to add/append this 3 blocks in your puppet file.
 
 - Replace ``MYNAMESPACE`` with the name of your namespace
-- Replace ``UID`` with an unused UID in your puppet file
+- Replace ``UID`` with an unused ID in your puppet file (use an incremental integer for exemple)
 - Replace ``port`` in the rawx block and in the rdir block with unused ones on your server
 - Replace ``documentRoot`` in the rawx block and ``volume`` in the oioblobindexer block with the targeted folder
 
@@ -40,12 +40,12 @@ For each mount point, you will have to add/append this 3 blocks in your puppet f
        volume => '/mnt/disk1',
      }
 
-You can add this three blocks configuration as many times as needed (one per disk).
+You can add these three blocks configuration as many times as needed (one per disk).
 
 Service configuration
 ~~~~~~~~~~~~~~~~~~~~~
 
-Using puppet, we will configure the rawx services.
+Using puppet, we will configure and start the rawx service.
 Apply the manifest:
 
    .. code-block:: console
@@ -53,7 +53,7 @@ Apply the manifest:
       # sudo puppet apply --no-stringify_facts /root/openio.pp
 
 
-Finally, unlock all services in the namespace to enable your new services:
+Finally, unlock all services in the namespace to enable your new service:
 
    .. code-block:: console
 
