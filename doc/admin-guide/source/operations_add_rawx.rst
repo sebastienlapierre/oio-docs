@@ -1,11 +1,11 @@
-============================
-Configure your rawx services
-============================
+========================
+Configure a rawx service
+========================
 
 Preparation
 ~~~~~~~~~~~
 
-If you have several disks on the same node, or you want add a new disk on an existing node, you will need to deploy one rawx service per mount point, and specify the targeted directory for each.
+If you have several disks on the same node, or you want to add a new disk on an existing node, you will need to deploy one rawx service per mount point, and specify the targeted directory for each.
 
 We are assuming that your disks are already formatted (xfs) and mounted.
 
@@ -15,7 +15,7 @@ Configuration
 For each mount point, you will have to add/append this 3 blocks in your puppet file.
 
 - Replace ``MYNAMESPACE`` with the name of your namespace
-- Replace ``UID`` with an unused UID in your puppet file
+- Replace ``ID`` with an unused UID in your puppet file
 - Replace ``port`` in the rawx block and in the rdir block with unused ones on your server
 - Replace ``documentRoot`` in the rawx block and ``volume`` in the oioblobindexer block with the targeted folder
 
