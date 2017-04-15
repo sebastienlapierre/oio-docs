@@ -46,3 +46,37 @@ Specifying the IP:
 
     # docker run -ti --tty -e OPENIO_IPADDR=192.168.56.101 --net=host openio/sds
 
+===========================
+Deploy the S3/Swift gateway
+===========================
+
+You can launch the OpenIO docker image with our S3 and Swift gateway embedded, and map its port (6007) to access to it remotely:
+
+Launching the container with the port mapping:
+
+   .. code-block:: console
+
+    # docker run -ti --tty -p 127.0.0.1:6007:6007 openio/sds
+
+The S3 and Swift gateway is now accessible on `127.0.0.1:6007`.
+
+You can use the swift APIs:
+
+   .. code-block:: console
+
+    # swift -A http://127.0.0.1:6007/auth/v1.0/ -U demo:demo -K DEMO_PASS stat`
+
+Or the S3 APIs with the aws CLI.
+First set your credentials in the following configuration file `~/.aws/credentials`:
+
+   .. code-block:: console
+
+    # [default]
+    aws_access_key_id=demo:demo
+    aws_secret_access_key=DEMO_PASS
+
+Finally you can pu your first object:
+
+   .. code-block:: console
+
+    # aws --endpoint-url http://127.0.0.1:6007 --no-verify-ssl s3 cp /etc/localtime s3://bucket1
