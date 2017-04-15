@@ -46,14 +46,14 @@ Service configuration
 ~~~~~~~~~~~~~~~~~~~~~
 
 Using puppet, we will configure and start the rawx service.
+
 Apply the manifest:
 
    .. code-block:: console
 
       # sudo puppet apply --no-stringify_facts /root/openio.pp
 
-
-Finally, unlock all services in the namespace to enable your new service:
+Finally, unlock all services in the namespace to enable your new services:
 
    .. code-block:: console
 
