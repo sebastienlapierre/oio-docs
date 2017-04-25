@@ -12,3 +12,4 @@ Operations
    operations_rebuild_rawx
    operations_scale_cluster
    operations_sizing
+   operations_log_format
