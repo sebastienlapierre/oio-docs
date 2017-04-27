@@ -13,7 +13,7 @@ valuated it is represented by a single dash character.
 COMMON envelope
 ~~~~~~~~~~~~~~~
 
-All the messages share this envelope. The first 3 fiellds depend on syslog,
+All the messages share this envelope. The first 3 fields depend on syslog,
 and all the others are populated by the application.
 
 .. list-table:: Common Header
