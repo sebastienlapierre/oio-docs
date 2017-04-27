@@ -64,7 +64,7 @@ You can use the swift APIs:
 
    .. code-block:: console
 
-    # swift -A http://127.0.0.1:6007/auth/v1.0/ -U demo:demo -K DEMO_PASS stat`
+    # swift -A http://127.0.0.1:6007/auth/v1.0/ -U demo:demo -K DEMO_PASS stat
 
 Or the S3 APIs with the aws CLI.
 First set your credentials in the following configuration file `~/.aws/credentials`:
