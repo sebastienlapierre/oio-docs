@@ -82,6 +82,7 @@ In a file called ``~/openio.pp``:
     $admin_passwd = 'ADMIN_PASS'
     $demo_passwd = 'DEMO_PASS'
 
+    # Deploy Openstack Keystone
     class { 'keystone':
       verbose             => True,
       admin_token         => $admin_token,
@@ -106,7 +107,7 @@ In a file called ``~/openio.pp``:
       region       => 'localhost-1',
     }
 
-    # Swift
+    # Openstack Swift service credentials
     keystone_user { 'swift':
       ensure   => present,
       enabled  => True,
@@ -129,7 +130,7 @@ In a file called ``~/openio.pp``:
       internal_url => "http://${ipaddress}:6007/v1.0/AUTH_%(tenant_id)s",
     }
 
-    # Demo account
+    # Demo account credentials
     keystone_tenant { 'demo':
       ensure  => present,
       enabled => True,
@@ -146,6 +147,8 @@ In a file called ``~/openio.pp``:
       roles  => ['admin','_member_'],
       ensure => present
     }
+
+    # Deploy OpenIO Swift/S3 gateway
     class {'openiosds':}
     openiosds::namespace {'OPENIO':
         ns => 'OPENIO',
@@ -162,7 +165,7 @@ In a file called ``~/openio.pp``:
     }
 
   .. note::
-    The `demo` user will be created for testing purpose, following the example of the OpenStack KeyStone documentation.
+    The `demo` user will be created for testing purpose, following the example of the OpenStack Keystone documentation.
 
 
 Package Installation and Service Configuration
