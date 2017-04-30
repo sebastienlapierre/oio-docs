@@ -13,3 +13,4 @@ Operations
    operations_scale_cluster
    operations_sizing
    operations_log_format
+   operations_configure_monitoring
