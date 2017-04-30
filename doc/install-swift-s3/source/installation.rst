@@ -36,14 +36,6 @@ Repositories Configuration
 
          # sudo yum -y install centos-release-openstack-mitaka
 
-   .. only:: debian
-
-      .. code-block:: console
-
-         # curl http://mitaka-$(lsb_release -c -s).pkgs.mirantis.com/debian/dists/pubkey.gpg | sudo apt-key add -
-
-         # echo "deb http://mitaka-$(lsb_release -c -s).pkgs.mirantis.com/$(lsb_release -i -s) $(lsb_release -c -s)-mitaka-backports main" | sudo tee /etc/apt/sources.list.d/mitaka.list
-
 
 Installation
 ============
