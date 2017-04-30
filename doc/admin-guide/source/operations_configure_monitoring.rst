@@ -126,10 +126,11 @@ Authentication
 ^^^^^^^^^^^^^^
 
 We recommend you to setup at least an authentication to your InfluxDB
-and/or to make the service listen only on a private IP.<br>
+and/or to make the service listen only on a private IP.
 Let's create a root user to access to the HTTP API of InfluxDB.
-Connect to InfluxDB through the command line as follows:<br>
-``# influx -execute "CREATE USER admin WITH PASSWORD '<password>' WITH ALL PRIVILEGES"``
+Connect to InfluxDB through the command line as follows::
+
+# influx -execute "CREATE USER admin WITH PASSWORD '<password>' WITH ALL PRIVILEGES"
 Then in your ``/etc/influxdb/influxdb.conf`` configuration file, in the
 ``[http]`` block, enable authentication::
 
