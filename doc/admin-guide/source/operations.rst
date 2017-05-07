@@ -14,3 +14,4 @@ Operations
    operations_sizing
    operations_log_format
    operations_configure_monitoring
+   operations_keystone_swift_integration
