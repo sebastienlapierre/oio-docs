@@ -2,19 +2,19 @@
 
   .. code-block:: console
 
-    # yum update -y
+    # sudo yum update -y
 
 2. Disable SELinux:
 
   .. code-block:: console
  
-    # sed -i -e 's@^SELINUX=enforcing$@SELINUX=disabled@g' /etc/selinux/config
+    # sudo sed -i -e 's@^SELINUX=enforcing$@SELINUX=disabled@g' /etc/selinux/config
 
 3. Disable firewall:
 
   .. code-block:: console
 
-    # systemctl stop firewalld.service ; systemctl disable firewalld.service
+    # sudo systemctl stop firewalld.service ; sudo systemctl disable firewalld.service
 
 4. Reboot to apply changes:
 
