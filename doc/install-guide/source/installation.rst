@@ -219,6 +219,9 @@ Next, we need to initialize a few components, namely ZooKeeper and meta0.
 
       We specify here that meta1 services will have 3 replicas.
 
+   .. note::
+
+      This command can be performed on any one of the servers.
 
 #. `meta0` and `meta1` restart
 
