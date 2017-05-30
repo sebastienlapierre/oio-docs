@@ -133,7 +133,7 @@ On each server, apply the manifest:
 
 This step may take a few minutes. Please be patient as it downloads and installs all necessary packages. 
 Once completed, all services should be installed and running using OpenIO GridInit.
-You can verify that everything went well by performing ``gridinit_cmd status`` on every node.
+You can verify that everything went well by performing ``sudo gridinit_cmd status`` on every node.
 
     .. code-block:: console
 
@@ -152,7 +152,7 @@ Next, we need to initialize a few components, namely ZooKeeper and meta0.
 
    .. code-block:: console
 
-      # zk-bootstrap.py OPENIO
+      # sudo zk-bootstrap.py OPENIO
 
    .. note::
 
@@ -236,7 +236,7 @@ Next, we need to initialize a few components, namely ZooKeeper and meta0.
 
    .. code-block:: console
 
-      # gridinit_cmd start
+      # sudo gridinit_cmd start
 
    .. warning::
 
