@@ -287,3 +287,7 @@ Next, we need to initialize a few components, namely ZooKeeper and meta0.
       # openio --oio-ns OPENIO cluster list
 
    .. TODO ADD test installation section
+
+#. All done !
+
+   Now you have your 3 nodes ready for testing purpose.
