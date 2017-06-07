@@ -20,12 +20,12 @@ An Object Storage API differs from a conventional filesystem: instead of directo
 
 Note that there is no hierarchy notion with containers: you cannot nest a container within an other, however you can emulate a nested folder structure with a naming convention for your objects. For example with an object name such as "documents/work/2015/finance/report.pdf" you can retrieve your files using the appropriate "path" prefix.
 
-In this SDK, you manipulate Container and Object, all you need is to initialize an ObjectStorageAPI object. To initialize it, you need the proxyd url and the namespace name:
+In this SDK, you manipulate Container and Object, all you need is to initialize an ObjectStorageApi object. To initialize it, you need the namespace name:
 
    .. code-block:: python
 
-      from oio.api import object_storage
-      s = object_storage.ObjectStorageAPI(NAMESPACE, PROXYD_URL)
+      from oio import ObjectStorageApi
+      s = ObjectStorageApi(NAMESPACE)
 
 All of the sample code that follows assumes that you have correctly initialized a ObjectStorageAPI object.
 
@@ -49,14 +49,15 @@ Start by creating a container:
 
 Note that if you try to create a container more than once with the same name, the request is ignored
 
-Show a Container
-----------------
+Showing the description of a Container
+--------------------------------------
 
-To show a container:
+To show the description of a container:
 
    .. code-block:: python
 
-      print s.container_show(ACCOUNT, CONTAINER)
+      print s.container_get_properties(ACCOUNT, CONTAINER)
+
 
 Note that if you try to get a non-existent container, a ``NoSuchContainer`` exception is raised.
 
@@ -105,26 +106,29 @@ The Object Storage API lets you set and retrieve your own metadata on containers
 
 .. code-block:: python
 
-      meta = s.container_show(ACCOUNT, CONTAINER)
-      print "Metadata:", meta
+      meta = s.container_get_properties(ACCOUNT, CONTAINER)
+      print "Metadata:", meta['properties']
 
 It should output an empty dict, unless you added metadata to this container.
+The method returns a dictionary with two keys: ``properties`` and ``system`` which contain
+respectively the user set properties and the system properties.
 
 .. code-block:: python
 
       new_meta = {"color": "blue", "flag": "true"}
-      s.container_update(ACCOUNT, CONTAINER, new_meta)
+      s.container_set_properties(ACCOUNT, CONTAINER, properties=new_meta)
 
-      meta = s.container_show(ACCOUNT, CONTAINER)
-      print "Metadata:", meta
+      meta = s.container_get_properties(ACCOUNT, CONTAINER)
+      print "Metadata:", meta['properties']
 
 It should now output:
 
 .. code-block:: python
 
-      Metadata: {u'properties': {u'color': u'blue', u'flag': u'true'}}
+      Metadata: {u'color': u'blue', u'flag': u'true'}
 
-This is very similar for objects. You can use the methods ``object_show()`` and ``object_update()``.
+This is very similar for objects. You can use the methods ``object_get_properties()``
+(``object_show()`` in early versions) and ``object_set_properties()``.
 
 Listing Objects
 ---------------
