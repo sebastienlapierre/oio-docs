@@ -20,5 +20,5 @@
 
   .. code-block:: console
 
-    # reboot
+    # sudo reboot
 
