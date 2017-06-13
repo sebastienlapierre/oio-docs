@@ -167,12 +167,12 @@ its *K* and *M* parameters.
 
 * **+** Uses much less disk space, depending on your *K* and *M*
 * **+** Parallelize the reads and the writes
-* **+** Immediately informs th reader that the data has been corrupted
+* **+** Immediately informs the reader that the data has been corrupted
 * **-** Keeps K+M open sockets for each read/write operation
 * **-** Consumes CPU for both reading and writing
 * **-** Raw chunks cannot be used as-is
 
-Suh **data treatments** are coupled with the **storage classes** to form our
+Such **data treatments** are coupled with the **storage classes** to form our
 **storage policies** (what to do with the data, where to place it). There is a
 default storage policy for the namespace, and it can be overriden by a
 container-wide setting, then still overriden by a content-speciffic value, set
