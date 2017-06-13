@@ -5,7 +5,9 @@ Namespace configuration
 Namespace-wide global configuration
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Variables spread in via the conscience.
+Variables spread in via the conscience. Most of these will disappear soon, and
+be replaced by local ones.
+
 
 chunk_size
 ----------
@@ -146,6 +148,13 @@ Namespace-wide local configuration
 Variables present in namespace sections of the local configuration, read by all
 the services of that namespace.
 
+The complete list is maintained in the source tree, in Variables.md_.
+
+The variables described below should not be changed at runtime.
+
+
+.. _Variables.md: https://github.com/open-io/oio-sds/blob/master/Variables.md#fully-configurable-variables-compilation--runtime
+
 
 proxy
 -----
@@ -235,28 +244,6 @@ endpoints).
     event-agent=ipc:///path/to/event-agent.sock
     event-agent=tcp://IP:PORT
 
-log_outgoing
-------------
-
-Set to `false` by default. When it is actived the services generated an outgoing
-access log, for both UDP and TCP messages. Be careful, The generated log can
-grow rapidly!
-
-.. code-block:: text
-
-    log_outgoing=yes|true|on|no|false|off
-
-avoid_faulty_services
----------------------
-
-Turned off by default, this option is only considered by the `proxy`, `meta2`,
-`meta1` and `sqlx` services. Turning it on actives a short-term memory of the
-network errors that occured when contacting `gridd` services. When the number of
-errors during the reference period.
-
-.. code-block:: text
-
-    avoid_faulty_services=yes|true|on|no|false|off
 
 udp_allowed
 -----------
@@ -283,11 +270,4 @@ Set to 4 as a default.
 
     meta1_digits=0|1|2|3|4
 
-zk_shuffled
------------
 
-Don't use this option, it will be removed soon. It is turned down by default.
-
-.. code-block:: text
-
-    zk_shuffled=yes|true|on|no|false|off
