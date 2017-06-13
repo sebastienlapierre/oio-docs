@@ -35,35 +35,32 @@ will be consumed in the same order as they are declared, thus providing a
 fallback mechanism when more that one slot is assigned to a target.
 
 Configuration example (targets are separated by ';'):
- ``2,rawx-europe,rawx-asia;2,rawx-usa,rawx-asia``
+
+::
+
+ targets=2,rawx-europe,rawx-asia;2,rawx-usa,rawx-asia
+ min_dist=2
+
 means
  *Take 2 rawx services in Europe (or in Asia if there are no more
- in Europe) and 2 in USA (or in Asia if there are no more in USA)*.
+ in Europe) and 2 in the USA (or in Asia if there are no more in the USA),
+ and ensure a minimum distance of 2 between each service*.
 
 Locations
 ---------
 The administrator can declare the location of each service as a
-dot-separated string like ``room1.rack1.server2.volume4`` (up to 8 words).
-This allows
+dot-separated string like ``room1.rack1.server2.volume4`` (1 to 4 words).
+The dotted string is internally converted to a 64-bit integer (by hashing
+each word using djb2). This allows
 finding services that are far from each other when doing erasure coding
 or data replication. If no location is set, the IP address and port of
 the services are used.
 
-The dotted string is internally converted to a 64-bit integer (by hashing
-each word using djb2) and a configurable mask is applied to check the distance
-between two randomly selected services.
-
-======================== ========================= ========================= =========
-Location                 room1.rack1.srv12.vol4    room1.rack1.srv33.vol5
------------------------- ------------------------- ------------------------- ---------
-Internal representation  0xAE13 CD77 81C3 AA8A     0xAE13 CD77 8206 AA8B
------------------------- ------------------------- ------------------------- ---------
-mask=0xFFFFFFFF00000000  0xAE13 CD77 0000 0000     0xAE13 CD77 0000 0000     Close
------------------------- ------------------------- ------------------------- ---------
-mask=0xFFFFFFFFFFFF0000  0xAE13 CD77 **81C3** 0000 0xAE13 CD77 **8206** 0000 Distant
-======================== ========================= ========================= =========
-
-
+The distance between two services is 4 less the number of words in common,
+starting from the left.
+``room1.rack1.srv12.vol4`` and ``room1.rack1.srv12.vol5`` have a distance
+of 1, ``room1.rack1.srv12.vol4`` and ``room1.rack2.srv11.vol4`` have a
+distance of 3.
 
 Load Balancing
 ~~~~~~~~~~~~~~
@@ -75,3 +72,7 @@ and then used to do a weighted random selection.
 
 The usable metrics can really be anything, but most commonly used are:
 CPU idle, IO wait, available storage on a volume.
+
+Note that services with low score (at least 1) can still be selected
+in the case when no high score service matches location constraints required
+by a service pool.
