@@ -10,7 +10,7 @@ We need to setup a few environment variables so everything we built previously i
 
    .. code-block:: shell
 
-      echo "export PATH=${PATH}:$sds/bin" >> $HOME/.bashrc
+      echo "export PATH=${PATH}:$SDS/bin" >> $HOME/.bashrc
       echo "export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$SDS/lib" >> $HOME/.bashrc
       source $HOME/.bashrc
 
@@ -38,10 +38,12 @@ Libraries:
           python-eventlet \
           python-gunicorn \
           python-plyvel \
+          python-redis \
           python-requests \
           python-werkzeug \
+          python-xattr \
           python-yaml \
-          python-plyvel \
+          python-zookeeper \
           redis-server \
           beanstalkd
 
@@ -50,8 +52,14 @@ Enable external services
 
    .. code-block:: shell
 
-      sudo systemctl enable beanstalkd redis-server
+      sudo systemctl enable beanstalkd
 
+We used to start redis from systemctl, but an instance will be started along with
+OpenIO SDS services.
 
 Create Sandbox
 --------------
+
+   .. code-block:: shell
+
+      oio-reset.sh -f etc/bootstrap-preset-MINIMAL.yml
