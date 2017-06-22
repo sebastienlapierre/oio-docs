@@ -20,14 +20,15 @@ An Object Storage API differs from a conventional filesystem: instead of directo
 
 Note that there is no hierarchy notion with containers: you cannot nest a container within an other, however you can emulate a nested folder structure with a naming convention for your objects. For example with an object name such as "documents/work/2015/finance/report.pdf" you can retrieve your files using the appropriate "path" prefix.
 
-In this SDK, you manipulate Container and Object, all you need is to initialize an ObjectStorageApi object. To initialize it, you need the namespace name:
+In this SDK, you manipulate Container and Object, all you need is to initialize an ``ObjectStorageApi`` object. To initialize it, you need the namespace name.
+Endpoint URLs and all other configuration options will be loaded from ``/etc/oio/sds.conf.d/NAMESPACE`` (or ``~/.oio/sds.conf`` if you have deployed from source).
 
    .. code-block:: python
 
       from oio import ObjectStorageApi
       s = ObjectStorageApi(NAMESPACE)
 
-All of the sample code that follows assumes that you have correctly initialized a ObjectStorageAPI object.
+All of the sample code that follows assumes that you have correctly initialized an ``ObjectStorageApi`` object.
 
 Accounts
 --------
