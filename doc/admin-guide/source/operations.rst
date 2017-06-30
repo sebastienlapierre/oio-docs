@@ -15,3 +15,4 @@ Operations
    operations_log_format
    operations_configure_monitoring
    operations_keystone_swift_integration
+   operations_backup_restore
