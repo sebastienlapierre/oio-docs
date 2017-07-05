@@ -23,6 +23,17 @@ Note that there is no hierarchy notion with containers: you cannot nest a contai
 In this SDK, you manipulate Container and Object, all you need is to initialize an ``ObjectStorageApi`` object. To initialize it, you need the namespace name.
 Endpoint URLs and all other configuration options will be loaded from ``/etc/oio/sds.conf.d/NAMESPACE`` (or ``~/.oio/sds.conf`` if you have deployed from source).
 
+A minimal configuration file would be:
+
+   .. code-block
+   
+   [NAMESPACE]
+   
+   proxy=http://YOUR_IP_ADRESS:6006
+   
+   
+Where NS would be your namespace.
+
    .. code-block:: python
 
       from oio import ObjectStorageApi
@@ -38,6 +49,17 @@ Accounts are a convenient way to manage the storage containers. Containers alway
 You can list containers for a specified Account. Accounts are also a great way to track your storage usage (Total bytes used, Total number of objects, Total number of containers).
 
 The API lets you set and retrieve your own metadata on accounts.
+
+To access the accounts service, you'll need to use the `oio.accounts.client.AccountClient` class. 
+
+   .. code-block:: python
+   
+      from oio.account.client import AccountClient
+      ac = AccountClient({"namespace": "NAMESPACE"}, proxy_endpoint="http://YOUR_IP_ADDRESS:6006")
+      
+      # Account creation: Returns true if everything went well.
+      ac.account_create("m_account_name")
+
 
 Creating a Container
 --------------------
