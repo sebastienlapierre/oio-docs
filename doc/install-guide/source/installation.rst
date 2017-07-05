@@ -291,4 +291,4 @@ Next, we need to initialize a few components, namely ZooKeeper and meta0.
 
 #. All done !
 
-   Now you have your 3 nodes ready for testing purpose.
+   Now you have your 3 nodes ready for testing purpose, and the proxy is accessible at http://YOUR_SERVER_IP:6006 (port 6006 by default as mentioned in the puppet manifest *(oioproxy_url)* )
