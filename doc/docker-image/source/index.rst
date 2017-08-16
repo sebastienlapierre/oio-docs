@@ -71,7 +71,7 @@ First set your credentials in the following configuration file `~/.aws/credentia
 
    .. code-block:: console
 
-    # [default]
+    [default]
     aws_access_key_id=demo:demo
     aws_secret_access_key=DEMO_PASS
 
