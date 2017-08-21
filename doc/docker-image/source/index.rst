@@ -74,6 +74,9 @@ First set your credentials in the following configuration file `~/.aws/credentia
     [default]
     aws_access_key_id=demo:demo
     aws_secret_access_key=DEMO_PASS
+    region=US
+    s3 =
+        signature_version = s3
 
 Finally you can pu your first object:
 
