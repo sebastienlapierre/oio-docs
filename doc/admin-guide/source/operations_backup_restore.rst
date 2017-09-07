@@ -119,6 +119,6 @@ or can be split in several smaller upload operations (the order must be respecte
 **Notes:**
 
 - Parts must be multiple of 1 MiB. Padding is used in backup files to avoid splitting block headers.
-- The upload of a tar archive without .container_manifest using multi part upload is unsupported.
-- it is not recommended to alter a tar archive (extracting then recompressing for example) as `.container_manifest` will be invalid
+- The upload of a tar archive without .__oio_container_manifest using multi part upload is unsupported.
+- it is not recommended to alter a tar archive (extracting then recompressing for example) as `.__oio_container_manifest` will be invalid
 - it is possible to upload any tar archive by using the single shot method. The archive must contain only regular files and directory entries; special files or links are not supported.
