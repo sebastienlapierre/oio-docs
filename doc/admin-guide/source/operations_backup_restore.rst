@@ -105,7 +105,7 @@ As backup, restore can be done with a single operation:
 
 .. code-block:: shell
 
-    $ curl -XPUT --data-binary @CONTAINER.tar 'http://SERVEUR:PORT/v1.0/container/dump?acct=ACCOUNT&ref=NEW_CONTAINER'
+    $ curl -XPUT --data-binary @CONTAINER.tar 'http://SERVEUR:PORT/v1.0/container/restore?acct=ACCOUNT&ref=NEW_CONTAINER'
 
 or can be split in several smaller upload operations (the order must be respected)
 
@@ -120,5 +120,5 @@ or can be split in several smaller upload operations (the order must be respecte
 
 - Parts must be multiple of 1 MiB. Padding is used in backup files to avoid splitting block headers.
 - The upload of a tar archive without .container_manifest using multi part upload is unsupported.
-- it is not recommanded to alter a tar archive (extracting then recompressing for example) as `.container_manifest` will be invalid
+- it is not recommended to alter a tar archive (extracting then recompressing for example) as `.container_manifest` will be invalid
 - it is possible to upload any tar archive by using the single shot method. The archive must contain only regular files and directory entries; special files or links are not supported.
