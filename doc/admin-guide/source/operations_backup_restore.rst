@@ -47,9 +47,9 @@ A backup can be tested on Linux filesystem with tar utility, with --ignore-zeros
 .. code-block:: shell
 
     $ tar tfiv CONTAINER.tar
-    .container_manifest
+    .__oio_container_manifest
     tar: Ignoring unknown extended header keyword 'mime_type'
-    .container_properties
+    .__oio_container_properties
     tar: Ignoring unknown extended header keyword 'mime_type'
     32M
     tar: Ignoring unknown extended header keyword 'mime_type'
@@ -64,7 +64,7 @@ To extract a tar and keep properties on files:
 .. code-block:: shell
 
     $ tar xvfi a.tar --xattrs
-    .container_manifest
+    .__oio_container_manifest
     tar: Ignoring unknown extended header keyword 'mime_type'
     32M
     tar: Ignoring unknown extended header keyword 'mime_type'
@@ -94,8 +94,8 @@ To extract a tar and keep properties on files:
 
 **Notes:**
 
-- file `.container_manifest` describe the mapping of container during download.
-- file `.container_properties` contains properties applied on container itself.
+- file `.__oio_container_manifest` describe the mapping of container during download.
+- file `.__oio_container_properties` contains properties applied on container itself.
 - each file has attribute 'mime_type', only used by restore operation.
 
 Restore
@@ -119,6 +119,6 @@ or can be split in several smaller upload operations (the order must be respecte
 **Notes:**
 
 - Parts must be multiple of 1 MiB. Padding is used in backup files to avoid splitting block headers.
-- The upload of a tar archive without .container_manifest using multi part upload is unsupported.
-- it is not recommended to alter a tar archive (extracting then recompressing for example) as `.container_manifest` will be invalid
+- The upload of a tar archive without .__oio_container_manifest using multi part upload is unsupported.
+- it is not recommended to alter a tar archive (extracting then recompressing for example) as `.__oio_container_manifest` will be invalid
 - it is possible to upload any tar archive by using the single shot method. The archive must contain only regular files and directory entries; special files or links are not supported.
