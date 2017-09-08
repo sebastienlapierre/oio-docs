@@ -28,10 +28,11 @@ You can also set specific parameters for the S3 commands:
 
      # echo "[default]
      s3 =
-     max_concurrent_requests = 10
-     max_queue_size = 100
-     multipart_threshold = 1GB
-     multipart_chunksize = 10MB" >~/.aws/config
+      signature_version = s3
+     	max_concurrent_requests = 10
+     	max_queue_size = 100
+     	multipart_threshold = 1GB
+     	multipart_chunksize = 10MB" >~/.aws/config
 
 
 Keystone
