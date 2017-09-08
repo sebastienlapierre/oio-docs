@@ -151,7 +151,7 @@ To set a property <key=value> to a given container:
 
    .. code-block:: console
 
-    # openio container set mu_container --property color=blue
+    # openio container set my_container --property color=blue
 
 Properties can be displayed with ``container show``:
 
