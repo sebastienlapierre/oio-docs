@@ -16,7 +16,7 @@ Contents
 
    configuration
    operations
-   debugging
+   troubleshooting
 
 .. end of contents
 

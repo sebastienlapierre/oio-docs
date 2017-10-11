@@ -23,7 +23,7 @@ You go check meta2 logs, but they don't really help you.
 Getting information
 -------------------
 
-Since openio-sds 4.2.0, there is a CLI for election debugging.
+Since openio-sds 4.2.0, there is a CLI for election troubleshooting.
 You can reproduce the election issue by running ``openio election status``,
 with the type of the problematic service, and the name of the container
 (alternatively, you can use the option ``--cid`` and the name of the base).
