@@ -1,0 +1,32 @@
+{
+    "repositories":{
+        "oio-sds":{
+            "repository":"http://github.com/open-io/oio-sds",
+            "id":"4.1.4"
+        },
+        "oio-api-java":{
+            "repository":"http://github.com/open-io/oio-api-java",
+            "id":"0.7.1"
+        }
+    },
+    "components":{
+        "oio-sds":{
+            "repository":"oio-sds",
+            "description":"Software defined Storage"
+        },
+        "oio-api-python":{
+            "repository":"oio-sds",
+            "path":"oio",
+            "description":"OpenIO SDS Python SDK"
+        },
+        "oio-api-c":{
+            "repository":"oio-sds",
+            "path":"core",
+            "description":"OpenIO SDS C SDK"
+        },
+        "oio-api-java":{
+            "repository":"oio-api-java",
+            "description":"OpenIO SDS Java SDK"
+        }
+    }
+}
