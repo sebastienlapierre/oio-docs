@@ -4,4 +4,5 @@ install:
   - virtualenv $HOME/venv && source $HOME/venv/bin/activate
   - pip install --upgrade pip setuptools virtualenv tox
 script:
+  - python -m json.tool doc/components.json
   - tox
