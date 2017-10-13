@@ -4,9 +4,33 @@
             "repository":"http://github.com/open-io/oio-sds",
             "id":"4.1.4"
         },
+        "oio-swift":{
+            "repository":"http://github.com/open-io/oio-swift",
+            "id":"1.0.1"
+        },
+        "swift3":{
+            "repository":"http://github.com/open-io/swift3",
+            "id":"1.12.0-openio"
+        },
         "oio-api-java":{
             "repository":"http://github.com/open-io/oio-api-java",
             "id":"0.7.1"
+        },
+        "oio-cb":{
+            "repository":"http://github.com/openio-private/oio-cb",
+            "id":"master"
+        },
+        "gridinit":{
+            "repository":"http://github.com/open-io/gridinit",
+            "id":"v1.6"
+        },
+        "oio-diag":{
+            "repository":"http://github.com/open-io/oio-diag",
+            "id":"1.0.0.b1"
+        },
+        "dockerfiles":{
+            "repository":"http://github.com/open-io/dockerfiles",
+            "id":"master"
         }
     },
     "components":{
