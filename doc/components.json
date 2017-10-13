@@ -24,13 +24,25 @@
             "repository":"http://github.com/open-io/gridinit",
             "id":"v1.6"
         },
+        "dockerfiles":{
+            "repository":"http://github.com/open-io/dockerfiles",
+            "id":"master"
+        },
         "oio-diag":{
             "repository":"http://github.com/open-io/oio-diag",
             "id":"1.0.0.b1"
         },
-        "dockerfiles":{
-            "repository":"http://github.com/open-io/dockerfiles",
+        "oio-fs":{
+            "repository":"https://github.com/openio-private/oio-fs",
             "id":"master"
+        },
+        "oio-replicator":{
+            "repository":"https://github.com/openio-private/oio-replicator",
+            "id":"0.4.1"
+        },
+        "oio-box":{
+            "repository":"https://github.com/openio-private/dovecot-storage-oiobox",
+            "id":"0.1.0.b1"
         }
     },
     "components":{
