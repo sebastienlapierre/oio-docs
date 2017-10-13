@@ -32,7 +32,7 @@ A minimal configuration file would be:
    proxy=http://YOUR_IP_ADRESS:6006
    
    
-Where NS would be your namespace.
+Where NAMESPACE would be the name of your namespace.
 
    .. code-block:: python
 
@@ -50,7 +50,7 @@ You can list containers for a specified Account. Accounts are also a great way t
 
 The API lets you set and retrieve your own metadata on accounts.
 
-To access the accounts service, you'll need to use the `oio.accounts.client.AccountClient` class. 
+To access the accounts service, you'll need to use the `oio.account.client.AccountClient` class. 
 
    .. code-block:: python
    
@@ -59,6 +59,9 @@ To access the accounts service, you'll need to use the `oio.accounts.client.Acco
       
       # Account creation: Returns true if everything went well.
       ac.account_create("m_account_name")
+
+
+Notice that the `proxy_endpoint` parameter is optional if you have the configuration file. This keyword was added in version 4.0.0 of OpenIO SDS.
 
 
 Creating a Container
