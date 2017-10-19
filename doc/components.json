@@ -17,7 +17,7 @@
             "id":"0.7.1"
         },
         "oio-cb":{
-            "repository":"http://github.com/openio-private/oio-cb",
+            "repository":"git@github.com:open-io/oio-cb.git",
             "id":"master"
         },
         "gridinit":{
@@ -33,15 +33,15 @@
             "id":"1.0.0.b1"
         },
         "oio-fs":{
-            "repository":"https://github.com/openio-private/oio-fs",
+            "repository":"git@github.com:open-io/oio-fs.git",
             "id":"master"
         },
         "oio-replicator":{
-            "repository":"https://github.com/openio-private/oio-replicator",
+            "repository":"git@github.com:open-io/oio-replicator.git",
             "id":"0.4.1"
         },
         "oio-box":{
-            "repository":"https://github.com/openio-private/dovecot-storage-oiobox",
+            "repository":"git@github.com:open-io/dovecot-storage-oiobox.git",
             "id":"0.1.0.b1"
         }
     },
@@ -53,7 +53,8 @@
         "oio-api-python":{
             "repository":"oio-sds",
             "path":"oio",
-            "description":"OpenIO SDS Python SDK"
+            "description":"OpenIO SDS Python SDK",
+            "doc":"epydoc"
         },
         "oio-api-c":{
             "repository":"oio-sds",
@@ -62,7 +63,8 @@
         },
         "oio-api-java":{
             "repository":"oio-api-java",
-            "description":"OpenIO SDS Java SDK"
+            "description":"OpenIO SDS Java SDK",
+            "doc":"gradle"
         }
     }
 }
