@@ -6,7 +6,7 @@ Introduction
 
 `Keystone <https://docs.openstack.org/developer/keystone/>`__ is an `Openstack <https://www.openstack.org/>`__ service that provides API client authentication,
 service discovery, and distributed multi-tenant authorization by implementing
-OpenStack?s Identity API.
+OpenStack's Identity API.
 
 `Swift <https://docs.openstack.org/developer/swift/>`__ is Openstack object store.
 
