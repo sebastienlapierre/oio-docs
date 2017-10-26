@@ -13,6 +13,7 @@ Contents
    :maxdepth: 2
 
    python_sdk
+   java_sdk
 
 .. end of contents
 
