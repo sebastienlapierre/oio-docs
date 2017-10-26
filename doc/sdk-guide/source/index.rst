@@ -14,6 +14,7 @@ Contents
 
    python_sdk
    java_sdk
+   c_sdk
 
 .. end of contents
 
