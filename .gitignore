@@ -2,7 +2,7 @@
 target/
 /result-docs/
 build*/
-
+vars.export
 
 # Tox
 .tox/
