@@ -48,9 +48,23 @@ fi
 
 DOCTREES="${BUILD_DIR}.doctrees"
 
+# default values
+OIO_SDS_BRANCHNAME=${OIO_SDS_BRANCHNAME:-3.3.1}
+
 set -x
+# copy source directory before remplacing values
+rm -rf $DIRECTORY/source.work/
+cp -r $DIRECTORY/source $DIRECTORY/source.work
+grep -r OIO_SDS_BRANCHNAME $DIRECTORY/source.work || true
+find $DIRECTORY/source.work -type f -name \*.rst -exec \
+    sed -i \
+        -e "s/{{OIO_SDS_BRANCHNAME}}/$OIO_SDS_BRANCHNAME/g" \
+        \{\} \;
+
 sphinx-build -E -W -d $DOCTREES -b html \
-    $TAG_OPT $DIRECTORY/source $BUILD_DIR
+    $TAG_OPT $DIRECTORY/source.work $BUILD_DIR
+
+rm -rf $DIRECTORY/source.work/
 set +x
 
 if [ "$TARGET" != "" ] ; then
