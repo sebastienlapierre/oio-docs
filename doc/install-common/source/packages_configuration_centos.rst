@@ -4,7 +4,7 @@ On each server:
 
   .. code-block:: console
 
-    # sudo yum -y install http://mirror.openio.io/pub/repo/openio/sds/16.10/el/openio-sds-release-16.10-1.el.noarch.rpm
+    # sudo yum -y install http://mirror.openio.io/pub/repo/openio/sds/17.04/el/openio-sds-release-17.04-1.el.noarch.rpm
 
 2. Install OpenIO puppet module:
 
