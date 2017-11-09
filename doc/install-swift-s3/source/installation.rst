@@ -34,7 +34,7 @@ Repositories Configuration
 
       .. code-block:: console
 
-         # sudo yum -y install centos-release-openstack-mitaka
+         # sudo yum -y install centos-release-openstack-pike
 
 
 Installation
