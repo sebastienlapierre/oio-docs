@@ -10,7 +10,9 @@ mkdir -p "$BUILD"
 
 
 # Build the oio-sds variables
-$BUILD/oio-sds/confgen.py rst $BUILD/oio-sds/conf.json || true
+$BUILD/oio-sds/confgen.py rst $BUILD/oio-sds/conf.json \
+  "$BUILD/doc/source/admin-guide/variables.rst" || true
+
 
 # Build the Java API javadoc
 if which gradle 2>/dev/null >/dev/null ; then
@@ -28,13 +30,18 @@ fi
 # Build the C api doc
 if which doxygen 2>/dev/null >/dev/null ; then
   if [[ -r "$BUILD/oio-sds/core/Doxyfile" ]] ; then
+    sed -i \
+      -e 's/GENERATE_HTML.*/GENERATE_HTML = FALSE/' \
+      -e 's/GENERATE_LATEX.*/GENERATE_LATEX = FALSE/' \
+      -e 's/GENERATE_RTF.*/GENERATE_RTF = FALSE/' \
+      -e 's/GENERATE_XML.*/GENERATE_XML = TRUE/' \
+      "$BUILD/oio-sds/core/Doxyfile"
     # Intentionally ignore the error
-    ( "$BUILD/oio-sds/core" && doxygen ) || true
+    ( cd "$BUILD/oio-sds/core" \ && doxygen ) || true
+    if [[ -d "$BUILD/oio-sds/core/xml" ]] ; then
+      cp -rp "$BUILD/oio-sds/core/xml" doc/oio-sds-c-api
+    fi
   fi
-fi
-
-if [[ -d "$BUILD/oio-sds/core/html" ]] ; then
-  cp -rp "$BUILD/oio-sds/core/html" result-docs/c-api
 fi
 
 
@@ -44,5 +51,13 @@ if [[ -d "$BUILD/oio-sds/oio" ]] ; then
 fi
 
 
+# We configured sphinx to make it document the python sdk. The modules will
+# be loaded, we need even the dependencies.
+( cd "$BUILD/oio-sds" \
+  && pip install --upgrade -r test-requirements.txt \
+  && pip install --upgrade -r all-requirements.txt \
+  && python ./setup.py install )
+
+
 # Gather all the parts
-sphinx-build -E -d /tmp/sphinx doc result-docs
+sphinx-build -v -E -d /tmp/sphinx doc result-docs

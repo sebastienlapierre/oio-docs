@@ -1,7 +1,13 @@
 import alabaster
 
 html_theme_path = [alabaster.get_path()]
-extensions = ['alabaster']
+extensions = [
+        'alabaster',
+        'breathe',
+        'sphinx.ext.autodoc',
+        'sphinx.ext.viewcode',
+        'sphinx.ext.todo',
+        ]
 html_theme = 'alabaster'
 html_theme_options = {
         'github_user': 'open-io',
@@ -14,10 +20,17 @@ html_theme_options = {
         'head_font_family': 'regular_bold',
         'code_font_size': '0.9em',
         'page_width': '1280px',
-        'sidebar_width': '260px'
+        'sidebar_width': '320px'
         }
 html_sidebars = {'**': ['localtoc.html', 'sourcelink.html', 'searchbox.html']}
 html_static_path = ["_static/", ]
 templates_path = ['_templates']
 pygments_style = 'alabaster.support.Alabaster'
+source_suffix = '.rst'
+master_doc = 'index'
+
+breathe_default_project = "oio-sds-c-api"
+breathe_projects = {
+        "oio-sds-c-api": "./doc/oio-sds-c-api",
+        }
 
