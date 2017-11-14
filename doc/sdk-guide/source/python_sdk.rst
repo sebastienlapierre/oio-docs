@@ -11,7 +11,7 @@ Last version directly from Github:
 
    .. code-block:: shell
 
-      pip install git+git://github.com/open-io/oio-sds.git
+      pip install git+git://github.com/open-io/oio-sds.git@{{OIO_SDS_BRANCHNAME}}
 
 Basic Concepts
 --------------

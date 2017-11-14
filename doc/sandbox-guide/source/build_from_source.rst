@@ -71,7 +71,7 @@ Official OpenIO SDS source is available from Github.
 
    .. code-block:: shell
 
-      git clone https://github.com/open-io/oio-sds.git
+      git clone https://github.com/open-io/oio-sds.git -b {{OIO_SDS_BRANCHNAME}}
 
 
 Build
