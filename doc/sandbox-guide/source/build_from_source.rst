@@ -25,7 +25,7 @@ We provide easy access to build and runtime dependencies versions not available 
 
    .. code-block:: shell
 
-      echo "deb http://mirror.openio.io/pub/repo/openio/sds/16.10/Ubuntu/ xenial/" | sudo tee /etc/apt/sources.list.d/openio-sds.list
+      echo "deb http://mirror.openio.io/pub/repo/openio/sds/17.04/Ubuntu/ xenial/" | sudo tee /etc/apt/sources.list.d/openio-sds.list
       curl http://mirror.openio.io/pub/repo/openio/APT-GPG-KEY-OPENIO-0 | sudo apt-key add -
       sudo apt-get -y update
 
