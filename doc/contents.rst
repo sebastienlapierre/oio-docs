@@ -8,5 +8,6 @@
    source/install-guide/index
    source/arch-design/index
    source/project-guide/index
+   api/index
 
 .. end of contents

@@ -26,7 +26,6 @@ if [[ -d "$BUILD/oio-api-java/build/docs/javadoc" ]] ; then
   cp -rp "$BUILD/oio-api-java/build/docs/javadoc" result-docs/java-api
 fi
 
-
 # Build the C api doc
 if which doxygen 2>/dev/null >/dev/null ; then
   if [[ -r "$BUILD/oio-sds/core/Doxyfile" ]] ; then
@@ -37,7 +36,7 @@ if which doxygen 2>/dev/null >/dev/null ; then
       -e 's/GENERATE_XML.*/GENERATE_XML = TRUE/' \
       "$BUILD/oio-sds/core/Doxyfile"
     # Intentionally ignore the error
-    ( cd "$BUILD/oio-sds/core" \ && doxygen ) || true
+    ( cd "$BUILD/oio-sds/core" && doxygen ) || true
     if [[ -d "$BUILD/oio-sds/core/xml" ]] ; then
       cp -rp "$BUILD/oio-sds/core/xml" doc/oio-sds-c-api
     fi
