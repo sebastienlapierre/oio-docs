@@ -6,7 +6,7 @@
         },
         "oio-swift":{
             "repository":"http://github.com/open-io/oio-swift",
-            "id":"1.0.1"
+            "id":"1.0.2"
         },
         "swift3":{
             "repository":"http://github.com/open-io/swift3",
