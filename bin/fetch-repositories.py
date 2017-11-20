@@ -29,16 +29,29 @@ def clone_project(destdir, repository, url, id):
 
 
 def main():
-    destdir = sys.argv[1]
+    import argparse
+    parser = argparse.ArgumentParser(description="Fetch the components from git repositories")
+    parser.add_argument('--public', action='store_true',
+                        help="only public repos")
+    parser.add_argument('destdir', help='Destination directory')
+    args = parser.parse_args()
+
     with open('components.json', 'r') as fin:
         components_json = json.load(fin)
 
     repositories = components_json["repositories"]
 
+    try:
+        os.mkdir(args.destdir)
+    except OSError:
+        pass
+
     for name, descr in repositories.iteritems():
         url = descr["repository"]
         id = descr["id"]
-        clone_project(destdir, name, url, id)
+        if args.public and not url.startswith('http'):
+            continue
+        clone_project(args.destdir, name, url, id)
 
 
 if __name__ == '__main__':
