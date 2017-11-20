@@ -38,7 +38,7 @@ if which doxygen 2>/dev/null >/dev/null ; then
     # Intentionally ignore the error
     ( cd "$BUILD/oio-sds/core" && doxygen ) || true
     if [[ -d "$BUILD/oio-sds/core/xml" ]] ; then
-      cp -rp "$BUILD/oio-sds/core/xml" doc/oio-sds-c-api
+      cp -rp "$BUILD/oio-sds/core/xml" "$BUILD/oio-sds-c-api"
     fi
   fi
 fi

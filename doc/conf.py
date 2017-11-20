@@ -30,7 +30,8 @@ source_suffix = '.rst'
 master_doc = 'index'
 
 breathe_default_project = "oio-sds-c-api"
+breathe_default_members = ('members', 'undoc-members')
 breathe_projects = {
-        "oio-sds-c-api": "./oio-sds-c-api",
+        "oio-sds-c-api": "../build/oio-sds-c-api",
         }
 
