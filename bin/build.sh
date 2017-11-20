@@ -2,8 +2,11 @@
 set -e
 set -x
 
+TARGET=result-docs
 BUILD=$1
 [[ -n "$BUILD" ]]
+
+mkdir -p $TARGET
 
 # Prepare an environment for the building process
 mkdir -p "$BUILD"
@@ -24,7 +27,7 @@ if which gradle 2>/dev/null >/dev/null ; then
 fi
 
 if [[ -d "$BUILD/oio-api-java/build/docs/javadoc" ]] ; then
-  cp -rp "$BUILD/oio-api-java/build/docs/javadoc" result-docs/java-api
+  cp -rp "$BUILD/oio-api-java/build/docs/javadoc" $TARGET/java-api
 fi
 
 
@@ -71,4 +74,4 @@ done
 
 
 # Gather all the parts
-sphinx-build -v -E -d /tmp/sphinx doc result-docs
+sphinx-build -v -E -d /tmp/sphinx doc $TARGET
