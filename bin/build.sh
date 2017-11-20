@@ -26,6 +26,7 @@ if [[ -d "$BUILD/oio-api-java/build/docs/javadoc" ]] ; then
   cp -rp "$BUILD/oio-api-java/build/docs/javadoc" result-docs/java-api
 fi
 
+
 # Build the C api doc
 if which doxygen 2>/dev/null >/dev/null ; then
   if [[ -r "$BUILD/oio-sds/core/Doxyfile" ]] ; then
@@ -56,6 +57,16 @@ fi
   && pip install --upgrade -r test-requirements.txt \
   && pip install --upgrade -r all-requirements.txt \
   && python ./setup.py install )
+
+
+# Patch the sources to expose the release of each component
+SED='sed -i '
+while read K V ; do
+  SED="${SED}-e s,{{$K}},$V,g "
+done < "${BUILD}/vars.export"
+find doc/ -type f -name '*.rst' | while read P ; do
+  $SED "$P"
+done
 
 
 # Gather all the parts
