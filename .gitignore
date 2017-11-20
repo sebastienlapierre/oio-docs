@@ -2,7 +2,15 @@
 target/
 /result-docs/
 build*/
-vars.export
+
+# auto-generated files
+/doc/source/admin-guide/variables.rst
+/doc/source/sdk-guide/python-api/
+/doc/source/sdk-guide/c-api/
+/doc/source/sdk-guide/java-api/
+/doc/oio-sds-c-api/
 
 # Tox
 .tox/
+vars.export
+

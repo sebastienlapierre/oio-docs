@@ -3,7 +3,7 @@ language: python
 install:
   - virtualenv $HOME/venv && source $HOME/venv/bin/activate
   - pip install --upgrade pip setuptools virtualenv tox
-  - sudo apt-get install -y --force-yes gradle python-epydoc
+  - sudo apt-get install -y --force-yes gradle doxygen
 script:
-  - python -m json.tool doc/components.json
+  - python -m json.tool components.json
   - tox
