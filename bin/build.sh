@@ -1,12 +1,13 @@
 #!/usr/bin/env bash
 set -e
 set -x
-BUILD=build
+
+BUILD=$1
+[[ -n "$BUILD" ]]
 
 # Prepare an environment for the building process
 mkdir -p "$BUILD"
 ./bin/gen-vars.py "$BUILD/vars.export"
-./bin/fetch-repositories.py $BUILD
 
 
 # Build the oio-sds variables
