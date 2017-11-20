@@ -1,5 +1,5 @@
 ==========
-C SDK
+C examples
 ==========
 
 This sections describes how to install and use the OpenIO SDS C SDK.

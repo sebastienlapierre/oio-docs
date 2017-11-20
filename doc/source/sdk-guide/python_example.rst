@@ -1,6 +1,6 @@
-==========
-Python SDK
-==========
+===============
+Python examples
+===============
 
 This sections describes how to install and use the OpenIO SDS Python SDK.
 

@@ -1,6 +1,6 @@
-==========
-Java SDK
-==========
+=============
+Java examples
+=============
 
 This sections describes how to install and use the OpenIO SDS Java SDK.
 
