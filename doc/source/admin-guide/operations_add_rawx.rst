@@ -57,6 +57,7 @@ Finally, unlock all services in the namespace to enable your new services:
 
    .. code-block:: console
 
+      # sudo gridinit_cmd restart @conscienceagent
       # openio --oio-ns=MYNAMESPACE cluster unlockall
 
 Be sure that every score is greater that 0 using `openio cluster list`:
