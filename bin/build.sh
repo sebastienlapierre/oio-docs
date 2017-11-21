@@ -14,8 +14,8 @@ mkdir -p "$BUILD"
 
 
 # Build the oio-sds variables
-$BUILD/oio-sds/confgen.py rst $BUILD/oio-sds/conf.json \
-  "$BUILD/doc/source/admin-guide/variables.rst" || true
+$BUILD/oio-sds/confgen.py rst "$BUILD/oio-sds/conf.json" \
+  doc/source/admin-guide/variables.rst || true
 
 
 # Build the Java API javadoc
