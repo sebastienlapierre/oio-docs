@@ -40,7 +40,7 @@ For each mount point, you will have to add/append this 3 blocks in your puppet f
        volume => '/mnt/disk1',
      }
 
-You can add these three blocks configuration as many times as needed (one per disk).
+You can add these three blocks configuration as many times as needed (once per disk).
 
 Service configuration
 ~~~~~~~~~~~~~~~~~~~~~
