@@ -25,7 +25,7 @@ For each mount point, you will have to add/append this 3 blocks in your puppet f
        ns        => 'MYNAMESPACE',
        ipaddress => $ipaddress,
        num => 'UID',
-       port => '6050'
+       port => '6050',
        documentRoot => '/mnt/disk1',
      }
      openiosds::rdir {'rdir-UID':
