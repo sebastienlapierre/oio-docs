@@ -6,7 +6,7 @@ The administration and operations guide is focused on explaining how to configur
 aspect of operating the platform by showing how to perform various administration tasks.
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 1
 
    configuration_ec
    configuration_namespace
