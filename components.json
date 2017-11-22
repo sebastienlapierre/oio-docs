@@ -20,12 +20,9 @@
             "repository":"git@github.com:open-io/oio-cb.git",
             "id":"master"
         },
-        "gridinit":{
-            "repository":"http://github.com/open-io/gridinit",
-            "id":"v1.6"
-        },
         "dockerfiles":{
             "repository":"http://github.com/open-io/dockerfiles",
+            "doc": false,
             "id":"master"
         },
         "oio-diag":{
@@ -41,26 +38,14 @@
             "id":"0.4.1"
         }
     },
-    "components":{
-        "oio-sds":{
-            "repository":"oio-sds",
-            "description":"Software defined Storage"
-        },
-        "oio-api-python":{
-            "repository":"oio-sds",
-            "path":"oio",
-            "description":"OpenIO SDS Python SDK",
-            "doc":"epydoc"
-        },
-        "oio-api-c":{
-            "repository":"oio-sds",
-            "path":"core",
-            "description":"OpenIO SDS C SDK"
-        },
-        "oio-api-java":{
-            "repository":"oio-api-java",
-            "description":"OpenIO SDS Java SDK",
-            "doc":"gradle"
-        }
+    "deps": {
+      "asn1c": {
+        "repository": "https://github.com/open-io/asn1c.git",
+        "id": "v0.9.27.1"
+      },
+      "gridinit": {
+        "repository": "https://github.com/open-io/gridinit.git",
+        "id": "v1.6"
+      }
     }
 }
