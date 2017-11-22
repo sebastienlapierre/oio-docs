@@ -18,9 +18,9 @@ for f in args.target:
             bulk.append(group)
 
 bulk = "\n".join(bulk)
-bulk = re.sub("^\s*// ?", "", bulk, flags=re.M|re.S|re.U)
-bulk = re.sub("^\s*//s*$", "", bulk, flags=re.M|re.S|re.U)
-bulk = re.sub("^\s*#  ?", "", bulk, flags=re.M|re.S|re.U)
-bulk = re.sub("^\s*#\s*$", "", bulk, flags=re.M|re.S|re.U)
+bulk = re.sub('^\s*// ?', "", bulk, flags=re.M|re.S|re.U)
+bulk = re.sub('^\s*//\s*$', "", bulk, flags=re.M|re.S|re.U)
+bulk = re.sub('^\s*#  ?', "", bulk, flags=re.M|re.S|re.U)
+bulk = re.sub('^\s*#\s*$', "", bulk, flags=re.M|re.S|re.U)
 print bulk
 
