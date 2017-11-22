@@ -13,6 +13,24 @@ mkdir -p "$BUILD"
 ./bin/gen-vars.py "$BUILD/vars.export"
 
 
+# Generate the RAWX API
+./bin/extract-doc.py --tag=RAWX \
+  $(find ../oio-sds/rawx-apache2/src -type f -name '*.c' -or -name '*.h') \
+  > doc/source/sdk-guide/rawx_api_calls.rst
+
+./bin/extract-doc.py --tag=CS \
+  $(find ../oio-sds/proxy -type f -name '*.c' -or -name '*.h') \
+  > doc/source/sdk-guide/proxy_cs_api_calls.rst
+
+./bin/extract-doc.py --tag=DIR \
+  $(find ../oio-sds/proxy -type f -name '*.c' -or -name '*.h') \
+  > doc/source/sdk-guide/proxy_dir_api_calls.rst
+
+./bin/extract-doc.py --tag=CONTAINER \
+  $(find ../oio-sds/proxy -type f -name '*.c' -or -name '*.h') \
+  > doc/source/sdk-guide/proxy_container_api_calls.rst
+
+
 # Build the oio-sds variables
 $BUILD/oio-sds/confgen.py rst "$BUILD/oio-sds/conf.json" \
   doc/source/admin-guide/variables.rst || true
