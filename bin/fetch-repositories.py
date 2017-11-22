@@ -30,9 +30,12 @@ def clone_project(destdir, repository, url, id):
 
 def main():
     import argparse
-    parser = argparse.ArgumentParser(description="Fetch the components from git repositories")
+    parser = argparse.ArgumentParser(description=
+            "Fetch the components from git repositories")
     parser.add_argument('--public', action='store_true',
                         help="only public repos")
+    parser.add_argument('--doc', action='store_true',
+                        help="only documented repos")
     parser.add_argument('destdir', help='Destination directory')
     args = parser.parse_args()
 
@@ -50,6 +53,9 @@ def main():
         url = descr["repository"]
         id = descr["id"]
         if args.public and not url.startswith('http'):
+            continue
+        if args.doc and not descr.get('doc', True):
+            # skip repos tagged as useless for doc generation
             continue
         clone_project(args.destdir, name, url, id)
 
