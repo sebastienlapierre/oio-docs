@@ -14,6 +14,8 @@ SDK guides
    proxy_cs_api
    proxy_dir_api
    proxy_container_api
+   acct_api
+   rdir_api
 
 .. end of contents
 
