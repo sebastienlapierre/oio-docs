@@ -15,20 +15,28 @@ mkdir -p "$BUILD"
 
 # Generate the RAWX API
 ./bin/extract-doc.py --tag=RAWX \
-  $(find ../oio-sds/rawx-apache2/src -type f -name '*.c' -or -name '*.h') \
+  $(find $BUILD/oio-sds/rawx-apache2/src -type f -name '*.c' -or -name '*.h') \
   > doc/source/sdk-guide/rawx_api_calls.rst
 
 ./bin/extract-doc.py --tag=CS \
-  $(find ../oio-sds/proxy -type f -name '*.c' -or -name '*.h') \
+  $(find $BUILD/oio-sds/proxy -type f -name '*.c' -or -name '*.h') \
   > doc/source/sdk-guide/proxy_cs_api_calls.rst
 
 ./bin/extract-doc.py --tag=DIR \
-  $(find ../oio-sds/proxy -type f -name '*.c' -or -name '*.h') \
+  $(find $BUILD/oio-sds/proxy -type f -name '*.c' -or -name '*.h') \
   > doc/source/sdk-guide/proxy_dir_api_calls.rst
 
 ./bin/extract-doc.py --tag=CONTAINER \
-  $(find ../oio-sds/proxy -type f -name '*.c' -or -name '*.h') \
+  $(find $BUILD/oio-sds/proxy -type f -name '*.c' -or -name '*.h') \
   > doc/source/sdk-guide/proxy_container_api_calls.rst
+
+./bin/extract-doc.py --tag=RDIR \
+  $(find $BUILD/oio-sds/rdir -type f -name '*.c' -or -name '*.h') \
+  > doc/source/sdk-guide/rdir_api_calls.rst
+
+./bin/extract-doc.py --tag=ACCT \
+  $(find $BUILD/oio-sds/oio/account -type f -name '*.py') \
+  > doc/source/sdk-guide/acct_api_calls.rst
 
 
 # Build the oio-sds variables

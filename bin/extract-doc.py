@@ -9,10 +9,16 @@ args = parser.parse_args()
 
 pattern = '%s{{(.*?)}}%s' % (args.tag, args.tag)
 extractor = re.compile(pattern, re.M|re.S|re.U)
+bulk = list()
 for f in args.target:
     with open(f) as fin:
         buf = fin.read()
     for match in extractor.finditer(buf):
         for group in match.groups():
-            print group
+            bulk.append(group)
+
+bulk = "\n".join(bulk)
+bulk = re.sub("^\s*// ?", "", bulk, flags=re.M|re.S|re.U)
+bulk = re.sub("^\s*#  ?", "", bulk, flags=re.M|re.S|re.U)
+print bulk
 

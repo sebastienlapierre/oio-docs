@@ -13,6 +13,8 @@ build*/
 /doc/source/sdk-guide/proxy_cs_api_calls.rst
 /doc/source/sdk-guide/proxy_dir_api_calls.rst
 /doc/source/sdk-guide/rawx_api_calls.rst
+/doc/source/sdk-guide/rdir_api_calls.rst
+/doc/source/sdk-guide/acct_api_calls.rst
 
 
 # Tox
