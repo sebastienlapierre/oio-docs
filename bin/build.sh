@@ -44,33 +44,15 @@ $BUILD/oio-sds/confgen.py rst "$BUILD/oio-sds/conf.json" \
   doc/source/admin-guide/variables.rst || true
 
 
-# Build the Java API javadoc
-if which gradle 2>/dev/null >/dev/null ; then
-  if [[ -r "$BUILD/oio-api-java/gradlew" ]] ; then
-    # Intentionally ignore the error
-    ( set +e ; cd "$BUILD/oio-api-java" && gradle javadocJar ) || true
-  fi
-fi
-
-if [[ -d "$BUILD/oio-api-java/build/docs/javadoc" ]] ; then
-  cp -rp "$BUILD/oio-api-java/build/docs/javadoc" $TARGET/java-api
-fi
-
-
-# Build the C api doc
 if which doxygen 2>/dev/null >/dev/null ; then
-  if [[ -r "$BUILD/oio-sds/core/Doxyfile" ]] ; then
-    sed -i \
-      -e 's/GENERATE_HTML.*/GENERATE_HTML = FALSE/' \
-      -e 's/GENERATE_LATEX.*/GENERATE_LATEX = FALSE/' \
-      -e 's/GENERATE_RTF.*/GENERATE_RTF = FALSE/' \
-      -e 's/GENERATE_XML.*/GENERATE_XML = TRUE/' \
-      "$BUILD/oio-sds/core/Doxyfile"
-    # Intentionally ignore the error
-    ( cd "$BUILD/oio-sds/core" && doxygen ) || true
-    if [[ -d "$BUILD/oio-sds/core/xml" ]] ; then
-      cp -rp "$BUILD/oio-sds/core/xml" "$BUILD/oio-sds-c-api"
-    fi
+  # Build the Java API javadoc
+  if [[ -r doc/Doxyfile-api-java ]] ; then
+    doxygen doc/Doxyfile-api-java
+  fi
+
+  # Build the C api doc
+  if [[ -r doc/Doxyfile-api-c ]] ; then
+    doxygen doc/Doxyfile-api-c
   fi
 fi
 
