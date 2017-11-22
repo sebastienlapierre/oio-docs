@@ -10,6 +10,7 @@ SDK guides
    c_example
    c_api
    java_example
+   java_api
    rawx_api
    proxy_cs_api
    proxy_dir_api
