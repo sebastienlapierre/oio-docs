@@ -2,8 +2,10 @@
 Java SDK Reference
 ==================
 
-.. doxygennamespace:: io
-   :project: oio-sds-java-api
+Coming soon...
+
+.. .. doxygennamespace:: io
+..    :project: oio-sds-java-api
 
 .. .. doxygenindex::
 ..    :project: oio-sds-java-api
