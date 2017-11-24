@@ -12,15 +12,15 @@ Deploy
 
 First, pull the `OpenIO Docker image <https://hub.docker.com/r/openio/sds/>`_ from the `Docker Hub <https://hub.docker.com>`_:
 
-   .. code-block:: console
+.. code-block:: console
 
-    # docker pull openio/sds
+   # docker pull openio/sds
 
 By default, start a simple namespace listening on 127.0.0.1 inside the container using docker run:
 
-   .. code-block:: console
+.. code-block:: console
 
-    # docker run -ti --tty openio/sds
+   # docker run -ti --tty openio/sds
 
 Using host network interface
 ----------------------------
@@ -30,15 +30,15 @@ You can start an instance using `Docker host mode networking <https://docs.docke
 
 Setting the interface:
 
-   .. code-block:: console
+.. code-block:: console
 
-    # docker run -ti --tty -e OPENIO_IFDEV=enp0s8 --net=host openio/sds
+   # docker run -ti --tty -e OPENIO_IFDEV=enp0s8 --net=host openio/sds
 
 Specifying the IP:
 
-   .. code-block:: console
+.. code-block:: console
 
-    # docker run -ti --tty -e OPENIO_IPADDR=192.168.56.101 --net=host openio/sds
+   # docker run -ti --tty -e OPENIO_IPADDR=192.168.56.101 --net=host openio/sds
 
 Deploy the S3/Swift gateway
 ---------------------------
@@ -47,32 +47,32 @@ You can launch the OpenIO docker image with our S3 and Swift gateway embedded, a
 
 Launching the container with the port mapping:
 
-   .. code-block:: console
+.. code-block:: console
 
-    # docker run -ti --tty -p 127.0.0.1:6007:6007 openio/sds
+   # docker run -ti --tty -p 127.0.0.1:6007:6007 openio/sds
 
 The S3 and Swift gateway is now accessible on `127.0.0.1:6007`.
 
 You can use the swift APIs:
 
-   .. code-block:: console
+.. code-block:: console
 
-    # swift -A http://127.0.0.1:6007/auth/v1.0/ -U demo:demo -K DEMO_PASS stat
+   # swift -A http://127.0.0.1:6007/auth/v1.0/ -U demo:demo -K DEMO_PASS stat
 
 Or the S3 APIs with the aws CLI.
 First set your credentials in the following configuration file `~/.aws/credentials`:
 
-   .. code-block:: console
+.. code-block:: console
 
-    [default]
-    aws_access_key_id=demo:demo
-    aws_secret_access_key=DEMO_PASS
-    region=US
-    s3 =
-        signature_version = s3
+   [default]
+   aws_access_key_id=demo:demo
+   aws_secret_access_key=DEMO_PASS
+   region=US
+   s3 =
+       signature_version = s3
 
 Finally you can pu your first object:
 
-   .. code-block:: console
+.. code-block:: console
 
-    # aws --endpoint-url http://127.0.0.1:6007 --no-verify-ssl s3 cp /etc/localtime s3://bucket1
+   # aws --endpoint-url http://127.0.0.1:6007 --no-verify-ssl s3 cp /etc/localtime s3://bucket1
