@@ -47,12 +47,12 @@ $BUILD/oio-sds/confgen.py rst "$BUILD/oio-sds/conf.json" \
 if which doxygen 2>/dev/null >/dev/null ; then
   # Build the Java API javadoc
   if [[ -r doc/Doxyfile-api-java ]] ; then
-    doxygen doc/Doxyfile-api-java
+    doxygen doc/Doxyfile-api-java > $BUILD/doxygen-java.out 2>&1
   fi
 
   # Build the C api doc
   if [[ -r doc/Doxyfile-api-c ]] ; then
-    doxygen doc/Doxyfile-api-c
+    doxygen doc/Doxyfile-api-c > $BUILD/doxygen-c.out 2>&1
   fi
 fi
 
