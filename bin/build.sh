@@ -47,12 +47,12 @@ $BUILD/oio-sds/confgen.py rst "$BUILD/oio-sds/conf.json" \
 if which doxygen 2>/dev/null >/dev/null ; then
   # Build the Java API javadoc
   if [[ -r doc/Doxyfile-api-java ]] ; then
-    doxygen doc/Doxyfile-api-java > $BUILD/doxygen-java.out 2>&1
+    doxygen doc/Doxyfile-api-java
   fi
 
   # Build the C api doc
   if [[ -r doc/Doxyfile-api-c ]] ; then
-    doxygen doc/Doxyfile-api-c > $BUILD/doxygen-c.out 2>&1
+    doxygen doc/Doxyfile-api-c
   fi
 fi
 
@@ -71,15 +71,20 @@ fi
   && python ./setup.py install )
 
 
-# Patch the sources to expose the release of each component
+# Generate a copy of all the sources to patch them, in order to expose
+# the release of each component
+if [[ -d doc2 ]] ; then
+  rm -rf doc2
+fi
+cp -rp doc doc2
+
 SED='sed -i '
 while read K V ; do
   SED="${SED}-e s,{{$K}},$V,g "
 done < "${BUILD}/vars.export"
-find doc/ -type f -name '*.rst' | while read P ; do
+find doc2/ -type f -name '*.rst' | while read P ; do
   $SED "$P"
 done
 
+sphinx-build -v -E -d /tmp/sphinx doc2 $TARGET
 
-# Gather all the parts
-sphinx-build -v -E -d /tmp/sphinx doc $TARGET
