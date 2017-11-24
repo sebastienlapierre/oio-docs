@@ -5,8 +5,8 @@ HowTo: OpenIO SDS on VMWare
 Description
 -----------
 
-Prereqisites
-------------
+Prerequisites
+-------------
 
 Installation
 ------------

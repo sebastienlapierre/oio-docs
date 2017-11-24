@@ -9,6 +9,7 @@ Each storage policy must at least contain a Data Security policy, and can be use
 Storage policies are defined for the Conscience service, and are thus available at the Namespace level.
 
 .. note::
+
    By default, the configuration file can be found at /etc/oio/sds/[NS]/conscience-X/conscience-X-policies.conf
 
 Configuration
@@ -21,6 +22,7 @@ Suppose we have configured the following pool in /etc/oio/sds/[NS]/conscience-X/
     [pool:rawx21]
     targets=2,rawx-site1,rawx;1,rawx-site2,rawx
 
+
 We can then define a storage policy that uses this pool to replicate chunks 3 times on 2 different sites following the 2+1 model.
 
 .. code-block:: text
@@ -28,6 +30,7 @@ We can then define a storage policy that uses this pool to replicate chunks 3 ti
     [STORAGE_POLICIES]
     DUPONETHREE=NONE:THREECOPIES
     DUPONETHREE_MULTISITE=rawx21:THREECOPIES
+
 
 As shown in the example above, a custom storage policy has been created for multi-site replication.
 

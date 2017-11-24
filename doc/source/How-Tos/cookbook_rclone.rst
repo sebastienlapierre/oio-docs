@@ -5,8 +5,8 @@ HowTo: RClone with OpenIO SDS
 Description
 -----------
 
-Prereqisites
-------------
+Prerequisites
+-------------
 
 Installation
 ------------
