@@ -1,3 +1,5 @@
+.. _label-intall-guide:
+
 ==================
 Install OpenIO SDS
 ==================

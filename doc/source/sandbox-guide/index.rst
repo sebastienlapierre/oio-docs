@@ -1,3 +1,5 @@
+.. _label-sandbox-guide:
+
 ================
 Deploy a sandbox
 ================
