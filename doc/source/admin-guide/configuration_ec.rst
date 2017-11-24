@@ -12,13 +12,13 @@ To use erasure coding, you must have a storage policy with an erasure coding dat
 
 Example of storage policy using erasure coding:
 
-   .. code-block:: text
+.. code-block:: text
 
-      [STORAGE_POLICY]
-      EC=NONE:EC_ISA_6_3
+   [STORAGE_POLICY]
+   EC=NONE:EC_ISA_6_3
 
-      [DATA_SECURITY]
-      EC_ISA_6_3=ec/k=6,m=3,algo=isa_l_rs_vand,distance=1
+   [DATA_SECURITY]
+   EC_ISA_6_3=ec/k=6,m=3,algo=isa_l_rs_vand,distance=1
 
 This describes a storage policy named ``EC`` configured with a data security called ``EC_ISA_6_3`` that uses
 the erasure coding backend ISA-L with the following parameters:
