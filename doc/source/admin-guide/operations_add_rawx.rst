@@ -19,26 +19,27 @@ For each mount point, you will have to add/append this 3 blocks in your puppet f
 - Replace ``port`` in the rawx block and in the rdir block with unused ones on your server
 - Replace ``documentRoot`` in the rawx block and ``volume`` in the oioblobindexer block with the targeted folder
 
-  .. code-block:: puppet
+.. code-block:: puppet
 
-     openiosds::rawx {'rawx-UID':
-       ns        => 'MYNAMESPACE',
-       ipaddress => $ipaddress,
-       num => 'UID',
-       port => '6050',
-       documentRoot => '/mnt/disk1',
-     }
-     openiosds::rdir {'rdir-UID':
-       ns        => 'MYNAMESPACE',
-       ipaddress => $ipaddress,
-       num => 'UID',
-       port => '6650'
-     }
-     openiosds::oioblobindexer { 'oio-blob-indexer-rawx-UID':
-       num => 'UID',
-       ns      => 'MYNAMESPACE',
-       volume => '/mnt/disk1',
-     }
+   openiosds::rawx {'rawx-UID':
+     ns        => 'MYNAMESPACE',
+     ipaddress => $ipaddress,
+     num => 'UID',
+     port => '6050',
+     documentRoot => '/mnt/disk1',
+   }
+   openiosds::rdir {'rdir-UID':
+     ns        => 'MYNAMESPACE',
+     ipaddress => $ipaddress,
+     num => 'UID',
+     port => '6650'
+   }
+   openiosds::oioblobindexer { 'oio-blob-indexer-rawx-UID':
+     num => 'UID',
+     ns      => 'MYNAMESPACE',
+     volume => '/mnt/disk1',
+   }
+
 
 You can add these three blocks configuration as many times as needed (once per disk).
 
@@ -49,21 +50,23 @@ Using puppet, we will configure and start the rawx service.
 
 Apply the manifest:
 
-   .. code-block:: console
+.. code-block:: console
 
-      # sudo puppet apply --no-stringify_facts /root/openio.pp
+   # sudo puppet apply --no-stringify_facts /root/openio.pp
+
 
 Finally, unlock all services in the namespace to enable your new services:
 
-   .. code-block:: console
+.. code-block:: console
 
-      # sudo gridinit_cmd restart @conscienceagent
-      # openio --oio-ns=MYNAMESPACE cluster unlockall
+   # sudo gridinit_cmd restart @conscienceagent
+   # openio --oio-ns=MYNAMESPACE cluster unlockall
+
 
 Be sure that every score is greater that 0 using `openio cluster list`:
 
-   .. code-block:: console
+.. code-block:: console
 
-      # openio --oio-ns MYNAMESPACE cluster list rawx
+   # openio --oio-ns MYNAMESPACE cluster list rawx
 
 
