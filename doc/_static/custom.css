@@ -1,7 +1,5 @@
 h1 { color: #ff1e1e; }
 h2 { color: #ff1e1e; }
-h3 { color: #ff1e1e; }
-h4 { color: #ff1e1e; }
-h5 { color: #ff1e1e; }
-h6 { color: #ff1e1e; }
+h3 { color: #000000; }
+h4 { color: #111111; }
 .section > :not(li) > a { color: #ff1e1e; text-decoration: underline !important; }
