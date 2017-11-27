@@ -9,8 +9,10 @@ aspect of operating the platform by showing how to perform various administratio
    :maxdepth: 1
 
    configuration_ec
-   configuration_namespace
    configuration_storagepolicies
+   configuration_namespace
+   configuration_swift
+   configuration_oiofs
 
    troubleshooting_elections
    troubleshooting_invalid_databases
