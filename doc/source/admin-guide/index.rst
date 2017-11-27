@@ -24,8 +24,5 @@ aspect of operating the platform by showing how to perform various administratio
    operations_scale_cluster
    operations_decommission_rawx
    operations_configure_monitoring
-   cookbook_rclone
-   cookbook_cyberduck
-   cookbook_vmware
 
 .. end of contents
