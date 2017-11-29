@@ -34,7 +34,7 @@ Repositories Configuration
 
       .. code-block:: console
 
-         # sudo yum -y install centos-release-openstack-pike
+         # sudo yum -y install epel-release centos-release-openstack-pike
 
 
 Installation
@@ -60,7 +60,11 @@ Install the module:
 
       .. code-block:: console
 
-         # sudo puppet module install openstack-keystone
+         # sudo yum install -y puppet curl
+         # sudo curl -L https://github.com/openstack/puppet-keystone/archive/stable/pike.tar.gz | tar xzf - -C /etc/puppet/modules/ ; sudo mv /etc/puppet/modules/puppet-keystone-stable-pike /etc/puppet/modules/keystone
+         # sudo curl -L https://github.com/openstack/puppet-openstacklib/archive/stable/pike.tar.gz | tar xzf - -C /etc/puppet/modules/ ; sudo mv /etc/puppet/modules/puppet-openstacklib-stable-pike /etc/puppet/modules/openstacklib
+         # sudo curl -L https://github.com/openstack/puppet-oslo/archive/stable/pike.tar.gz | tar xzf - -C /etc/puppet/modules/ ; sudo mv /etc/puppet/modules/puppet-oslo-stable-pike /etc/puppet/modules/oslo
+         # for module in puppetlabs/apache puppetlabs/inifile puppetlabs/stdlib ; do sudo puppet module install $module ; done
 
 
 Puppet Manifest
@@ -81,18 +85,25 @@ In a file called ``~/openio.pp``:
     $swift_passwd = 'SWIFT_PASS'
     $admin_passwd = 'ADMIN_PASS'
     $demo_passwd = 'DEMO_PASS'
+    $region = 'RegionOne'
 
     # Deploy Openstack Keystone
     class { 'keystone':
-      verbose             => True,
       admin_token         => $admin_token,
+      admin_password      => $admin_passwd,
       database_connection => 'sqlite:////var/lib/keystone/keystone.db',
+
+    }
+
+    # Use Apache httpd service with mod_wsgi
+    class { 'keystone::wsgi::apache':
+      ssl => false,
     }
 
     # Adds the admin credential to keystone.
     class { 'keystone::roles::admin':
-      email    => 'test@openio.io',
-      password => $admin_passwd,
+      email               => 'test@openio.io',
+      password            => $admin_passwd,
       admin               => 'admin',
       admin_tenant        => 'admin',
       admin_user_domain   => 'admin',
@@ -104,13 +115,13 @@ In a file called ``~/openio.pp``:
       public_url   => "http://${ipaddress}:5000",
       admin_url    => "http://${ipaddress}:5000",
       internal_url => "http://${ipaddress}:35357",
-      region       => 'localhost-1',
+      region       => $region,
     }
 
     # Openstack Swift service credentials
     keystone_user { 'swift':
       ensure   => present,
-      enabled  => True,
+      enabled  => true,
       password => $swift_passwd,
     }
     keystone_user_role { 'swift@services':
@@ -133,11 +144,11 @@ In a file called ``~/openio.pp``:
     # Demo account credentials
     keystone_tenant { 'demo':
       ensure  => present,
-      enabled => True,
+      enabled => true,
     }
     keystone_user { 'demo':
       ensure  => present,
-      enabled => True,
+      enabled => true,
       password => $demo_passwd,
     }
     keystone_role { '_member_':
@@ -154,11 +165,13 @@ In a file called ``~/openio.pp``:
         ns => 'OPENIO',
     }
     openiosds::oioswift {'oioswift-0':
-      ns               => 'OPENIO',
-      ipaddress        => '0.0.0.0',
-      sds_proxy_url    => $openio_proxy_url,
-      admin_password   => $swift_passwd,
-      memcache_servers => "${ipaddress}:6019",
+      ns                 => 'OPENIO',
+      ipaddress          => '0.0.0.0',
+      sds_proxy_url      => $openio_proxy_url,
+      admin_password     => $swift_passwd,
+      memcache_servers   => "${ipaddress}:6019",
+      region_name        => $region,
+      $middleware_swift3 => {'location' => $region},
     }
     openiosds::memcached {'memcached-0':
       ns => 'OPENIO',
