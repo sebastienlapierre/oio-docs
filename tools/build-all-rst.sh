@@ -13,7 +13,8 @@ for guide in arch-design \
              install-swift-s3 \
              sandbox-guide \
              sdk-guide \
-             install-guide-x1-raspbian
+             install-guide-x1-raspbian \
+             install-guide-x3-rpi-ubuntu
 do
     tools/build-rst.sh doc/$guide --build build \
         --target "$guide"
