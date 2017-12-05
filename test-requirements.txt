@@ -1,3 +1,4 @@
+tox>=1.6
 pbr>=1.6
 sphinx>=1.5.2
 Pygments>=2.2
@@ -6,3 +7,4 @@ doc8
 beautifulsoup4
 Jinja2
 lxml
+eventlet
