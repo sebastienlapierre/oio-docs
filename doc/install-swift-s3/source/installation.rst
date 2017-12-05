@@ -171,7 +171,7 @@ In a file called ``~/openio.pp``:
       admin_password     => $swift_passwd,
       memcache_servers   => "${ipaddress}:6019",
       region_name        => $region,
-      $middleware_swift3 => {'location' => $region},
+      middleware_swift3 => {'location' => $region},
     }
     openiosds::memcached {'memcached-0':
       ns => 'OPENIO',
