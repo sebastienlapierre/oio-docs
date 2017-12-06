@@ -1,7 +1,7 @@
 html_context = {
     'css_files': ['_static/styles.css'],
     'oio_versions': ['16.10', '17.04', '17.10'],
-    'default_path': ['source/admin-guide/configuration_ec.html']
+    'landing_page': 'source/sandbox-guide/quickstart.html'
 }
 extensions = [
         'breathe',
