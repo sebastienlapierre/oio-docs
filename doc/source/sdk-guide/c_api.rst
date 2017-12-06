@@ -1,3 +1,5 @@
+.. _ref-sdk-c:
+
 ===============
 C SDK Reference
 ===============
@@ -18,4 +20,3 @@ Url API
 .. .. doxygenenum::
 .. .. doxygentypedef::
 .. .. doxygenclass::
-

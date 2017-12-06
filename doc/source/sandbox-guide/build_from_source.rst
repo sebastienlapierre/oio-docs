@@ -1,3 +1,5 @@
+.. _ref-build-from-source:
+
 =================
 Build From Source
 =================

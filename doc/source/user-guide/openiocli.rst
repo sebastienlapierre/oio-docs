@@ -1,3 +1,5 @@
+.. _ref-user-guide:
+
 ===================
 OpenIO End User CLI
 ===================
