@@ -1,0 +1,86 @@
+{% extends '!layout.html' %}
+
+{% block extrahead %}
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Open+Sans" />
+{% endblock %}
+
+{% set css_files = css_files + ['https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css'] %}
+{% set script_files = script_files + ['_static/sidebar-fold.js'] %}
+
+{% block sidebarlogo %}
+  <h1><a href="..">{{category_title}}</a></li></h1>
+{% endblock %}
+
+{%- block relbar1 %}{% endblock %}
+{%- block relbar2 %}{% endblock %}
+
+{%- block content %}
+    <div class="document">
+        {%- block document %}
+            <div class="documentwrapper">
+                <div class="header-container">
+                    <div id="searchbox" role="search">
+                        <i class="searchbox-mobile-menu"></i>
+                        <form class="" action="{{ pathto('search') }}" method="get">
+                            <input  class="search" name="q" type="text"
+                                    placeholder="Search OpenIO docs"
+                                    autocomplete="off" spellcheck="false">
+                            <input type="hidden" name="check_keywords" value="yes" />
+                            <input type="hidden" name="area" value="default" />
+                        </form>
+                    </div>
+
+                    <select class="switch-version">
+                        {% for v in oio_versions %}
+                            <option id="opt-{{v|replace('.', '-')}}" value="{{v}}">Version {{v}}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                {%- if render_sidebar %}<div class="bodywrapper">{%- endif %}
+                <div class="body" role="main">
+                    {% block body %} {% endblock %}
+                </div>
+                {%- if render_sidebar %}</div>{%- endif %}
+
+                <div class="footer">
+                    <!-- Add this for suggest edits -->
+                    <!--div class="footer__suggest-edit">Suggest edits</div-->
+
+                    <a class="footer__community" href="http://slack.openio.io" target="_blank">
+                        <i></i>
+                        <span>Talk to community</span>
+                    </a>
+
+                    <div class="footer__license">
+                        OpenIO Docs is hosted on
+                        <a href="https://github.com/open-io/oio-docs" target="_blank">GitHub</a>
+                        and licensed under the
+                        <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank">
+                            Creative Commons Attribution 4.0 International License
+                        </a>.
+                    </div>
+
+                    <div class="footer__license__icons">
+                        <i class="footer__license__icons--cc"></i>
+                        <i class="footer__license__icons--by"></i>
+                    </div>
+                </div>
+            </div>
+        {%- endblock %}
+
+        {%- block sidebar2 %}{{ sidebar() }}{% endblock %}
+
+        <div class="sidebar-mini sidebar-hide">
+            <a class="sidebar-mini__icon"></a>
+        </div>
+    </div>
+
+    <div class="to-top-container">
+        <a class="to-top-container__button"></a>
+    </div>
+{%- endblock %}
+
+<div class="scroll_to_top"></div>
+
+{% block footer %}{% endblock %}

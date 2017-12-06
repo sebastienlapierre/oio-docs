@@ -62,14 +62,12 @@ if [[ -d "$BUILD/oio-sds/oio" ]] ; then
   sphinx-apidoc -o doc/source/sdk-guide/python-api "$BUILD/oio-sds/oio"
 fi
 
-
 # We configured sphinx to make it document the python sdk. The modules will
 # be loaded, we need even the dependencies.
 ( cd "$BUILD/oio-sds" \
   && pip install --upgrade -r test-requirements.txt \
   && pip install --upgrade -r all-requirements.txt \
   && python ./setup.py install )
-
 
 # Generate a copy of all the sources to patch them, in order to expose
 # the release of each component
@@ -88,3 +86,10 @@ done
 
 sphinx-build -v -E -d /tmp/sphinx doc2 $TARGET
 
+# Patch all HTML to remove generated CSS theme
+set +x
+for file in $(find $TARGERT -name "*.html")
+do
+    sed -i '/basic\.css/d' $file
+done
+set -x
