@@ -37,7 +37,9 @@
 
                     <select class="switch-version">
                         {% for v in oio_versions %}
-                            <option id="opt-{{v|replace('.', '-')}}" value="{{v}}">Version {{v}}</option>
+                            <option id="opt-{{v|replace('.', '-')}}" value="{{v}}">
+                                {{'Release' if v != 'master'}} {{v|capitalize}}
+                            </option>
                         {% endfor %}
                     </select>
                 </div>

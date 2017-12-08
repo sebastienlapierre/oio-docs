@@ -105,7 +105,7 @@ input[type='text'] {
 /* Logo */
 
 .logo {
-    background: url('/_static/images/openiodocs-logo.svg') no-repeat;
+    background: url('./images/openiodocs-logo.svg') no-repeat;
     background-position: cover;
     width: 160px;
     height: 41px;
@@ -137,15 +137,15 @@ a.extlinks__link:hover {
 }
 
 .extlinks__link.extlinks__link--oio {
-    background: url('/_static/images/ico-join-openio.svg') no-repeat;
+    background: url('./images/ico-join-openio.svg') no-repeat;
 }
 
 .extlinks__link.extlinks__link--github {
-    background: url('/_static/images/ico-join-github.svg') no-repeat;
+    background: url('./images/ico-join-github.svg') no-repeat;
 }
 
 .extlinks__link.extlinks__link--slack {
-    background: url('/_static/images/ico-join-slack.svg') no-repeat;
+    background: url('./images/ico-join-slack.svg') no-repeat;
 }
 
 
@@ -168,7 +168,7 @@ a.extlinks__link:hover {
     width: 19%;
     -webkit-appearance: none;
     -moz-appearance: none;
-    background: url('/_static/images/ui-select.svg') no-repeat;
+    background: url('./images/ui-select.svg') no-repeat;
     padding: 4px;
     padding-left: 12px;
     font-size: 0.8em;
@@ -196,7 +196,7 @@ a.extlinks__link:hover {
 
 #searchbox:after {
     content: "";
-    background: url('/_static/images/ui-ico-search.svg') no-repeat;
+    background: url('./images/ui-ico-search.svg') no-repeat;
     background-position: cover;
     width: 22px;
     height: 22px;
@@ -221,7 +221,7 @@ a.extlinks__link:hover {
     }
 
     .searchbox-mobile-menu {
-        background: url('/_static/images/ui-ico-nav-burger.svg') no-repeat;
+        background: url('./images/ui-ico-nav-burger.svg') no-repeat;
         background-size: cover;
         width: 24px;
         height: 24px;
@@ -392,7 +392,7 @@ div.document {
     width: 30px;
     height: 30px;
     display: block;
-    background: url('/_static/images/ui-ico-nav-burger.svg') no-repeat;
+    background: url('./images/ui-ico-nav-burger.svg') no-repeat;
     background-position: cover;
     margin: 38px 15px;
     cursor: pointer;
@@ -419,7 +419,7 @@ div.document {
     width: 100%;
     height: 100%;
     display: block;
-    background: url('/_static/images/ui-scroll-to-top.svg') no-repeat;
+    background: url('./images/ui-scroll-to-top.svg') no-repeat;
     background-position: cover;
     cursor: pointer;
     transition: all 200ms;
@@ -434,7 +434,7 @@ div.document {
     position: absolute;
     top: 55px;
     right: 14px;
-    background: url('/_static/images/ui-ico-nav-collapse.svg') no-repeat;
+    background: url('./images/ui-ico-nav-collapse.svg') no-repeat;
     background-position: cover;
     width: 30px;
     height: 30px;
@@ -721,7 +721,7 @@ a.footer__community {
 a.footer__community i {
     width: 64px;
     height: 64px;
-    background: url('/_static/images/slack-app-icon.png') no-repeat;
+    background: url('./images/slack-app-icon.png') no-repeat;
     background-size: cover;
     border: none !important;
     box-shadow: none !important;
@@ -777,9 +777,9 @@ a.footer__community:after {
 }
 
 .footer__license__icons--cc {
-    background: url('/_static/images/ico-cc.svg') no-repeat;
+    background: url('./images/ico-cc.svg') no-repeat;
 }
 
 .footer__license__icons--by {
-    background: url('/_static/images/ico-by.svg') no-repeat;
+    background: url('./images/ico-by.svg') no-repeat;
 }
