@@ -1,3 +1,5 @@
+.. _ref-docker-image:
+
 ============================
 OpenIO Official Docker Image
 ============================

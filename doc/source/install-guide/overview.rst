@@ -1,3 +1,5 @@
+.. _ref-install-guide:
+
 ===================
 Deployment Overview
 ===================
@@ -88,4 +90,3 @@ Account services
 The account service is a stateless service, using a Redis Sentinel cluster as a backend. It stores account related informations. The account service requires at least 2 instances but 3 is optimial for small clusters. The Redis Sentinel cluster is composed of 3 instances of Redis Sentinel and Redis backend services.
 
 The account service is CPU bound whereas Redis backend can be more IO intensive.
-

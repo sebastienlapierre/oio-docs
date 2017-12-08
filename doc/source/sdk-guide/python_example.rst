@@ -1,3 +1,5 @@
+.. _ref-sdk-python:
+
 ===============
 Python examples
 ===============
@@ -26,10 +28,10 @@ Endpoint URLs and all other configuration options will be loaded from ``/etc/oio
 A minimal configuration file would be:
 
 .. code-block:: text
-   
+
    [NAMESPACE]
    proxy=http://YOUR_IP_ADRESS:6006
-   
+
 
 Where NAMESPACE would be the name of your namespace.
 
@@ -49,13 +51,13 @@ You can list containers for a specified Account. Accounts are also a great way t
 
 The API lets you set and retrieve your own metadata on accounts.
 
-To access the accounts service, you'll need to use the `oio.account.client.AccountClient` class. 
+To access the accounts service, you'll need to use the `oio.account.client.AccountClient` class.
 
 .. code-block:: python
-   
+
    from oio.account.client import AccountClient
    ac = AccountClient({"namespace": "NAMESPACE"}, proxy_endpoint="http://YOUR_IP_ADDRESS:6006")
-   
+
    # Account creation: Returns true if everything went well.
    ac.account_create("m_account_name")
 

@@ -1,3 +1,5 @@
+.. _ref-use-case:
+
 =============================================
 Configuring Cloudberry Backup with OpenIO SDS
 =============================================

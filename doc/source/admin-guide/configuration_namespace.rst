@@ -1,3 +1,5 @@
+.. _ref-admin-guide:
+
 =====================================
 Tweak the variables of your namespace
 =====================================
@@ -107,5 +109,3 @@ Set to 4 as a default.
 
 
 .. include:: variables.rst
-
-

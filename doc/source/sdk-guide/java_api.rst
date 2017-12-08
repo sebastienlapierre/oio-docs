@@ -1,3 +1,5 @@
+.. _ref-sdk-java:
+
 ==================
 Java SDK Reference
 ==================
@@ -9,19 +11,18 @@ Coming soon...
 
 .. .. doxygenindex::
 ..    :project: oio-sds-java-api
-.. 
+..
 .. .. doxygenfunction::
 ..    :project: oio-sds-java-api
-.. 
+..
 .. .. doxygenstruct::
 ..    :project: oio-sds-java-api
-.. 
+..
 .. .. doxygenenum::
 ..    :project: oio-sds-java-api
-.. 
+..
 .. .. doxygentypedef::
 ..    :project: oio-sds-java-api
-.. 
+..
 .. .. doxygenclass::
 ..    :project: oio-sds-java-api
-
