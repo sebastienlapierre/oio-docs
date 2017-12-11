@@ -10,6 +10,7 @@ $(document).ready(function() {
         'sidebar': $('.sphinxsidebar')
     }
 
+    $("#preload").removeClass('preload');
     s.toc.addClass('toctree-closed');
     s.ttc.hide();
 
@@ -26,11 +27,10 @@ $(document).ready(function() {
     function refreshSidebar() {
         viewPort = !!($(document).width() > 1200);
 
-
         if(viewPort) {
             if(initialLoad) {
                 s.sidebar.addClass('animation-off');
-                s.sidebar.addClass('open')
+                s.sidebar.addClass('open');
             }
 
             initialLoad = false;
@@ -166,4 +166,14 @@ function debounce(f, delay) {
             f.apply(ctx, args);
         }, delay);
 	};
+};
+
+
+/* IE Polyfill */
+String.prototype.endsWith = function(pattern) {
+  var d = this.length - pattern.length;
+  return d >= 0 && this.lastIndexOf(pattern) === d;
+};
+String.prototype.startsWith = function(pattern) {
+  return this.indexOf(pattern) === 0;
 };

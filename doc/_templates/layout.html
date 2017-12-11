@@ -81,11 +81,13 @@
             </div>
         {%- endblock %}
 
-        {%- block sidebar2 %}{{ sidebar() }}{% endblock %}
+        <span id="preload" class="preload">
+            {%- block sidebar2 %}{{ sidebar() }}{% endblock %}
 
-        <div class="sidebar-mini sidebar-hide">
-            <a class="sidebar-mini__icon"></a>
-        </div>
+            <div class="sidebar-mini sidebar-hide">
+                <a class="sidebar-mini__icon"></a>
+            </div>
+        </span>
     </div>
 
     <div class="to-top-container">
