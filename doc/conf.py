@@ -16,7 +16,7 @@ html_static_path = ['_static/', ]
 templates_path = ['_templates/']
 source_suffix = '.rst'
 master_doc = 'index'
-pygments_style = 'manni'
+pygments_style = 'default'
 
 breathe_default_project = "oio-sds-c-api"
 breathe_default_members = ('members', 'undoc-members')

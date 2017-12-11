@@ -1,21 +1,13 @@
-@font-face {
-  font-family: 'regular_bold';
-  src: url('http://www.openio.io/wp-content/themes/openio/fonts/Regular-Bold.woff') format('woff');
-  font-weight: normal;
-  font-style: normal;
-}
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,700');
 
-@font-face {
-  font-family: 'regular';
-  src: url('http://www.openio.io/wp-content/themes/openio/fonts/Regular-Regular.woff') format('woff');
-  font-weight: normal;
-  font-style: normal;
+html {
+    font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
 }
 
 body {
     background-color: #fff;
     color: #4a4a4a;
-    font-family: "Open Sans";
+    font-family: 'Open Sans', sans-serif;
     font-size: 17px;
     line-height: 1.6;
     text-transform: none;
@@ -23,10 +15,8 @@ body {
 }
 
 h1, h2, h3, h4, h5, h6 {
-    font-family: regular_bold;
     font-weight: 700;
     color: #1781ff;
-    line-height: 1.1;
     margin: 1.6em 0 0.8em;
     text-align: left;
 }
@@ -67,17 +57,28 @@ a {
 
 /* document wrapper specific */
 
-.documentwrapper a {
+.documentwrapper a.reference {
     color: #1781ff;
-    text-decoration: underline;
+    text-decoration: none;
+    background-image: linear-gradient(to right, #1781ff 100%, transparent 75%);
+    background-position: 0 1.2em;
+    background-repeat: repeat-x;
+    background-size: 8px 1px;
+    z-index: -1;
 }
 
-.documentwrapper a:after {
-    content: " ";
+.documentwrapper a.reference.external:after {
+    content: "";
+    background: url('./images/arrow.svg') no-repeat;
+    width: 0.35em;
+    height: 0.35em;
+    background-size: cover;
+    display: inline-block;
+    margin: 2px 1px 2px 5px;
 }
 
 .documentwrapper a:hover {
-    text-decoration: none;
+    background: none;
 }
 
 a[name] {
@@ -163,18 +164,28 @@ a.extlinks__link:hover {
     position: relative;
 }
 
-.switch-version {
+select.switch-version {
     height: 44px;
     width: 19%;
     -webkit-appearance: none;
     -moz-appearance: none;
+    -ms-appearance: none;
+    -o-appearance: none;
+    appearance: none;
+    text-indent: 0px;
+    text-overflow: '';
     background: url('./images/ui-select.svg') no-repeat;
     padding: 4px;
     padding-left: 12px;
     font-size: 0.8em;
     background-position: calc(100% - 16px) 50%;
     border-radius: 4px;
-    border-color: #a9a9a9;
+    border: 1px solid #a9a9a9 !important;
+    cursor: pointer;
+}
+
+.switch-version option {
+    border: 0;
 }
 
 #searchbox {
@@ -192,22 +203,31 @@ a.extlinks__link:hover {
     color: #4a4a4a;
     overflow: hidden;
     padding-left: 12px;
+    color: #000;
 }
 
-#searchbox:after {
-    content: "";
-    background: url('./images/ui-ico-search.svg') no-repeat;
-    background-position: cover;
+#searchbox .search + .search-icon {
+    top: 25%;
+    left: calc(100% - 28px);
     width: 22px;
     height: 22px;
+    background-image: url('./images/ui-ico-search.svg');
+    display: block;
     position: absolute;
-    left: calc(100% - 28px);
-    margin-top: -33px;
-    z-index: 8;
+    cursor: pointer;
+}
+
+#searchbox .search:focus + .search-icon {
+    background-image: url('./images/ui-ico-search-blue.svg');
+}
+
+#searchbox .search:focus {
+    box-shadow: inset 0 0 0 2px #1781ff;
+
 }
 
 @media (max-width: 1199px) {
-    .switch-version {
+    select.switch-version {
         width: 25%;
     }
 
@@ -251,7 +271,7 @@ a.extlinks__link:hover {
         left: calc(100% - 38px);
     }
 
-    .switch-version {
+    select.switch-version {
         width: 100%;
         margin-top: 5px;
     }
@@ -285,28 +305,27 @@ ul.search > li {
     font-size: 0.7em;
 }
 
-
-
 /* Sidebar */
 
 .sphinxsidebar {
     height: 100vh;
-    transition: all 200ms;
-    -webkit-transform:translate3d(-100vw, 0, 0);
-    -moz-transform: translate3d(-100vw, 0, 0);
-    -o-transform: translate3d(-100vw, 0, 0);
-    transform: translate3d(-100vw, 0, 0);
+    visibility: hidden;
     width: 308px;
     flex-grow: 0;
     flex-shrink: 0;
+    transition: all 200ms;
+    -webkit-transform:translate3d(-308px, 0, 0);
+    -moz-transform: translate3d(-308px, 0, 0);
+    -o-transform: translate3d(-308px, 0, 0);
+    transform: translate3d(-308px, 0, 0);
+}
+
+.animation-off {
+  transition: all 0ms !important;
 }
 
 .sphinxsidebar h1 {
     display: none;
-}
-
-.sphinxsidebar a {
-    font-family: regular;
 }
 
 div.document {
@@ -358,11 +377,6 @@ div.document {
     padding: 15px 0 0 0;
     background-color: #a9a9a9;
     border-right: 1px solid #f1f1f1;
-    -webkit-transition: all;
-    -o-transition: all;
-    transition: all;
-    -webkit-transition-duration: 250ms;
-    transition-duration: 250ms;
     padding-bottom: 20px;
 }
 
@@ -384,7 +398,6 @@ div.document {
     -moz-transform: translate3d(0, 0, 0);
     -o-transform: translate3d(0, 0, 0);
     transform: translate3d(0, 0, 0);
-    transition: all 200ms;
     display: none;
 }
 
@@ -454,10 +467,10 @@ div.document {
 
 @media (max-width: 1199px) {
     .sphinxsidebar {
-        -webkit-transform:translate3d(-250px, 0, 0);
-        -moz-transform: translate3d(-250px, 0, 0);
-        -o-transform: translate3d(-250px, 0, 0);
-        transform: translate3d(-250px, 0, 0);
+        -webkit-transform:translate3d(-80vw, 0, 0);
+        -moz-transform: translate3d(-80vw, 0, 0);
+        -o-transform: translate3d(-80vw, 0, 0);
+        transform: translate3d(-80vw, 0, 0);
         width: 40%;
         border: 0;
         position: fixed;
@@ -486,7 +499,6 @@ div.document {
     -moz-transform: translate3d(0, 0, 0);
     -o-transform: translate3d(0, 0, 0);
     transform: translate3d(0, 0, 0);
-    transition: all 200ms;
 }
 
 @media (max-width: 1199px) {
@@ -512,11 +524,11 @@ div.document {
 }
 
 .toctree-l1 > a {
-    font-size: 0.9em;
+    font-size: 1em;
     text-transform: uppercase;
     font-weight: 700;
     display: block;
-    padding: 15px 35px;
+    padding: 15px 35px 15px 15px;
     transition: all 200ms;
     -moz-transition: all 200ms;
     -webkit-transition: all 200ms;
@@ -546,10 +558,10 @@ li.toctree-l1.current .toctree-l2.current > a {
 
 li.toctree-l2 > a {
     text-transform: none;
-    padding: 6px 35px;
+    padding: 6px 35px 6px 20px;
     color: #515151;
     display: block;
-    font-size: 0.85em;
+    font-size: 1em;
     position: relative;
     -webkit-transition: color;
     -o-transition: color;
@@ -560,17 +572,17 @@ li.toctree-l2 > a {
 
 /* Hover: Links */
 .toctree-l2 > a:hover, .toctree-l1 > a:hover {
-    color: #ffffff;
+    color: #000000;
 }
 
 /* Hover Links 2 */
 .toctree-l1:hover > a, .toctree-l1.current .toctree-l2:hover > a {
-    color: #ffffff;
+    color: #000000;
 }
 
 /* Hover: Buttons */
 .toctree-l1:hover:after, .toctree-l1:hover:before {
-    color: #ffffff;
+    color: #000000;
 }
 
 .toctree-l1:after, .toctree-l1:before {
@@ -682,6 +694,7 @@ div.highlight {
 
 div.highlight pre {
     padding: 10px;
+    font-family: 'Consolas', 'Menlo', 'Deja Vu Sans Mono', 'Bitstream Vera Sans Mono', monospace;
     /*white-space: pre-wrap;
     white-space: -moz-pre-wrap;
     white-space: -pre-wrap;
@@ -723,22 +736,28 @@ a.footer__community i {
     height: 64px;
     background: url('./images/slack-app-icon.png') no-repeat;
     background-size: cover;
-    border: none !important;
-    box-shadow: none !important;
     display: block;
     transform: translate(0, 0);
-    transition: all 200ms;
+
 }
 
-a.footer__community:hover i {
-    transform: translate(0, -5px);
+a.footer__community i:after {
+    content: "";
+    width: 64px;
+    height: 64px;
+    box-shadow: 0 0 6px 1px rgba(0,0,0,0.50), inset  0 0 3px 1px rgba(0,0,0,0.50);
     transition: all 200ms;
+    opacity: 0;
+    display: block;
+}
+
+a.footer__community:hover i:after {
+    opacity: 1;
 }
 
 a.footer__community span {
     margin-top: 21px;
     margin-left: 18px;
-    font-family: regular_bold;
     font-weight: 900;
     font-size: 0.8em;
     color: #515151;
@@ -760,6 +779,11 @@ a.footer__community:after {
 
 .footer__license > a {
     color: #999999;
+    text-decoration: underline;
+}
+
+.footer__license > a:hover {
+    text-decoration: none;
 }
 
 .footer__license__icons {
