@@ -3,6 +3,7 @@
 {% block extrahead %}
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Open+Sans" />
+    <link rel="icon" type="image/png" href="{{pathto('_static/images/favicon-16x16.png', 1)}}">
     <script>
     if(window.location.href.endsWith('/'))
         window.location.href+="{{landing_page or 'source/sandbox-guide/quickstart.html'}}"
@@ -26,10 +27,11 @@
                 <div class="header-container">
                     <div id="searchbox" role="search">
                         <i class="searchbox-mobile-menu"></i>
-                        <form class="" action="{{ pathto('search') }}" method="get">
-                            <input  class="search" name="q" type="text"
+                        <form id="searchform" class="" action="{{ pathto('search') }}" method="get">
+                            <input  class="search" id="search-input" name="q" type="text"
                                     placeholder="Search OpenIO docs"
                                     autocomplete="off" spellcheck="false">
+                            <label class="search-icon" for="search-input"></label>
                             <input type="hidden" name="check_keywords" value="yes" />
                             <input type="hidden" name="area" value="default" />
                         </form>
@@ -68,8 +70,12 @@
                     </div>
 
                     <div class="footer__license__icons">
-                        <i class="footer__license__icons--cc"></i>
-                        <i class="footer__license__icons--by"></i>
+                        <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank">
+                            <i class="footer__license__icons--cc"></i>
+                        </a>
+                        <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank">
+                            <i class="footer__license__icons--by"></i>
+                        </a>
                     </div>
                 </div>
             </div>

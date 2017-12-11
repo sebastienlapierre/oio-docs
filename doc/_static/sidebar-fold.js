@@ -17,10 +17,24 @@ $(document).ready(function() {
     $('.sphinxsidebarwrapper .toctree-l1.current').removeClass('toctree-closed');
 
 
-
     var viewPort = !!($(document).width() > 1200);
     var sidebarVisible = !!($(document).width() > 1200);
-    (viewPort)?showSidebar():hideSidebar();
+
+    if(viewPort) {
+        s.sidebar.addClass('animation-off');
+        $('.sidebar-mini').hide();
+        s.sidebar.removeClass('sidebar-hide');
+        s.sidebar.addClass('open')
+        sidebarVisible=true;
+        s.sidebar.delay(200).queue(function(next) {
+            s.sidebar.removeClass('animation-off');
+            next();
+        });
+    }
+    else
+        hideSidebar();
+
+    s.sidebar.css({'visibility': 'visible'});
 
     s.toc.on('click', function(e) {
         if($(e.target).parent().attr('class').startsWith('toctree-l2'))
@@ -42,11 +56,11 @@ $(document).ready(function() {
     function hideSidebar() {
         s.sidebar.removeClass('open');
         s.sidebar.delay(200).queue(function(next) {
-            $(this).addClass('sidebar-hide');
+            s.sidebar.addClass('sidebar-hide');
             if(viewPort)
                 $('.sidebar-mini').show();
             next();
-        })
+        });
         sidebarVisible=false;
     }
 
@@ -54,8 +68,8 @@ $(document).ready(function() {
         if(e) e.stopPropagation();
         $('.sidebar-mini').hide();
         s.sidebar.removeClass('sidebar-hide');
-        s.sidebar.delay(200).queue(function(next) {
-            $(this).addClass('open')
+        s.sidebar.delay(0).queue(function(next) {
+            $(this).addClass('open');
             next();
         })
         sidebarVisible=true;
@@ -81,6 +95,21 @@ $(document).ready(function() {
         if(viewPort || ($(e.target).attr('class') == 'toggle-sidebar'))
             return
         hideSidebar();
+    });
+
+    // Search on icon click
+
+    $('form#searchform .search-icon').on('click', function() {
+        $("form#searchform").submit();
+    })
+
+    // Logo link
+
+    $("#global-logo").on('click', function() {
+        var path = window.location.pathname.split('/');
+        if(path.length)
+            return goTo(window.location.origin + '/' + path[1]);
+        return goTo(window.location.origin);
     });
 
     // Version toggle
