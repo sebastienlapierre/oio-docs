@@ -5,8 +5,8 @@
     <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Open+Sans" />
     <link rel="icon" type="image/png" href="{{pathto('_static/images/favicon-16x16.png', 1)}}">
     <script>
-    if(window.location.href.endsWith('/'))
-        window.location.href+="{{landing_page or 'source/sandbox-guide/quickstart.html'}}"
+        if(window.location.pathname.split('/').length < 4)
+            window.location.href+="{{landing_page or 'source/sandbox-guide/quickstart.html'}}"
     </script>
 {% endblock %}
 
@@ -21,7 +21,7 @@
 {%- block relbar2 %}{% endblock %}
 
 {%- block content %}
-    <div class="document">
+    <div class="document preload" id="preload">
         {%- block document %}
             <div class="documentwrapper">
                 <div class="header-container">
@@ -45,11 +45,12 @@
                         {% endfor %}
                     </select>
                 </div>
-                {%- if render_sidebar %}<div class="bodywrapper">{%- endif %}
                 <div class="body" role="main">
-                    {% block body %} {% endblock %}
+                    <div class="body__toc">
+                        <a href="./index.html">Table of contents</a>
+                    </div>
+                    {% block body %}{% endblock %}
                 </div>
-                {%- if render_sidebar %}</div>{%- endif %}
 
                 <div class="footer">
                     <!-- Add this for suggest edits -->
@@ -81,13 +82,20 @@
             </div>
         {%- endblock %}
 
-        <span id="preload" class="preload">
-            {%- block sidebar2 %}{{ sidebar() }}{% endblock %}
-
-            <div class="sidebar-mini sidebar-hide">
-                <a class="sidebar-mini__icon"></a>
+        {%- macro sidebar() %}
+            <div class="sphinxsidebar open noanimate" role="navigation" aria-label="main navigation">
+                <div class="sphinxsidebarwrapper">
+                    {%- block sidebartoc %}
+                        {%- include "globaltoc.html" %}
+                    {%- endblock %}
+                </div>
             </div>
-        </span>
+        {%- endmacro %}
+        {%- block sidebar2 %}{{ sidebar() }}{% endblock %}
+
+        <div class="sidebar-mini sidebar-hide">
+            <a class="sidebar-mini__icon"></a>
+        </div>
     </div>
 
     <div class="to-top-container">
