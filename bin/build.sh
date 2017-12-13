@@ -61,12 +61,6 @@ if which doxygen 2>/dev/null >/dev/null ; then
 fi
 
 
-# Build the Python API sphinx doc
-if [[ -d "$BUILD/oio-sds/oio" ]] ; then
-  sphinx-apidoc -o doc/source/sdk-guide/python-api "$BUILD/oio-sds/oio"
-fi
-
-
 # We configured sphinx to make it document the python sdk. The modules will
 # be loaded, we need even the dependencies.
 ( cd "$BUILD/oio-sds" \
@@ -74,12 +68,20 @@ fi
   && pip install --upgrade -r all-requirements.txt \
   && python ./setup.py install )
 
+
 # Generate a copy of all the sources to patch them, in order to expose
 # the release of each component
 if [[ -d doc2 ]] ; then
   rm -rf doc2
 fi
 cp -rp doc doc2
+
+
+# Build the Python API sphinx doc
+if [[ -d "$BUILD/oio-sds/oio" ]] ; then
+  sphinx-apidoc --ext-autodoc -o doc2/source/sdk-guide/python-api "$BUILD/oio-sds/oio"
+fi
+
 
 SED='sed -i '
 while read K V ; do
@@ -90,6 +92,7 @@ find doc2/ -type f -name '*.rst' | while read P ; do
 done
 
 sphinx-build -v -E -d /tmp/sphinx doc2 $TARGET
+
 
 # Patch all HTML to remove generated CSS theme
 set +x
