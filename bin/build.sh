@@ -96,7 +96,7 @@ sphinx-build -v -E -d /tmp/sphinx doc2 $TARGET
 
 # Patch all HTML to remove generated CSS theme
 set +x
-for file in $(find $TARGERT -name "*.html")
+for file in $(find $TARGET -name "*.html")
 do
     sed -i '/basic\.css/d' $file
 done
