@@ -259,6 +259,10 @@ select.switch-version {
     color: #1781ff;
 }
 
+#search-results > h2 {
+    display: none;
+}
+
 @media (max-width: 1199px) {
     select.switch-version {
         width: 25%;
@@ -436,7 +440,7 @@ div.document {
     overflow-x: hidden;
     overflow-y: scroll;
     padding: 15px 0 0 0;
-    background-color: #a9a9a9;
+    background-color: #e7e7e7;
     border-right: 1px solid #f1f1f1;
     padding-bottom: 20px;
 }
@@ -472,7 +476,7 @@ div.document {
     margin-top: 0px;
     width: 60px;
     height: 100vh;
-    background: #a9a9a9;
+    background: #1781ff;
     -webkit-transform: translate3d(0, 0, 0);
     -moz-transform: translate3d(0, 0, 0);
     -o-transform: translate3d(0, 0, 0);
@@ -538,9 +542,6 @@ div.document {
     height: 30px;
     display: block;
     cursor: pointer;
-    filter: brightness(300%);
-    -webkit-filter: brightness(300%);
-    -moz-filter: brightness(200%);
     transition: all 350ms;
 }
 
@@ -593,6 +594,9 @@ div.document {
 
 .sphinxsidebarwrapper > ul.current {
     padding: 0;
+    -webkit-margin-before: 0;
+    -webkit-margin-after: 0;
+    margin: 0;
 }
 
 /* TOC */
@@ -646,13 +650,30 @@ div.document {
 }
 
 .sphinxsidebarwrapper .toctree-l1 {
-    border-bottom: 1px solid #6f6f6f;
+    border-top: 1px solid #a9a9a9;
     position: relative;
 }
 
-.sphinxsidebarwrapper .toctree-l1.current {
-    background: #6f6f6f;
+.sphinxsidebarwrapper .toctree-l1:first-child {
+    border: none;
 }
+
+.sphinxsidebarwrapper .toctree-l1:last-child {
+    border-bottom: 1px solid #a9a9a9;
+}
+
+.sphinxsidebarwrapper .toctree-l1.current {
+    background: #1781ff;
+    border-color: #1781ff;
+}
+.sphinxsidebarwrapper .toctree-l1.current + .toctree-l1 {
+    border: none;
+}
+
+.sphinxsidebarwrapper .toctree-l1 + .sphinxsidebarwrapper .toctree-l1.current  {
+    border-color: #1781ff;
+}
+
 
 .sphinxsidebarwrapper .toctree-l1 > a {
     font-size: 0.9em;
@@ -676,7 +697,7 @@ div.document {
 }
 
 .sphinxsidebarwrapper .toctree-l1 > ul {
-    margin: 0 0 10px;
+    padding: 0 0 10px !important;
     font-size: 0.9em;
     list-style: none;
     padding: 0;
@@ -692,7 +713,7 @@ div.document {
 }
 
 .sphinxsidebarwrapper li.toctree-l1.current .toctree-l2 > a {
-    color: #d0d0d0;
+    color: #9ec9fb;
 }
 
 .sphinxsidebarwrapper li.toctree-l1.current .toctree-l2.current > a {
