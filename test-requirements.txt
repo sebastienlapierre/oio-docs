@@ -7,4 +7,3 @@ doc8
 beautifulsoup4
 Jinja2
 lxml
-breathe

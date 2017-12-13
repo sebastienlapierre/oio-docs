@@ -1,8 +1,10 @@
-==========
-C examples
-==========
+.. _ref-sdk-c:
 
-This sections describes how to install and use the OpenIO SDS C SDK.
+=====
+C API
+=====
+
+This sections describes how to install and use the `OpenIO SDS C SDK <../../oio-api-c-doc>`_
 
 Install
 -------

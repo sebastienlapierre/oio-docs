@@ -2,8 +2,8 @@
 set -e
 set -x
 
-TARGET=result-docs
-BUILD=$1
+TARGET=$(readlink --canonicalize result-docs)
+BUILD=$(readlink --canonicalize "$1")
 [[ -n "$BUILD" ]]
 
 mkdir -p $TARGET
@@ -44,23 +44,28 @@ $BUILD/oio-sds/confgen.py rst "$BUILD/oio-sds/conf.json" \
   doc/source/admin-guide/variables.rst || true
 
 
-if which doxygen 2>/dev/null >/dev/null ; then
-  # Build the Java API javadoc
-  if [[ -r doc/Doxyfile-api-java ]] ; then
-    doxygen doc/Doxyfile-api-java
+# Build the Java API javadoc
+if which javadoc 2>/dev/null >/dev/null ; then
+  if [[ -d $BUILD/oio-api-java/src/main/java ]] ; then
+    ( cd $BUILD/oio-api-java/src/main/java \
+      && javadoc -d $TARGET/oio-api-java-doc io.openio.sds )
   fi
+fi
 
-  # Build the C api doc
+
+# Build the C API doxygen doc
+if which doxygen 2>/dev/null >/dev/null ; then
   if [[ -r doc/Doxyfile-api-c ]] ; then
     doxygen doc/Doxyfile-api-c
   fi
 fi
 
 
-# Build the python API doc
+# Build the Python API sphinx doc
 if [[ -d "$BUILD/oio-sds/oio" ]] ; then
   sphinx-apidoc -o doc/source/sdk-guide/python-api "$BUILD/oio-sds/oio"
 fi
+
 
 # We configured sphinx to make it document the python sdk. The modules will
 # be loaded, we need even the dependencies.

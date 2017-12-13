@@ -1,8 +1,10 @@
-=============
-Java examples
-=============
+.. _ref-sdk-java:
 
-This sections describes how to install and use the OpenIO SDS Java SDK.
+========
+Java API
+========
+
+This sections describes how to install and use the `OpenIO Java API <../../oio-api-java-doc>`_
 
 Install
 -------

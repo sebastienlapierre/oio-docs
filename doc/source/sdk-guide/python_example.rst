@@ -1,10 +1,10 @@
 .. _ref-sdk-python:
 
-===============
-Python examples
-===============
+==========
+Python API
+==========
 
-This sections describes how to install and use the OpenIO SDS Python SDK.
+This sections describes how to install and use the :doc:`OpenIO SDS Python API <python-api/modules>`.
 
 Install
 -------

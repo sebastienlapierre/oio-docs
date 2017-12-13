@@ -55,4 +55,4 @@ OpenIO comes with a set of SDKs and APIs written in different languages, which y
 
 - :ref:`C API Reference <ref-sdk-c>`
 - :ref:`Python API reference <ref-sdk-python>`
-- :ref:`Java API reference <ref-sdk-java>`
+- :ref:`Java API reference <../../oio-api-java-doc>`_

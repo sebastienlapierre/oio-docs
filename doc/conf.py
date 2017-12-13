@@ -4,7 +4,6 @@ html_context = {
     'landing_page': 'source/sandbox-guide/quickstart.html'
 }
 extensions = [
-        'breathe',
         'sphinx.ext.autodoc',
         'sphinx.ext.viewcode',
         'sphinx.ext.todo',
@@ -18,9 +17,3 @@ source_suffix = '.rst'
 master_doc = 'index'
 pygments_style = 'default'
 
-breathe_default_project = "oio-sds-c-api"
-breathe_default_members = ('members', 'undoc-members')
-breathe_projects = {
-        "oio-sds-c-api": "../build/oio-sds-c-api/xml",
-        "oio-sds-java-api": "../build/oio-api-java-doc/xml",
-        }

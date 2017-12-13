@@ -6,8 +6,10 @@
    source/install-guide/index
    source/user-guide/index
    source/How-Tos/index
-   source/arch-design/index
+   source/admin-guide/index
    source/sdk-guide/index
+   source/sdk-guide/services
+   source/arch-design/index
    source/project-guide/index
 
 .. end of contents
