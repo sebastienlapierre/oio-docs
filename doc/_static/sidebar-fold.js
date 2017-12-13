@@ -1,23 +1,21 @@
 $(document).ready(function() {
 
-    var animationTime = 150;
+    var animationTime = 350;
     var initialLoad = true;
-    // Sidebar collapse
 
     var s = {
         'toc': $('.sphinxsidebarwrapper .toctree-l1'),
+        'toc2': $('.toctree-l1:not(.current) ul'),
         'ttc': $('.to-top-container'),
         'sidebar': $('.sphinxsidebar')
     }
 
-    $("#preload").removeClass('preload');
     s.toc.addClass('toctree-closed');
-    s.ttc.hide();
-
-    $('.sphinxsidebarwrapper .toctree-l1 > ul').hide();
-    $('.sphinxsidebarwrapper .toctree-l1.current > ul').show();
     $('.sphinxsidebarwrapper .toctree-l1.current').addClass('toctree-open');
     $('.sphinxsidebarwrapper .toctree-l1.current').removeClass('toctree-closed');
+    $("#preload").removeClass('preload');
+
+    s.ttc.hide();
 
     var viewPort, sidebarVisible = !!($(document).width() > 1200);
     refreshSidebar();
@@ -28,10 +26,8 @@ $(document).ready(function() {
         viewPort = !!($(document).width() > 1200);
 
         if(viewPort) {
-            if(initialLoad) {
-                s.sidebar.addClass('animation-off');
+            if(initialLoad)
                 s.sidebar.addClass('open');
-            }
 
             initialLoad = false;
             $('.sidebar-mini').hide();
@@ -40,15 +36,20 @@ $(document).ready(function() {
             s.sidebar.delay(animationTime).queue(function(next) {
                 if(!initialLoad)
                     s.sidebar.addClass('open')
-                s.sidebar.removeClass('animation-off');
                 next();
             });
         }
-        else
+        else {
+            $('.sidebar-mini').hide();
             hideSidebar();
+        }
+
     }
 
-    s.sidebar.css({'visibility': 'visible'});
+    $(document).delay(500).queue(function(next) {
+        s.sidebar.css({'visibility': 'visible'});
+        next();
+    })
 
     s.toc.on('click', function(e) {
         if($(e.target).parent().attr('class').startsWith('toctree-l2'))
@@ -56,24 +57,32 @@ $(document).ready(function() {
 
         e.preventDefault();
         var c = $($(this).children('ul')[0]);
+        var isVisible = $(this).hasClass('toctree-open');
 
         $('.sphinxsidebarwrapper .toctree-l1 > ul').slideUp();
         s.toc.removeClass('toctree-open');
         s.toc.addClass('toctree-closed');
-        if(!c.is(":visible")) {
+
+        if(!isVisible) {
             c.slideDown();
-            $(this).addClass('toctree-open');
             $(this).removeClass('toctree-closed');
+            $(this).addClass('toctree-open');
         }
     });
 
 
     function hideSidebar() {
+        if(viewPort) {
+            $('.sidebar-mini').show();
+            $('.documentwrapper').addClass('resizer');
+        }
+
         s.sidebar.removeClass('open');
+        s.sidebar.addClass('sidebar-hiding')
+
         s.sidebar.delay(animationTime).queue(function(next) {
             s.sidebar.addClass('sidebar-hide');
-            if(viewPort)
-                $('.sidebar-mini').show();
+            s.sidebar.removeClass('sidebar-hiding');
             next();
         });
         sidebarVisible=false;
@@ -81,12 +90,24 @@ $(document).ready(function() {
 
     function showSidebar(e) {
         if(e) e.stopPropagation();
+        if(viewPort) {
+            $('.documentwrapper').removeClass('resizer');
+        }
+
         $('.sidebar-mini').hide();
         s.sidebar.removeClass('sidebar-hide');
+        s.sidebar.addClass('sidebar-hiding')
         s.sidebar.delay(0).queue(function(next) {
             $(this).addClass('open');
             next();
         })
+
+
+        s.sidebar.delay(animationTime).queue(function(next) {
+            s.sidebar.removeClass('sidebar-hiding');
+            next();
+        });
+
         sidebarVisible=true;
     }
 
@@ -94,7 +115,7 @@ $(document).ready(function() {
         (sidebarVisible)?hideSidebar():showSidebar();
     });
 
-    $('.sidebar-mini, .searchbox-mobile-menu').on('click', showSidebar);
+    $('.sidebar-mini__icon, .searchbox-mobile-menu').on('click', showSidebar);
 
     s.ttc.on('click', function() {
         $('.documentwrapper').scrollTop(0);
