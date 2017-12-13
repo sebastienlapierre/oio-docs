@@ -11,7 +11,7 @@
   {{ super() }}
 {% endblock %}
 {% block body %}
-  <h1 id="search-documentation">{{ _('Search') }}</h1>
+  <h1 id="search-documentation">{{ _('Search Results') }}</h1>
   <div id="fallback" class="admonition warning">
   <script type="text/javascript">$('#fallback').hide();</script>
   <p>
@@ -20,7 +20,6 @@
   </p>
   </div>
   {% if search_performed %}
-    <h2>{{ _('Search Results') }}</h2>
     {% if not search_results %}
       <p>{{ _('Your search did not match any documents. Please make sure that all words are spelled correctly and that you\'ve selected enough categories.') }}</p>
     {% endif %}

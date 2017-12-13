@@ -5,17 +5,16 @@
     <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Open+Sans" />
     <link rel="icon" type="image/png" href="{{pathto('_static/images/favicon-16x16.png', 1)}}">
     <script>
-        if(window.location.pathname.split('/').length < 4)
+        if(
+            (window.location.pathname.split('/').length < 4) &&
+            (!~window.location.pathname.indexOf('search.html'))
+        )
             window.location.href+="{{landing_page or 'source/sandbox-guide/quickstart.html'}}"
     </script>
 {% endblock %}
 
 {% set css_files = css_files + ['https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css'] %}
 {% set script_files = script_files + ['_static/sidebar-fold.js'] %}
-
-{% block sidebarlogo %}
-  <h1><a href="..">{{category_title}}</a></li></h1>
-{% endblock %}
 
 {%- block relbar1 %}{% endblock %}
 {%- block relbar2 %}{% endblock %}
@@ -47,7 +46,9 @@
                 </div>
                 <div class="body" role="main">
                     <div class="body__toc">
-                        <a href="./index.html">Table of contents</a>
+                        {% if parents|length %}
+                        <a href="{{(parents|last).link|e}}">{{(parents|last).title}}</a>
+                        {% endif %}
                     </div>
                     {% block body %}{% endblock %}
                 </div>
