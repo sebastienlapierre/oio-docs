@@ -6,7 +6,6 @@
    source/install-guide/index
    source/user-guide/index
    source/How-Tos/index
-   source/admin-guide/index
    source/sdk-guide/index
    source/sdk-guide/services
    source/arch-design/index
