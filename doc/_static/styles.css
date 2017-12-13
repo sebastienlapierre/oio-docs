@@ -548,6 +548,12 @@ div.document {
     transition: all 350ms;
 }
 
+.sidebar-warning p {
+    color: red;
+    font-weight: bold;
+    padding: 2px;
+}
+
 .sidebar-footer {
     padding-bottom: 50px;
 }
