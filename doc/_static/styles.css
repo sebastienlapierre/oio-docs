@@ -498,12 +498,15 @@ div.document {
     transition: all 350ms;
     -webkit-transition: all 350ms;
     -moz-transition: all 350ms;
+    filter: brightness(300%);
+    -webkit-filter: brightness(300%);
+    -moz-filter: brightness(300%);
 }
 
 .sidebar-mini__icon:hover {
-    filter: brightness(0%);
-    -webkit-filter: brightness(0%);
-    -moz-filter: brightness(0%);
+    filter: brightness(300%);
+    -webkit-filter: brightness(300%);
+    -moz-filter: brightness(300%);
 }
 
 /* To top button */
@@ -908,7 +911,7 @@ div.highlight pre {
     width: 100%;
     text-align: justify;
     margin-bottom: 20px;
-    margin-top: -20px;
+    margin-top: -10px;
 }
 
 .section img {
