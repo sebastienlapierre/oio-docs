@@ -60,7 +60,6 @@ if which doxygen 2>/dev/null >/dev/null ; then
   fi
 fi
 
-
 # We configured sphinx to make it document the python sdk. The modules will
 # be loaded, we need even the dependencies.
 ( cd "$BUILD/oio-sds" \
@@ -87,9 +86,15 @@ SED='sed -i '
 while read K V ; do
   SED="${SED}-e s,{{$K}},$V,g "
 done < "${BUILD}/vars.export"
+
 find doc2/ -type f -name '*.rst' | while read P ; do
   $SED "$P"
 done
+
+# Patch conf.py with components.json
+if cat components.json | python -mjson.tool | grep stable | grep true; then
+    sed -i 's/\(.*stable.*\)\(False\)\(.*\)/\1True\3/g' doc2/conf.py
+fi
 
 sphinx-build -v -E -d /tmp/sphinx doc2 $TARGET
 

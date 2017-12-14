@@ -11,7 +11,7 @@
         )
             window.location.href+="{{landing_page or 'source/sandbox-guide/quickstart.html'}}"
 
-        var ISUNSTABLE = "{{warn_unstable|join(',')}}".split(',')
+        var ISUNSTABLE = ('{{is_stable}}'=='False')
     </script>
 {% endblock %}
 

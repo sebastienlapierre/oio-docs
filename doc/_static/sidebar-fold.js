@@ -175,7 +175,7 @@ $(document).ready(function() {
 
     // Display warning if version is marked as "unstable"
 
-    if (~ISUNSTABLE.indexOf(window.location.pathname.split('/')[1])) {
+    if (ISUNSTABLE) {
         var selWarning = $('.sidebar-warning-container');
         if(!window.sessionStorage.getItem('unstableWarn')) {
             selWarning.slideDown();

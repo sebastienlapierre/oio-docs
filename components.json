@@ -47,5 +47,6 @@
         "repository": "https://github.com/open-io/gridinit.git",
         "id": "v1.6"
       }
-    }
+  },
+  "stable": false
 }

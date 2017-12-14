@@ -1,7 +1,7 @@
 html_context = {
     'css_files': ['_static/styles.css'],
     'oio_versions': ['16.10', '17.04', 'master'],
-    'warn_unstable': ['master', 'unstable'],
+    'is_stable': False,
     'landing_page': 'source/sandbox-guide/quickstart.html'
 }
 extensions = [
