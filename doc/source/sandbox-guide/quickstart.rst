@@ -53,6 +53,6 @@ Develop
 
 OpenIO comes with a set of SDKs and APIs written in different languages, which you can base your projects upon:
 
-- :ref:`C API Reference <ref-sdk-c>`
 - :ref:`Python API reference <ref-sdk-python>`
-- :ref:`Java API reference <../../oio-api-java-doc>`_
+- `C API reference <../../oio-api-c-doc>`_ (with :ref:`examples <ref-sdk-c>`)
+- `Java API reference <../../oio-api-java-doc>`_ (with :ref:`examples <ref-sdk-java>`)
