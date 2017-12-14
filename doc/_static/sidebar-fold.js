@@ -125,8 +125,6 @@ $(document).ready(function() {
         ($('.documentwrapper').scrollTop() <= 0)?s.ttc.fadeOut(animationTime):s.ttc.fadeIn(animationTime);
     });
 
-
-
     $('.documentwrapper, .header-container').on('click', function(e) {
         if(viewPort || ($(e.target).attr('class') == 'toggle-sidebar'))
             return
@@ -174,6 +172,20 @@ $(document).ready(function() {
         if(sel.length)
             $('#opt-' + path[1].replace('/', '-')).prop('selected', 'selected');
     }
+
+    // Display warning if version is marked as "unstable"
+
+    if (~ISUNSTABLE.indexOf(window.location.pathname.split('/')[1])) {
+        var selWarning = $('.sidebar-warning-container');
+        if(!window.sessionStorage.getItem('unstableWarn')) {
+            selWarning.slideDown();
+            window.sessionStorage.setItem('unstableWarn', true);
+            selWarning.on('click', function() {
+                selWarning.slideUp();
+            });
+        }
+    }
+
 });
 
 function debounce(f, delay) {

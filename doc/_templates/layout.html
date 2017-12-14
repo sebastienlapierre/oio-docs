@@ -10,6 +10,8 @@
             (!~window.location.pathname.indexOf('search.html'))
         )
             window.location.href+="{{landing_page or 'source/sandbox-guide/quickstart.html'}}"
+
+        var ISUNSTABLE = "{{warn_unstable|join(',')}}".split(',')
     </script>
 {% endblock %}
 
@@ -20,6 +22,14 @@
 {%- block relbar2 %}{% endblock %}
 
 {%- block content %}
+    <div class="sidebar-warning-container">
+        <div>
+            <strong>Warning: pre-release documentation.</strong><br/>
+            You are currently browsing an unstable branch of the documentation, which is susceptible to be updated.
+            You can view the docs for a stable branch using the version selector on the right.
+        </div>
+    </div>
+
     <div class="document preload" id="preload">
         {%- block document %}
             <div class="documentwrapper">
