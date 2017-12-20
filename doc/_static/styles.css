@@ -187,7 +187,7 @@ a.extlinks__link:hover {
 }
 
 select.switch-version {
-    height: 44px;
+    height: 45px;
     width: 19%;
     -webkit-appearance: none;
     -moz-appearance: none;
@@ -230,7 +230,7 @@ select.switch-version {
 
 #searchbox .search + .search-icon {
     top: 25%;
-    left: calc(100% - 28px);
+    left: calc(100% - 35px);
     width: 22px;
     height: 22px;
     background-image: url('./images/ui-ico-search.svg');
@@ -268,13 +268,30 @@ select.switch-version {
         width: 25%;
     }
 
-    #searchbox {
-        width: calc(100% - 60px);
+    #searchbox .search {
+        width: calc(100% - 105px);
+        margin-left: 50px;
+        padding-left: 10px;
+        border: none;
+        background: none;
     }
 
-    #searchbox .search {
-        width: calc(100% - 45px);
-        padding-left: 60px;
+    #searchbox {
+        width: calc(100% - 60px);
+        position: relative;
+        background-color: #f4f4f4;
+        border: 0;
+        border-radius: 4px;
+        color: #4a4a4a;
+        overflow: hidden;
+    }
+
+    #searchbox .search:focus {
+        box-shadow: none;
+    }
+
+    #searchbox:focus-within {
+        box-shadow: inset 0 0 0 2px #1781ff;
     }
 
     .searchbox-mobile-menu {
@@ -307,7 +324,6 @@ select.switch-version {
 
     #searchbox .search {
         width: calc(100% - 60px);
-        padding-left: 60px;
     }
 
     #searchbox:after {
@@ -317,6 +333,7 @@ select.switch-version {
     select.switch-version {
         width: 100%;
         margin-top: 25px;
+        font-size: 1em;
     }
 }
 
@@ -391,7 +408,8 @@ div.document {
     width: calc(100vw - 405px);
     position: relative;
     overflow-x: hidden;
-    overflow-y: overlay
+    overflow-y: scroll;
+    -webkit-overflow-scrolling: touch;
     flex-grow: 0;
     text-align: justify;
     flex-flow: column;
@@ -519,7 +537,9 @@ div.document {
     height: 48px;
 }
 
-.to-top-container .to-top-container__button {
+.to-top-container .to-top-container__button,
+.to-top-container:visited .to-top-container__button,
+.to-top-container:active .to-top-container__button {
     width: 100%;
     height: 100%;
     display: block;
@@ -665,9 +685,9 @@ div.document {
 
 .body__toc > a {
     font-size: 0.7em;
-    color: #1781ff;
+    color: #999999;
     font-weight: 700;
-    box-shadow: 0 2px 0px 0px #1781ff;
+    box-shadow: 0 2px 0px 0px #999999;
     text-transform: uppercase;
 }
 
@@ -959,8 +979,8 @@ a.footer__community {
 }
 
 a.footer__community i {
-    width: 64px;
-    height: 64px;
+    width: 54px;
+    height: 54px;
     background: url('./images/slack-app-icon.png') no-repeat;
     background-size: cover;
     display: block;
@@ -970,9 +990,9 @@ a.footer__community i {
 
 a.footer__community i:after {
     content: "";
-    width: 64px;
-    height: 64px;
-    box-shadow: 0 0 6px 1px rgba(0,0,0,0.50), inset  0 0 3px 1px rgba(0,0,0,0.50);
+    width: 54px;
+    height: 54px;
+    box-shadow: 0 0 6px 1px rgba(0,0,0,0.35), inset  0 0 3px 1px rgba(0,0,0,0.35);
     transition: all 350ms;
     opacity: 0;
     display: block;
