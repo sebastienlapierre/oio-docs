@@ -168,7 +168,7 @@ In a file called ``~/openio.pp``:
       ns                 => 'OPENIO',
       ipaddress          => '0.0.0.0',
       sds_proxy_url      => $openio_proxy_url,
-      admin_password     => $swift_passwd,
+      password     => $swift_passwd,
       memcache_servers   => "${ipaddress}:6019",
       region_name        => $region,
       middleware_swift3 => {'location' => $region},
