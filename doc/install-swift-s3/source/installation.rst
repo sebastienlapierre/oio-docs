@@ -92,7 +92,7 @@ In a file called ``~/openio.pp``:
       admin_token         => $admin_token,
       admin_password      => $admin_passwd,
       database_connection => 'sqlite:////var/lib/keystone/keystone.db',
-
+      service_name => 'httpd',
     }
 
     # Use Apache httpd service with mod_wsgi
@@ -113,8 +113,8 @@ In a file called ``~/openio.pp``:
     # Installs the service user endpoint.
     class { 'keystone::endpoint':
       public_url   => "http://${ipaddress}:5000",
-      admin_url    => "http://${ipaddress}:5000",
-      internal_url => "http://${ipaddress}:35357",
+      admin_url    => "http://${ipaddress}:35357",
+      internal_url => "http://${ipaddress}:5000",
       region       => $region,
     }
 
